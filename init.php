@@ -29,25 +29,10 @@ if (@is_file(C_DATA_PATH."/dati_connessione.php") != true) {
 $show_bar = "NO";
 if ($tema[$id_utente] != "base") include("./themes/".$tema[$id_utente]."/php/head.php");
 else include("./includes/head.php");
-if (@is_dir("./includes/lang/en")) $lingua_mex = "en";
-else $lingua_mex = "ita";
-if (@isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-$lingua_browser = explode(",",$_SERVER['HTTP_ACCEPT_LANGUAGE']);
-while (list($ind,$lang) = each($lingua_browser)) {
-if ($lang == "en") break;
-if ($lang == "it") {
-$lingua_mex = "ita";
-break;
-} # fine if ($lang == "it")
-if (strlen($lang) == 2 and @is_dir("./includes/lang/$lang")) {
-$lingua_mex = $lang;
-break;
-} # fine if (strlen($lang) == 2 and @is_dir("./includes/lang/$lang"))
-} # fine (list($ind,$lang) = each($lingua_browser))
-} # fine if (@isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
+
 if (@is_file("./README")) $readme = "<a href=\"README\">README</a>";
 else $readme = "<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\">AGPLv3</a> License";
-echo "<div style=\"text-align: center;\"><h3>".mex("sleepover Setup",$pag).".</h3><br><br>
+echo "<div style=\"text-align: center;\"><h3>".mex("sleepover setup",$pag)."</h3><br><br>
 sleepover version ".C_PHP_VERSION_TXT.", Copyright info available in the $readme.<br>
 </div><hr style=\"width: 95%\">
 <form accept-charset=\"utf-8\" method=\"post\" action=\"creadb.php\"><div>
@@ -55,7 +40,7 @@ sleepover version ".C_PHP_VERSION_TXT.", Copyright info available in the $readme
 </div></form>";
 if ($tema[$id_utente] != "base") include("./themes/".$tema[$id_utente]."/php/foot.php");
 else include("./includes/foot.php");
-} # fine if (@is_file(C_DATI_PATH."/dati_connessione.php") != true)
+}
 
 else {
 
@@ -63,8 +48,7 @@ if (C_CREA_ULTIMO_ACCESSO == "SI") {
 $fileaperto = @fopen(C_DATA_PATH."/ultimo_accesso","w+");
 @fwrite($fileaperto,date("d-m-Y H:i:s"));
 @fclose($fileaperto);
-} # fine if (C_CREA_ULTIMO_ACCESSO == "SI")
-
+}
 if ($id_utente != 1) {
 $tableprivilegi = $PHPR_TAB_PRE."privilegi";
 $tablerelgruppi = $PHPR_TAB_PRE."relgruppi";
