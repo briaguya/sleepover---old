@@ -27,8 +27,8 @@ $trad_ui = 0;
 }
 $tablepersonalizza = $PHPR_TAB_PRE."personalizza";
 
-define('C_PHP_VERSION_NUM',2.12);
-define('C_PHP_VERSION_TXT',"2.1.2");
+define('C_PHP_VERSION_NUM',0.01);
+define('C_PHP_VERSION_TXT',"0.01");
 
 # If you do not specify any using the current year todo: better translation
 $anno_corrente = date("Y",(time() + (C_DIFF_ORE * 3600)));

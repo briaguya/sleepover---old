@@ -654,11 +654,7 @@ if (!$tutti_mesi) echo "<tr><td></td><td align=\"center\">
 <input class=\"sbutton\" type=\"submit\" name=\"tutti_mesi\" value=\"".mex("Visualizza tutti i mesi",$pag)."\">
 </div></form></td><td></td></tr>";
 
-echo "<tr><td style=\"height: 2px;\"></td></tr><tr><td></td><td align=\"center\">
-<form accept-charset=\"utf-8\" method=\"post\" action=\"inizio.php\"><div>
-<input type=\"hidden\" name=\"anno\" value=\"$anno\">
-<input type=\"hidden\" name=\"id_sessione\" value=\"$id_sessione\">
-<input class=\"sbutton\" type=\"submit\" name=\"torna\" value=\"".mex("Torna al menù principale",$pag)."\">
+echo ".mex("Torna al menù principale",$pag)."\">
 </div></form></td><td></td></tr><tr><td style=\"height: 20px;\"></td></tr></table>";
 
 
