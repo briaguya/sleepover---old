@@ -573,12 +573,7 @@ if (defined("C_HTML_POST_LOGIN") and C_HTML_POST_LOGIN != "") echo C_HTML_POST_L
 } # fine if ($mostra_form_login == "SI")
 if ($messaggio_errore or $mostra_form_login == "SI") {
 
-# You are not authorized to remove the following copyright notice. Ask for permission info@digitaldruid.net
-if (C_MOSTRA_COPYRIGHT != "NO") {
-echo "<div style=\"position: absolute; bottom: 3%; right: 1%; background: #ffffff; color: #000000; font-size: 11px;\">
-&nbsp;Website <a style=\"color: #000000;\" href=\"./mostra_sorgente.php\">engine code</a> is copyright © by DigitalDruid.Net.
-<a style=\"color: #000000;\" href=\"http://www.hoteldruid.com\">HotelDruid</a> is a free software released under the GNU/AGPL.</div>";
-} # fine if (C_MOSTRA_COPYRIGHT != "NO")
+# todo: it's forked, copyright stuff
 echo "<div>";
 
 if ($tema[1] and $tema[1] != "base" and @is_dir("./themes/".$tema[1]."/php")) include("./themes/".$tema[1]."/php/foot.php");

@@ -35,7 +35,7 @@ else $readme = "<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\">AGPLv3</a>
 echo "<div style=\"text-align: center;\"><h3>".mex("sleepover setup",$pag)."</h3><br><br>
 sleepover version ".C_PHP_VERSION_TXT.", Copyright info available in the $readme.<br>
 </div><hr style=\"width: 95%\">
-<form accept-charset=\"utf-8\" method=\"post\" action=\"creadb.php\"><div>
+<form accept-charset=\"utf-8\" method=\"post\" action=\"createDB.php\"><div>
 <input class=\"sbutton\" type=\"submit\" name=\"crealo\" value=\"".mex("Let's go make a DB!",$pag)."\"><br>
 </div></form>";
 if ($tema[$id_utente] != "base") include("./themes/".$tema[$id_utente]."/php/foot.php");
@@ -642,14 +642,7 @@ echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"inizio.php\"><div>
 
 } # fine if (!$hide_default_menu)
 
-# You are not authorized to remove the following copyright notice. Ask for permission info@digitaldruid.net
-if (!$numconnessione and C_MOSTRA_COPYRIGHT != "NO") {
-echo "</td></tr>
-<tr><td style=\"background-color: #ffffff; height: 57px; color: #000000; font-size: 11px; text-align: center; vertical-align: bottom;\">
-Website <a style=\"color: #000000;\" href=\"./mostra_sorgente.php\">engine code</a> is copyright © by DigitalDruid.Net.
-<a style=\"color: #000000;\" href=\"http://www.hoteldruid.com\">HotelDruid</a> is a free software released under the GNU/AGPL.
-</td></tr></table>";
-} # fine if (!$numconnessione and C_MOSTRA_COPYRIGHT != "NO")
+# todo: it's forked, fix copyright
 
 if ($tema[$id_utente] != "base") include("./themes/".$tema[$id_utente]."/php/foot.php");
 else include("./includes/foot.php");

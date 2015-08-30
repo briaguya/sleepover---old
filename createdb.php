@@ -1,32 +1,12 @@
 <?php
 
-##################################################################################
-#    HOTELDRUID
-#    Copyright (C) 2001-2012 by Marco Maria Francesco De Santis (marco@digitaldruid.net)
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#    any later version accepted by Marco Maria Francesco De Santis, which
-#    shall act as a proxy as defined in Section 14 of version 3 of the
-#    license.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-##################################################################################
-
-
+// Copyright information available in the README
 
 include("./constants.php");
 include("./includes/funzioni.php");
 if (!defined("C_CREADB_TIPODB")) include("./includes/costanti.php");
-$pag = "creadb.php";
-$titolo = "HotelDruid: Crea Database";
+$pag = "createDB.php";
+$titolo = "sleepover: create database";
 
 if (C_CREA_ULTIMO_ACCESSO != "SI" or !@is_file(C_DATA_PATH."/ultimo_accesso")) {
 
@@ -446,7 +426,7 @@ if (C_NASCONDI_MARCA == "SI" and @is_file(C_CARTELLA_CREA_MODELLI."/index.html")
 if (C_UTILIZZA_SEMPRE_DEFAULTS != "AUTO") {
 # seconda form di inserimento (appartamenti).
 echo "<br>".mex2("Inserisci ora i data sugli appartamenti",'unit.php',$lingua)." (<b>".mex2("almeno il numero, diverso per ogni appartamento",'unit.php',$lingua)."</b>).<br>
-<form accept-charset=\"utf-8\" method=\"post\" action=\"creadb.php\"><div>
+<form accept-charset=\"utf-8\" method=\"post\" action=\"createDB.php\"><div>
 <input type=\"hidden\" name=\"numappartamenti\" value=\"$numappartamenti\">
 <input type=\"hidden\" name=\"numletti\" value=\"$numletti\">
 <hr style=\"width: 95%\">";
@@ -574,9 +554,7 @@ unlink(C_DATA_PATH."/prova.tmp");
 } # fine else if (!$fileaperto)
 } # fine if ($permessi_scrittura_controllati != "SI")
 if ($torna_indietro == "SI") {
-echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"creadb.php\"><div>
-<input type=\"hidden\" name=\"lingua\" value=\"$lingua\">
-<input class=\"sbutton\" type=\"submit\" name=\"torna\" value=\"".mex2("Torna indietro",$pag,$lingua)."\"><br>
+echo ".mex2("Torna indietro",$pag,$lingua)."\"><br>
 </div></form>";
 } # fine if ($torna_indietro == "SI")
 } # fine if ($creabase and !@is_file(C_DATI_PATH."/dati_connessione.php"))
@@ -759,7 +737,7 @@ if ($mostra_form_iniziale != "NO") {
 echo "<h4>".mex2("Inserimento dei data permanenti",$pag,$lingua)."</h4><br>
 ".mex2("Inserisci questi data per poi creare il database",$pag,$lingua).".<br>
 <br>
-<form accept-charset=\"utf-8\" method=\"post\" action=\"creadb.php\"><div>
+<form accept-charset=\"utf-8\" method=\"post\" action=\"createDB.php\"><div>
 ".mex2("Tipo di database",$pag,$lingua).": 
 <select name=\"tipo_db\">";
 if (C_CREADB_TIPODB == "postgresql") $selected = " selected";
