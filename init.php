@@ -45,30 +45,13 @@ break;
 } # fine if (strlen($lang) == 2 and @is_dir("./includes/lang/$lang"))
 } # fine (list($ind,$lang) = each($lingua_browser))
 } # fine if (@isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
-if (@is_file("./README")) $file_readme = "file <a href=\"README\">README</a>";
-else $file_readme = "<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\">AGPLv3</a> License";
+if (@is_file("./README")) $readme = "<a href=\"README\">README</a>";
+else $readme = "<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\">AGPLv3</a> License";
 echo "<div style=\"text-align: center;\"><h3>".mex("sleepover Setup",$pag).".</h3><br><br>
-sleepover version ".C_PHP_VERSION_TXT.", Copyright info available in the $file_readme.<br>
+sleepover version ".C_PHP_VERSION_TXT.", Copyright info available in the $readme.<br>
 </div><hr style=\"width: 95%\">
 <form accept-charset=\"utf-8\" method=\"post\" action=\"creadb.php\"><div>
-<br><br>
-".mex("Scegli la lingua",$pag).": <select name=\"lingua\">";
-if ($lingua_mex == "ita") $sel = " selected";
-else $sel = "";
-echo "<option value=\"ita\"$sel>italiano</option>";
-$lang_dir = opendir("./includes/lang/");
-while ($ini_lingua = readdir($lang_dir)) {
-if ($ini_lingua != "." && $ini_lingua != "..") {
-$nome_lingua = file("./includes/lang/$ini_lingua/l_n");
-$nome_lingua = togli_acapo($nome_lingua[0]);
-if ($ini_lingua == $lingua_mex) $sel = " selected";
-else $sel = "";
-echo "<option value=\"$ini_lingua\"$sel>$nome_lingua</option>";
-} # fine if ($file != "." && $file != "..")
-} # fine while ($file = readdir($lang_dig))
-closedir($lang_dir);
-echo "</select><br>
-<input class=\"sbutton\" type=\"submit\" name=\"crealo\" value=\"".mex("crea il database",$pag)."\"><br>
+<input class=\"sbutton\" type=\"submit\" name=\"crealo\" value=\"".mex("Let's go make a DB!",$pag)."\"><br>
 </div></form>";
 if ($tema[$id_utente] != "base") include("./themes/".$tema[$id_utente]."/php/foot.php");
 else include("./includes/foot.php");
