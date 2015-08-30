@@ -740,10 +740,8 @@ $datainserimento = date("Y-m-d H:i:s",(time() + (C_DIFF_ORE * 3600)));
 esegui_query("insert into $tablemessaggi (idmessaggi,tipo_messaggio,idutenti,idutenti_visto,datavisione,mittente,testo,datainserimento) values ('1','sistema',',1,',',1,','$datainserimento','1','$testo','$datainserimento')");
 
 echo mex("Dati inseriti",$pag)."!<br>".mex("Tutti i data permanenti sono stati inseriti",$pag).".<br>";
-echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"inizio.php\"><div>
-<input type=\"hidden\" name=\"nuovo_mess\" value=\"1\">
-<input class=\"sbutton\" type=\"submit\" name=\"ok\" value=\"OK\"><br>
-</div></form>";
+echo "><br>
+</div></form>\"";
 if (C_CREA_ULTIMO_ACCESSO == "SI") {
 $fileaperto = @fopen(C_DATA_PATH."/ultimo_accesso","w+");
 @fwrite($fileaperto,date("d-m-Y H:i:s"));

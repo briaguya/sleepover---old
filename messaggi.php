@@ -1135,11 +1135,7 @@ echo "</select> ".mex("il",$pag)."
 </div></form>";
 } # fine if ($priv_ins_messaggi == "s")
 
-echo "<br><hr style=\"width: 95%\"><br>
-<form accept-charset=\"utf-8\" method=\"post\" action=\"./inizio.php\"><div style=\"text-align: center;\">
-<input type=\"hidden\" name=\"anno\" value=\"$anno\">
-<input type=\"hidden\" name=\"id_sessione\" value=\"$id_sessione\">
-<input class=\"sbutton\" type=\"submit\" name=\"torna\" value=\"".mex("Torna al menù principale",$pag)."\">
+echo ".mex("Torna al menù principale",$pag)."\">
 </div></form><table><tr><td style=\"height: 20px;\"></td></tr></table>";
 
 

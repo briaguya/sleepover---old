@@ -1226,11 +1226,7 @@ echo "</div></form>";
 
 } # fine else if ($testo_azione)
 
-echo "<div style=\"text-align: center; clear: both;\"><br><br>
-<form accept-charset=\"utf-8\" method=\"post\" action=\"inizio.php\"><div>
-<input type=\"hidden\" name=\"anno\" value=\"$anno\">
-<input type=\"hidden\" name=\"id_sessione\" value=\"$id_sessione\">
-<input class=\"sbutton\" type=\"submit\" name=\"indietro\" value=\"".mex("Torna al menù principale",$pag)."\">
+echo ".mex("Torna al menù principale",$pag)."\">
 </div></form></div><div style=\"height: 20px\"></div>";
 
 } # fine if (!$blocca_schermo)

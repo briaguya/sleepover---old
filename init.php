@@ -2,7 +2,7 @@
 
 // Copyright information available in the README
 
-$pag = "init.php";
+$pag = "inizio.php";
 $titolo = "sleepover";
 
 include("./constants.php");
