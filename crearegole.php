@@ -23,8 +23,8 @@
 $pag = "crearegole.php";
 $titolo = "HotelDruid: Crea Regole";
 
-include("./costanti.php");
-include(C_DATI_PATH."/dati_connessione.php");
+include("./constants.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 include("./includes/funzioni.php");
@@ -55,7 +55,7 @@ $tabelle_lock = lock_tabelle($tabelle_lock,$altre_tab_lock);
 if ($regola_1) {
 $regola_1_tar = "";
 if (!$inizioperiodo or !$fineperiodo or !$appartamento) {
-echo mex("Non sono stati inseriti tutti i dati necessari",$pag)."!<br>";
+echo mex("Non sono stati inseriti tutti i data necessari",$pag)."!<br>";
 } # fine if (!$inizioperiodo or !$fineperiodo or !$appartamento)
 else {
 $idinizioperiodo = esegui_query("select idperiodi from $tableperiodi where datainizio = '".aggslashdb($inizioperiodo)."' ");
@@ -147,7 +147,7 @@ echo mex("La regola è stata inserita",$pag).".";
 
 if ($regola_1_tar) {
 if (!$inizioperiodo or !$fineperiodo or !$tipotariffa or substr($tipotariffa,0,7) != "tariffa" or controlla_num_pos(substr($tipotariffa,7)) == "NO") {
-echo mex("Non sono stati inseriti tutti i dati necessari",$pag)."!<br>";
+echo mex("Non sono stati inseriti tutti i data necessari",$pag)."!<br>";
 } # fine if (!$inizioperiodo or !$fineperiodo or !$tipotariffa or...
 else {
 $idinizioperiodo = esegui_query("select idperiodi from $tableperiodi where datainizio = '".aggslashdb($inizioperiodo)."' ");
@@ -392,11 +392,11 @@ echo "<div style=\"text-align: center;\">".mex("Regola di assegnazione",$pag)." 
 </select>
  ".mex("l'appartamento",'unit.php')." <select name=\"appartamento\">
 <option value=\"\" selected>--</option>";
-include(C_DATI_PATH."/selectappartamenti.php");
+include(C_DATA_PATH."/selectappartamenti.php");
 echo "</select> ".mex("nel periodo dal",$pag)." ";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.$id_utente.php","inizioperiodo",$inizio_select,"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.$id_utente.php","inizioperiodo",$inizio_select,"","",$id_utente,$tema);
 echo " ".mex("al",$pag)." ";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.$id_utente.php","fineperiodo",$fine_select,"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.$id_utente.php","fineperiodo",$fine_select,"","",$id_utente,$tema);
 echo "<br>".mex("motivazione",$pag).":
  <input type=\"text\" name=\"motivazione\" size=\"30\" maxlength=\"30\">
  (".mex("opzionale",$pag).")<br><div style=\"text-align: center;\">
@@ -423,9 +423,9 @@ echo "
 <option value=\"$tariffa\">$tariffa_vedi$nometariffa_vedi</option>";
 } # fine for $numtariffa
 echo "</select> ".mex("nel periodo dal",$pag)." ";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.$id_utente.php","inizioperiodo",$inizio_select,"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.$id_utente.php","inizioperiodo",$inizio_select,"","",$id_utente,$tema);
 echo " ".mex("al",$pag)." ";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.$id_utente.php","fineperiodo",$fine_select,"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.$id_utente.php","fineperiodo",$fine_select,"","",$id_utente,$tema);
 echo "<br>".mex("motivazione",$pag).":
  <input type=\"text\" name=\"motivazione\" size=\"30\" maxlength=\"30\">
  (".mex("opzionale",$pag).")

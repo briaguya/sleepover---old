@@ -24,8 +24,8 @@ $pag = "modifica_prenota.php";
 $titolo = "HotelDruid: Modifica Prenotazioni";
 $base_js = 1;
 
-include("./costanti.php");
-include(C_DATI_PATH."/dati_connessione.php");
+include("./constants.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 include("./includes/funzioni.php");
@@ -193,7 +193,7 @@ $cassa_pagamenti = "";
 if ($anno_utente_attivato == "SI" and $priv_mod_prenotazioni != "n") {
 
 
-if (@is_file(C_DATI_PATH."/dati_subordinazione.php")) {
+if (@is_file(C_DATA_PATH."/dati_subordinazione.php")) {
 $installazione_subordinata = "SI";
 $modifica_pers = "NO";
 $inserimento_nuovi_clienti = "NO";
@@ -751,7 +751,7 @@ $dati_form_modifica .= "<input type=\"hidden\" name=\"$costoagg\" value=\"".$$co
 $dati_form_modifica .=  "<input type=\"hidden\" name=\"numcostiagg\" value=\"$numcostiagg\">";
 
 
-if ($modifica_pers == "NO" and ($n_inizioperiodo or $n_fineperiodo)) @include(C_DATI_PATH."/selperiodimenu$anno.$id_utente.php");
+if ($modifica_pers == "NO" and ($n_inizioperiodo or $n_fineperiodo)) @include(C_DATA_PATH."/selperiodimenu$anno.$id_utente.php");
 $id_periodo_corrente = calcola_id_periodo_corrente($anno);
 
 if ($n_inizioperiodo) {
@@ -2323,7 +2323,7 @@ if ($costofinale0 and $inserisci_nuovi_costi == "SI") {
 if ($priv_mod_sconto != "s") $pos = "SI";
 else $pos = "NO";
 if (!$nomecostofinale0 or !$val_costofinale0 or !$nummoltiplica_cf0 or controlla_num_pos($nummoltiplica_cf0) == "NO" or controlla_soldi($val_costofinale0,$pos) == "NO") {
-echo mex("I dati del costo aggiuntivo <b>straordinario</b> sono <div style=\"display: inline; color: red;\">errati o mancanti</div>",$pag)."$per_la_prenotazione.<br>";
+echo mex("I data del costo aggiuntivo <b>straordinario</b> sono <div style=\"display: inline; color: red;\">errati o mancanti</div>",$pag)."$per_la_prenotazione.<br>";
 $inserire = "NO";
 } # fine if (!$nomecostofinale0 or...
 else {
@@ -2678,7 +2678,7 @@ if ($dati_ca[$num_costo]['tipo_beniinv']) $num_ripetizioni_costo[$num_reg] = $nr
 } # fine for $num_costo
 
 
-# calcolo prezzo e dati per costi già presenti
+# calcolo prezzo e data per costi già presenti
 for ($numca = 0 ; $numca < $dati_cap['num'] ; $numca++) {
 $numcostoaggiuntivo = "costoaggiuntivo".$dati_cap[$numca]['id'];
 if ($$numcostoaggiuntivo == "SI") {
@@ -2705,7 +2705,7 @@ else $costi_aggiuntivi_modificati_int .= "#@&".$d_costi_aggiuntivi[$numca];
 } # fine for $numca
 
 
-# calcolo prezzo e dati per costi nuovi
+# calcolo prezzo e data per costi nuovi
 for ($numca = 1 ; $numca <= $numcostiagg ; $numca++) {
 $costoagg = "costoagg".$numca;
 if ($$costoagg == "SI") {
@@ -3796,7 +3796,7 @@ echo "</td><td>
 <input type=\"hidden\" name=\"id_sessione\" value=\"$id_sessione\">
 <input type=\"hidden\" name=\"idclienti\" value=\"$id_clienti\">
 <input type=\"hidden\" name=\"origine\" value=\"modifica_prenota.php?mese=$mese&amp;tipo_tabella=$tipo_tabella&amp;id_prenota=$idprenota_origine2&amp;origine=$origine\">
-<input class=\"sbutton\" type=\"submit\" name=\"vai\" value=\"".mex("Modifica i dati del cliente",$pag)."\">
+<input class=\"sbutton\" type=\"submit\" name=\"vai\" value=\"".mex("Modifica i data del cliente",$pag)."\">
 </div></form>";
 } # fine if ($modifica_clienti == "SI" or...
 } # fine if ($modifica_clienti != "NO")
@@ -3964,7 +3964,7 @@ if ($priv_mod_date == "s") {
 echo mex("cambia in",$pag)." ";
 if ($n_inizioperiodo == "") $blank_selected = " selected";
 else $blank_selected = "";
-mostra_menu_date(C_DATI_PATH."/selperiodimenu$anno.$id_utente.php","n_inizioperiodo",$n_inizioperiodo,1,$blank_selected,$id_utente,$tema,"",$d_data_inizio);
+mostra_menu_date(C_DATA_PATH."/selperiodimenu$anno.$id_utente.php","n_inizioperiodo",$n_inizioperiodo,1,$blank_selected,$id_utente,$tema,"",$d_data_inizio);
 echo " ";
 } # fine if ($priv_mod_date == "s")
 if ($attiva_checkin == "SI" and $priv_mod_checkin == "s" and !$d_checkout_min) {
@@ -3980,7 +3980,7 @@ if ($priv_mod_date == "s") {
 echo mex("cambia in",$pag)." ";
 if ($n_fineperiodo == "") $blank_selected = " selected";
 else $blank_selected = "";
-mostra_menu_date(C_DATI_PATH."/selperiodimenu$anno.$id_utente.php","n_fineperiodo",$n_fineperiodo,1,$blank_selected,$id_utente,$tema,"",$d_data_fine);
+mostra_menu_date(C_DATA_PATH."/selperiodimenu$anno.$id_utente.php","n_fineperiodo",$n_fineperiodo,1,$blank_selected,$id_utente,$tema,"",$d_data_fine);
 echo " ";
 } # fine if ($priv_mod_date == "s")
 if ($attiva_checkin == "SI" and $priv_mod_checkin == "s" and $d_checkin_min) {

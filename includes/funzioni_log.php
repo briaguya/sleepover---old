@@ -40,7 +40,7 @@ if (substr($query2,0,11) != "transazioni" and (substr($query2,0,8) != "sessioni"
 
 if ($insert and substr($query2,0,8) == "sessioni") $query = "LOGIN";
 $query = nl2br(htmlspecialchars(substr($query,0,1400)));
-$file_log = C_DATI_PATH."/log_utenti.php";
+$file_log = C_DATA_PATH."/log_utenti.php";
 $filelock = crea_lock_file($file_log);
 if (@is_file($file_log)) $dati_file = file($file_log);
 $dati_file[0] = "<?php exit(); ?>\n";

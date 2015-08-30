@@ -24,8 +24,8 @@ $pag = "crea_modelli.php";
 $titolo = "HotelDruid: Crea Pagine Web";
 $base_js = 1;
 
-include("./costanti.php");
-include(C_DATI_PATH."/dati_connessione.php");
+include("./constants.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 include("./includes/funzioni.php");
@@ -178,7 +178,7 @@ include("./includes/templates/frasi_mod_disp.php");
 esegui_query("delete from $tablepersonalizza where idpersonalizza = 'ultime_sel_crea_modelli' and idutente = '$id_utente'");
 esegui_query("insert into $tablepersonalizza (idpersonalizza,valpersonalizza,idutente) values ('ultime_sel_crea_modelli','".aggslashdb($anno_modello).";;".aggslashdb($lingua_modello).";;".aggslashdb($perc_cart_mod_sel)."','$id_utente') ");
 
-# Prendo i dati dal file se già esistente
+# Prendo i data dal file se già esistente
 $nome_file = mex2("mdl_disponibilita",$pag,$lingua_modello).".php";
 $SI = mex("SI",$pag);
 $NO = mex("NO",$pag);
@@ -218,9 +218,9 @@ echo mex("dal",$pag)." ";
 # variabili ausiliari per possibile bug php 5.3 su windows
 $iniper = ${"inizioperiodo".$num1};
 $fineper = ${"fineperiodo".$num1};
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno_modello.1.php","inizioperiodo$num1",$iniper,"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno_modello.1.php","inizioperiodo$num1",$iniper,"","",$id_utente,$tema);
 echo " ".mex("al",$pag)." ";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno_modello.1.php","fineperiodo$num1",$fineper,"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno_modello.1.php","fineperiodo$num1",$fineper,"","",$id_utente,$tema);
 if (!${"intervalloperiodo".$num1}) ${"intervalloperiodo".$num1} = 1;
 echo ",&nbsp;".str_replace(" ","&nbsp;",mex("$parola_settimane di intervallo",$pag)).":&nbsp;
 <input type=\"text\" name=\"intervalloperiodo$num1\" value=\"".${"intervalloperiodo".$num1}."\" size=\"2\" maxlength=\"2\"><br>";
@@ -1400,7 +1400,7 @@ $percorso_cartella_modello = $perc_cart_mod_vett[$num_cart];
 $perc_mod = "$percorso_cartella_modello/mdl_disponibilita.php";
 if (@is_file($perc_mod) and (!$perc_mod_elimina or $perc_mod_elimina == $perc_mod)) unlink($perc_mod);
 $lang_dir = opendir("./includes/lang/");
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 while ($ini_lingua = readdir($lang_dir)) {
 if ($ini_lingua != "." && $ini_lingua != "..") {
 $nome_file = mex2("mdl_disponibilita",$pag,$ini_lingua).".php";
@@ -1496,7 +1496,7 @@ $percorso_cartella_modello = $cartella_da;
 $perc_mod = "$percorso_cartella_modello/mdl_disponibilita.php";
 if (@is_file($perc_mod)) copy($perc_mod,"$cartella_a/mdl_disponibilita.php");
 $lang_dir = opendir("./includes/lang/");
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 while ($ini_lingua = readdir($lang_dir)) {
 if ($ini_lingua != "." && $ini_lingua != "..") {
 $nome_file = mex2("mdl_disponibilita",$pag,$ini_lingua).".php";
@@ -1559,9 +1559,9 @@ echo "<br><div style=\"text-align: center;\">".mex("Dati comuni",$pag)."</div><b
 <form accept-charset=\"utf-8\" method=\"post\" action=\"crea_modelli.php\"><div>
 <input type=\"hidden\" name=\"anno\" value=\"$anno\">
 <input type=\"hidden\" name=\"id_sessione\" value=\"$id_sessione\">
-<label><input type=\"radio\" name=\"fonte_dati_conn\" value=\"attuali\" checked> ".mex("Utilizza i dati attuali per la connessione al database",$pag)."</label><br>";
+<label><input type=\"radio\" name=\"fonte_dati_conn\" value=\"attuali\" checked> ".mex("Utilizza i data attuali per la connessione al database",$pag)."</label><br>";
 if (C_BACKUP_E_MODELLI_CON_NUOVI_DATI != "NO") {
-echo "<label><input type=\"radio\" name=\"fonte_dati_conn\" value=\"nuovi\"> ".mex("Utilizza altri dati per la connessione al database",$pag)."</label>:<br>
+echo "<label><input type=\"radio\" name=\"fonte_dati_conn\" value=\"nuovi\"> ".mex("Utilizza altri data per la connessione al database",$pag)."</label>:<br>
 <table><tr><td style=\"width: 25px;\"></td><td>
 ".mex("Tipo di database",$pag).": 
 <select name=\"T_PHPR_DB_TYPE\">
@@ -1618,7 +1618,7 @@ for ($num_cart = 0 ; $num_cart < $num_perc_cart_mod_vett ; $num_cart++) {
 if (@is_file($perc_cart_mod_vett[$num_cart]."/mdl_disponibilita.php")) $mod_presenti_vett[$num_cart]["mdl_disponibilita.php"] = 1;
 } # fine for $num_cart
 $lang_dir = opendir("./includes/lang/");
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 while ($ini_lingua = readdir($lang_dir)) {
 if ($ini_lingua != "." && $ini_lingua != "..") {
 $nome_lingua = file("./includes/lang/$ini_lingua/l_n");

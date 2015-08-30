@@ -21,17 +21,11 @@
 ##################################################################################
 
 
-# Path to dati folder and database data file
-define('C_DATI_PATH',"./dati");
-#define('C_EXT_DB_DATA_PATH',"");
+# Path to data folder
+define('C_DATA_PATH',"./data");
 
-#define('C_CARTELLA_CREA_MODELLI',"");
-#define('C_URL_CREA_MODELLI',"");
-
-# costanti generali
-define('C_GIORNI_NUOVO_ANNO',"9");
-
-
+# General Constants
+define('C_DAYS_NEW_YEAR',"9"); #todo better translation
 
 
 ?>

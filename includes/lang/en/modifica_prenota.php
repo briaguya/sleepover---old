@@ -11,7 +11,7 @@ case "CAP":  					$messaggio = "postal code"; break;
 case "Telefono":  				$messaggio = "Telephone"; break;
 case "2º telefono":  				$messaggio = "2nd telephone"; break;
 case "3º telefono":  				$messaggio = "3rd telephone"; break;
-case "Modifica i dati del cliente":  		$messaggio = "Modify client's data"; break;
+case "Modifica i data del cliente":  		$messaggio = "Modify client's data"; break;
 case "La prenotazione è dell'anno precedente, si potrà modificare solo la data finale":	$messaggio = "The reservation is from previus year, you will be able to modify only the final date"; break;
 case "settimane":  				$messaggio = "weeks"; break;
 case "giorni":  				$messaggio = "days"; break;
@@ -114,7 +114,7 @@ case "<b>non</b> verranno cambiati":  		$messaggio = "will <b>not</b> be changed
 case "su":  					$messaggio = "on"; break;
 case "Il prezzo del costo aggiuntivo":  	$messaggio = "The price of the extra cost"; break;
 case "verrà tolto":  				$messaggio = "will be deleted"; break;
-case "I dati del costo aggiuntivo <b>straordinario</b> sono <div style=\"display: inline; color: red;\">errati o mancanti</div>":	$messaggio = "Data for the <b>extraordinary</b> extra cost are <div style=\"display: inline; color: red;\">wrong or lacking</div>"; break;
+case "I data del costo aggiuntivo <b>straordinario</b> sono <div style=\"display: inline; color: red;\">errati o mancanti</div>":	$messaggio = "Data for the <b>extraordinary</b> extra cost are <div style=\"display: inline; color: red;\">wrong or lacking</div>"; break;
 case "verrà aggiunto":  			$messaggio = "will be added"; break;
 case "come letto aggiuntivo":  			$messaggio = "as extra bed"; break;
 case "Le settimane del nuovo costo aggiuntivo":	$messaggio = "The weeks of the new extra cost"; break;

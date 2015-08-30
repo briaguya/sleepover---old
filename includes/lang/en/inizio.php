@@ -59,7 +59,7 @@ case "Anno ":  					$messaggio = "Year "; break;
 case " creato":  				$messaggio = " created"; break;
 case "Non ci sono periodi che riguardano il ":  $messaggio = "There are no periods regarding "; break;
 case " nel ":  					$messaggio = " in "; break;
-case ", o il giorno di inizio/fine locazione era differente, sono stati importati solo i dati riguardanti costi aggiuntivi, caparra, nome delle tariffe, privilegi degli utenti e regole di assegnazione 2 e 3":	$messaggio = ", or the day of beginning/end rental was different, only data about extra costs, deposit, the names of the rates, users privileges and the assignment rules 2 and 3 have been imported"; break;
+case ", o il giorno di inizio/fine locazione era differente, sono stati importati solo i data riguardanti costi aggiuntivi, caparra, nome delle tariffe, privilegi degli utenti e regole di assegnazione 2 e 3":	$messaggio = ", or the day of beginning/end rental was different, only data about extra costs, deposit, the names of the rates, users privileges and the assignment rules 2 and 3 have been imported"; break;
 case "Attenzione</b></font>: i periodi del ":  	$messaggio = "Warning</b></font>: the periods of "; break;
 case " finivano dopo quelli del ":  		$messaggio = " ended after the ones of "; break;
 case " e vi erano":  				$messaggio = " and there were"; break;
@@ -108,7 +108,7 @@ case "per creare il nuovo anno, nel frattempo si possono aggiungere periodi oltr
 case "dalla":  					$messaggio = "from the"; break;
 case "tabella con i periodi e le tariffe":  	$messaggio = "table with periods and rates"; break;
 case "anche senza creare un nuovo anno":  	$messaggio = "even without creating a new year"; break;
-case "Non ho i permessi di scrittura sulla cartella dati":	$messaggio = "I don't have write permissions on dati folder"; break;
+case "Non ho i permessi di scrittura sulla cartella data":	$messaggio = "I don't have write permissions on data folder"; break;
 case "le statistiche":  			$messaggio = "the statistics"; break;
 case "inventario e magazzini":  		$messaggio = "inventory and stockrooms"; break;
 case "obsoleti":  				$messaggio = "obsolete"; break;

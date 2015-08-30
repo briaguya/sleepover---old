@@ -68,7 +68,7 @@ return $messaggio;
 
 function includi_file ($file_incluso,$file) {
 
-if (defined('C_CARTELLA_FILES_REALI') and substr($file_incluso,0,(strlen(C_DATI_PATH) + 1)) != C_DATI_PATH."/") $linee_file = file(C_CARTELLA_FILES_REALI.$file_incluso);
+if (defined('C_CARTELLA_FILES_REALI') and substr($file_incluso,0,(strlen(C_DATA_PATH) + 1)) != C_DATA_PATH."/") $linee_file = file(C_CARTELLA_FILES_REALI.$file_incluso);
 else $linee_file = file($file_incluso);
 fwrite($file,"
 ###########################################

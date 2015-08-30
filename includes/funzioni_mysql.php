@@ -156,7 +156,7 @@ return $risul;
 } # fine function dimcampo_query
 
 
-function lock_tabelle ($tabelle,$altre_tab_usate = "",$lock_dir = C_DATI_PATH) {
+function lock_tabelle ($tabelle,$altre_tab_usate = "",$lock_dir = C_DATA_PATH) {
 
 if (@is_array($tabelle)) {
 for ($num1 = 0 ; $num1 < count($tabelle); $num1++) {

@@ -23,8 +23,8 @@
 $pag = "interconnessioni.php";
 $titolo = "HotelDruid: Interconnessioni";
 
-include("./costanti.php");
-include(C_DATI_PATH."/dati_connessione.php");
+include("./constants.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 include("./includes/funzioni_backup.php");
 $numconnessione = connetti_db_per_backup($PHPR_DB_TYPE,$PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT,$PHPR_TAB_PRE,$ext_pgsql_caricata,$ext_mysql_caricata);
@@ -32,10 +32,10 @@ if (!isset($anno)) {
 if (isset($_GET['anno'])) $anno = $_GET['anno'];
 if (isset($_POST['anno'])) $anno = $_POST['anno'];
 if (!isset($anno)) {
-@include(C_DATI_PATH."/versione.php");
+@include(C_DATA_PATH."/versione.php");
 $anno = date("Y",(time() + (C_DIFF_ORE * 3600)));
-if (@is_file(C_DATI_PATH."/selectperiodi".($anno + 1).".1.php")) $anno = $anno + 1;
-elseif (!@is_file(C_DATI_PATH."/selectperiodi$anno.1.php") and @is_file(C_DATI_PATH."/selectperiodi".($anno - 1).".1.php")) $anno = $anno - 1;
+if (@is_file(C_DATA_PATH."/selectperiodi".($anno + 1).".1.php")) $anno = $anno + 1;
+elseif (!@is_file(C_DATA_PATH."/selectperiodi$anno.1.php") and @is_file(C_DATA_PATH."/selectperiodi".($anno - 1).".1.php")) $anno = $anno - 1;
 } # fine if (!isset($anno))
 } # fine if (!isset($anno))
 include("./includes/funzioni.php");
@@ -59,7 +59,7 @@ if (defined("C_UTENTE_AZIONE_IC") and C_UTENTE_AZIONE_IC != "" and $utente_azion
 #if (!numlin_query($id_utente_az)) {
 $id_utente = "a";
 $id_utente_azione_ic = "a";
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 $lingua_mex = $lingua[1];
 #} # fine if (!numlin_query($id_utente_az))
 } # fine if (defined("C_UTENTE_AZIONE_IC") and C_UTENTE_AZIONE_IC != "" and $utente_azione_ic == C_UTENTE_AZIONE_IC)
@@ -73,7 +73,7 @@ if (numlin_query($id_utente_az) == 1) $id_utente_azione_ic = risul_query($id_ute
 
 if ($id_utente and ($id_utente == 1 or $id_utente == $id_utente_azione_ic) and C_CREA_SUBORDINAZIONI != "NO") {
 
-if (@is_file(C_DATI_PATH."/dati_subordinazione.php")) {
+if (@is_file(C_DATA_PATH."/dati_subordinazione.php")) {
 $installazione_subordinata = "SI";
 $inserimento_nuovi_clienti = "NO";
 $priv_ins_nuove_prenota = "n";
@@ -108,7 +108,7 @@ fclose($fileaperto);
 } # fine if ($fileaperto = fopen($file_backup,"w"))
 else {
 $errore = "SI";
-echo mex("Non ho i permassi di scrittura sulla cartella dati",$pag).".<br>";
+echo mex("Non ho i permassi di scrittura sulla cartella data",$pag).".<br>";
 } # fine else if ($fileaperto = fopen($file_backup,"w"))
 fclose ($backup);
 if ($errore != "SI") {
@@ -169,15 +169,15 @@ $mostra_form_iniziale = "NO";
 $modifica_interconnessione = "NO";
 
 
-if (($aggiorna_subordinazione or $id_utente_azione_ic) and @is_file(C_DATI_PATH."/dati_subordinazione.php")) {
-include(C_DATI_PATH."/dati_subordinazione.php");
-$file_backup = C_DATI_PATH."/sub_backup.php";
+if (($aggiorna_subordinazione or $id_utente_azione_ic) and @is_file(C_DATA_PATH."/dati_subordinazione.php")) {
+include(C_DATA_PATH."/dati_subordinazione.php");
+$file_backup = C_DATA_PATH."/sub_backup.php";
 $filelock = crea_lock_file($file_backup);
 $errore = scarica_backup_subordinazione($file_backup,$url_subordinazione,$utente_subordinazione,$password_subordinazione,$anno,$compresso_subordinazione);
 
 
 if ($errore != "SI") {
-$file_sub = @fopen(C_DATI_PATH."/dati_subordinazione.php","w+");
+$file_sub = @fopen(C_DATA_PATH."/dati_subordinazione.php","w+");
 if ($file_sub) {
 $adesso = date("Y-m-d H:i:s",(time() + (C_DIFF_ORE * 3600)));
 flock($file_sub,2);
@@ -213,7 +213,7 @@ $ultimo_accesso = risul_query($dati_sessione,0,'ultimo_accesso');
 } # fine if ($num_lin_dati_sessione == 1)
 ripristina_backup($file_backup,"SI",$pag,$numconnessione,$database_esistente,$tempdatabase,$PHPR_DB_TYPE,$PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT,$PHPR_TAB_PRE,$N_PHPR_DB_TYPE,$N_PHPR_DB_NAME,$N_PHPR_DB_HOST,$N_PHPR_DB_PORT,$N_PHPR_DB_USER,$N_PHPR_DB_PASS,$N_PHPR_LOAD_EXT,$N_PHPR_TAB_PRE,$ext_pgsql_caricata,$ext_mysql_caricata,$mantieni_anni);
 esegui_query("update $tablepersonalizza set valpersonalizza = 'SI' where idpersonalizza = 'subordinazione' and idutente = '1'");
-if (@is_file(C_DATI_PATH."/dati_interconnessioni.php")) unlink(C_DATI_PATH."/dati_interconnessioni.php");
+if (@is_file(C_DATA_PATH."/dati_interconnessioni.php")) unlink(C_DATA_PATH."/dati_interconnessioni.php");
 if ($num_lin_dati_sessione == 1) esegui_query("insert into $tablesessioni (idsessioni,idutente,indirizzo_ip,user_agent,ultimo_accesso) values ('$id_sessione','$idutente','$indirizzo_ip','$user_agent','$ultimo_accesso')","",1);
 echo mex("Aggiornamento eseguito con successo",$pag).".<br>";
 } # fine if ($file_sub)
@@ -225,7 +225,7 @@ distruggi_lock_file($filelock,$file_backup);
 
 
 if ($id_utente_azione_ic) {
-$file_interconnessioni = C_DATI_PATH."/dati_interconnessioni.php";
+$file_interconnessioni = C_DATA_PATH."/dati_interconnessioni.php";
 if (@is_file($file_interconnessioni)) {
 include($file_interconnessioni);
 if (@is_array($ic_present)) {
@@ -289,7 +289,7 @@ closedir($interconn_dir);
 else {
 
 if ($crea_subordinazione) {
-$file_backup = C_DATI_PATH."/sub_backup.php";
+$file_backup = C_DATA_PATH."/sub_backup.php";
 $filelock = crea_lock_file($file_backup);
 $errore = "NO";
 if (get_magic_quotes_gpc()) {
@@ -307,7 +307,7 @@ $errore = scarica_backup_subordinazione($file_backup,$url_subordinazione,$utente
 
 if ($errore != "SI") {
 if (!$continua) {
-echo "<br><big>".mex("<div style=\"display: inline; color: red;\"><b>ATTENZIONE</b></div>: premendo su <b>\"<i>Continua</i>\"</b> tutti i dati del <i>database attuale</i> verranno <b>cancellati</b>",$pag)."!</big><br><br>
+echo "<br><big>".mex("<div style=\"display: inline; color: red;\"><b>ATTENZIONE</b></div>: premendo su <b>\"<i>Continua</i>\"</b> tutti i data del <i>database attuale</i> verranno <b>cancellati</b>",$pag)."!</big><br><br>
 <div style=\"text-align: center;\"><form accept-charset=\"utf-8\" method=\"post\" action=\"./interconnessioni.php\"><div>
 <input type=\"hidden\" name=\"anno\" value=\"$anno\">
 <input type=\"hidden\" name=\"id_sessione\" value=\"$id_sessione\">
@@ -324,7 +324,7 @@ echo "<br><big>".mex("<div style=\"display: inline; color: red;\"><b>ATTENZIONE<
 </div></form></div><br>";
 } # fine if (!$continua)
 else {
-$file_sub = @fopen(C_DATI_PATH."/dati_subordinazione.php","w+");
+$file_sub = @fopen(C_DATA_PATH."/dati_subordinazione.php","w+");
 if ($file_sub) {
 $adesso = date("Y-m-d H:i:s",(time() + (C_DIFF_ORE * 3600)));
 flock($file_sub,2);
@@ -355,7 +355,7 @@ echo mex("Subordinazione creata",$pag).".<br>";
 } # fine if ($errore != "SI")
 
 else {
-echo mex("Impossibile effettuare il collegamento, controllare i dati immessi",$pag).".<br>";
+echo mex("Impossibile effettuare il collegamento, controllare i data immessi",$pag).".<br>";
 } # fine else if ($errore != "SI")
 @unlink($file_backup);
 distruggi_lock_file($filelock,$file_backup);
@@ -363,7 +363,7 @@ distruggi_lock_file($filelock,$file_backup);
 
 
 if ($cancella_subordinazione) {
-@unlink(C_DATI_PATH."/dati_subordinazione.php");
+@unlink(C_DATA_PATH."/dati_subordinazione.php");
 esegui_query("update $tablepersonalizza set valpersonalizza = 'NO' where idpersonalizza = 'subordinazione' and idutente = '1'");
 echo mex("Subordinazione cancellata",$pag).".<br>";
 } # fine if ($cancella_subordinazione)
@@ -399,7 +399,7 @@ echo "<div style=\"text-align: center;\">
 if ($mostra_form_iniziale != "NO") {
  
 # Pagina iniziale
-echo "<h3>".mex("Interconnessioni con sorgenti esterne di dati",$pag).".</h3>
+echo "<h3>".mex("Interconnessioni con sorgenti esterne di data",$pag).".</h3>
 <hr style=\"width: 95%\">";
 
 $id_utente_az = esegui_query("select idlocale from $tableinterconnessioni where tipoid = 'id_utente_az' ");
@@ -435,7 +435,7 @@ echo "<br><div class=\"separ\" style=\"height: 3px;\"></div>
 } # fine if ($nome_utente_agg)
 echo "</div></form><hr style=\"width: 95%\">";
 
-if (@is_file(C_DATI_PATH."/dati_subordinazione.php")) {
+if (@is_file(C_DATA_PATH."/dati_subordinazione.php")) {
 echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"./interconnessioni.php\"><div>
 <input type=\"hidden\" name=\"anno\" value=\"$anno\">
 <input type=\"hidden\" name=\"id_sessione\" value=\"$id_sessione\">
@@ -453,7 +453,7 @@ echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"./interconnessioni
 <input type=\"hidden\" name=\"id_sessione\" value=\"$id_sessione\">
 <input type=\"hidden\" name=\"modifica_interconnessione\" value=\"SI\">
 <div style=\"line-height: 1.3;\">
-".mex("Con la subordinazione non si potranno inserire nuovi dati o apportare modifiche, ma solo importare i dati dall'installazione principale",$pag).".<br>
+".mex("Con la subordinazione non si potranno inserire nuovi data o apportare modifiche, ma solo importare i data dall'installazione principale",$pag).".<br>
 ".mex("Subordina questa installazione di hoteldruid a quella che si trova all'indirizzo",$pag).":<br>
 <input type=\"text\" name=\"url_subordinazione\" value=\"http://\" size=60><br>
 ".ucfirst(mex("amministratore o utente con i privilegi per creare backup",$pag)).":<br>
@@ -465,7 +465,7 @@ echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"./interconnessioni
 ".mex("Commento da aggiungere al titolo di questa installazione",$pag).":
 <input type=\"text\" name=\"commento_subordinazione\" size=20><br>
 <label><input type=\"checkbox\" name=\"compresso_subordinazione\" value=\"SI\" checked> ".mex("Usa compressione",$pag)."</label><br>
-<label><input type=\"checkbox\" name=\"mantieni_anni\" value=\"1\"> ".mex("Prova a mantenere i dati degli anni non presenti nell'installazione remota",$pag)."</label><br></div>
+<label><input type=\"checkbox\" name=\"mantieni_anni\" value=\"1\"> ".mex("Prova a mantenere i data degli anni non presenti nell'installazione remota",$pag)."</label><br></div>
 <div style=\"text-align: center;\"><input class=\"sbutton\" type=\"submit\" name=\"crea_subordinazione\" value=\"".mex("Crea la subordinazione",$pag)."\">
 </div></div></form>";
 

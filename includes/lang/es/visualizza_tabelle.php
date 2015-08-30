@@ -159,12 +159,12 @@ case "selezionate precedentemente":  		$messaggio = "seleccionadas precedentemen
 case "Saldo totale":  				$messaggio = "Diferencia total"; break;
 case "l'anno":  				$messaggio = "el año"; break;
 case "dal database":  				$messaggio = "de la base de datos"; break;
-case "<b style=\"color: red;\">ATTENZIONE</b>: premendo su <b>\"<i>Continua</i>\"</b>, tutti i dati riguardanti l'anno":	$messaggio = "<b style=\"color: red;\">ATENCION</b>: al pulsar <b>\"<i>Continua</i>\"</b>, todos los datos que se refieren al año"; break;
+case "<b style=\"color: red;\">ATTENZIONE</b>: premendo su <b>\"<i>Continua</i>\"</b>, tutti i data riguardanti l'anno":	$messaggio = "<b style=\"color: red;\">ATENCION</b>: al pulsar <b>\"<i>Continua</i>\"</b>, todos los datos que se refieren al año"; break;
 case "verranno <b>cancellati</b>":  		$messaggio = "serán <b>borrados</b>"; break;
 case "L'anno":  				$messaggio = "El año"; break;
 case "è stato cancellato dal batabase":  	$messaggio = "ha sido cancelado de la base de datos"; break;
 case "Non è stato possibile cancellare l'anno":	$messaggio = "No ha sido posible cancelar el año"; break;
-case "dal database, controllare i permessi sulla cartella dati":	$messaggio = "de la base de datos, controlar los permisos del directorio dati"; break;
+case "dal database, controllare i permessi sulla cartella data":	$messaggio = "de la base de datos, controlar los permisos del directorio data"; break;
 case "Profilo":  				$messaggio = "Perfil"; break;
 case "Cliente":  				$messaggio = "Cliente"; break;
 case "cliente":  				$messaggio = "cliente"; break;

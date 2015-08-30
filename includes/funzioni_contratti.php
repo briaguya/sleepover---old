@@ -78,7 +78,7 @@ if (defined("C_CARTELLA_CREA_MODELLI") and C_CARTELLA_CREA_MODELLI != "") {
 if (C_CARTELLA_DOC != "" and @is_dir(C_CARTELLA_CREA_MODELLI."/".C_CARTELLA_DOC)) $dir_salva = C_CARTELLA_DOC;
 else $dir_salva = "";
 } # fine if (defined("C_CARTELLA_CREA_MODELLI") and C_CARTELLA_CREA_MODELLI != "")
-else $dir_salva = C_DATI_PATH;
+else $dir_salva = C_DATA_PATH;
 } # fine if ($dir_salva == "~")
 if (defined("C_CARTELLA_CREA_MODELLI") and C_CARTELLA_CREA_MODELLI != "") $dir_salva = C_CARTELLA_CREA_MODELLI."/".str_replace("..","",$dir_salva);
 if (!@is_dir($dir_salva)) $dir_salva = "";
@@ -384,7 +384,7 @@ if ($priv_cancella_contratti == "n") $sovrascrivi = "";
 if ($ripeti_tutto) $num_file_salva = $num_ripeti;
 else $num_file_salva = 1;
 $anno_corr = date("Y");
-if ($anno_corr != ($anno + 1) or @is_file(C_DATI_PATH."/selectperiodi$anno_corr.1.php")) $anno_corr = $anno;
+if ($anno_corr != ($anno + 1) or @is_file(C_DATA_PATH."/selectperiodi$anno_corr.1.php")) $anno_corr = $anno;
 $incrementa_num_prog = esegui_query("select * from $tablecontratti where numero = '$numero_contratto' and tipo = 'incr_np'");
 if (numlin_query($incrementa_num_prog)) $incr_np = risul_query($incrementa_num_prog,0,'testo');
 
@@ -400,7 +400,7 @@ $lista_var_form .= "<input type=\"hidden\" name=\"".htmlspecialchars(key($_GET))
 next($_GET);
 } # fine for $num1
 
-$filelock = fopen(C_DATI_PATH."/crea_contr.lock","w+");
+$filelock = fopen(C_DATA_PATH."/crea_contr.lock","w+");
 flock($filelock,2);
 if ($tipo_contratto == "contrrtf") $suff_file = "rtf";
 if ($tipo_contratto == "contrhtm") $suff_file = "html";
@@ -587,7 +587,7 @@ else $filecontr['esist'] = 1;
 if (!$incr_np) {
 flock($filelock,3);
 fclose($filelock);
-unlink(C_DATI_PATH."/crea_contr.lock");
+unlink(C_DATA_PATH."/crea_contr.lock");
 } # fine if (!$incr_np)
 } # fine if ($dir_salva)
 
@@ -3040,7 +3040,7 @@ fclose($filecontr[1]);
 if ($incr_np) {
 flock($filelock,3);
 fclose($filelock);
-unlink(C_DATI_PATH."/crea_contr.lock");
+unlink(C_DATA_PATH."/crea_contr.lock");
 } # fine if ($incr_np)
 
 

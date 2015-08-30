@@ -23,8 +23,8 @@
 $pag = "storia_soldi.php";
 $titolo = "HotelDruid: Storico Entrate";
 
-include("./costanti.php");
-include(C_DATI_PATH."/dati_connessione.php");
+include("./constants.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 include("./includes/funzioni.php");
@@ -90,7 +90,7 @@ $priv_mod_prenota_ore = "000";
 } # fine if ($id_utente != 1)
 if ($anno_utente_attivato == "SI" and $priv_vedi_tab_costi != "n") {
 
-if (@is_file(C_DATI_PATH."/dati_subordinazione.php")) {
+if (@is_file(C_DATA_PATH."/dati_subordinazione.php")) {
 $installazione_subordinata = "SI";
 $inserimento_nuovi_clienti = "NO";
 $priv_ins_nuove_prenota = "n";

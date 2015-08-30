@@ -24,8 +24,8 @@ $pag = "creaprezzi.php";
 $titolo = "HotelDruid: Crea Prezzi";
 $base_js = 1;
 
-include("./costanti.php");
-include(C_DATI_PATH."/dati_connessione.php");
+include("./constants.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 include("./includes/funzioni.php");
@@ -706,7 +706,7 @@ if ($periodi_permessi != "tutti" and $periodi_permessi != "sel") $per_err = 1;
 if ($periodi_permessi == "sel") {
 if (controlla_num_pos($num_periodi_permessi_sel) == "NO" or $num_periodi_permessi_sel == 0) $per_err = 1;
 else {
-$file_date_int = implode("",file(C_DATI_PATH."/selectperiodi$anno.1.php"));
+$file_date_int = implode("",file(C_DATA_PATH."/selectperiodi$anno.1.php"));
 $ultima_data = 0;
 for ($num1 = 1 ; $num1 <= $num_periodi_permessi_sel ; $num1++) {
 if (str_replace("\\\"".${"pp_dal".$num1}."\\\">","",$file_date_int) == $file_date_int) $per_err = 1;
@@ -914,9 +914,9 @@ if ($num1 > 1) echo "<tr><td></td><td></td><td>";
 echo mex("dal",$pag)." ";
 $pp_dal = ${"pp_dal".$num1};
 $pp_al = ${"pp_al".$num1};
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.$id_utente.php","pp_dal$num1",$pp_dal,"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.$id_utente.php","pp_dal$num1",$pp_dal,"","",$id_utente,$tema);
 echo " ".mex("al",$pag)." ";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.$id_utente.php","pp_al$num1",$pp_al,"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.$id_utente.php","pp_al$num1",$pp_al,"","",$id_utente,$tema);
 if ($num1 == $num_periodi_permessi_sel) {
 $id_minus = " id=\"minus_pp".($num1 + 1)."\"";
 if ($num1 > 1) echo "</td><td id=\"minus_pp$num1\"><input class=\"sbutton\" type=\"submit\" name=\"elimina_periodo_permesso\" value=\"".mex("Elimina un periodo",$pag)."\" onclick=\"elim_lin_per_perm();\"></td></tr><tr><td></td><td></td><td>";
@@ -943,12 +943,12 @@ cella = nlinea.insertCell(2);
 var cell_html = '".str_replace("'","\\'",mex("dal",$pag))." ';
 var pp_dal = 'pp_dal'+numcaselle;
 ";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.$id_utente.php","pp_dal","","","",$id_utente,$tema,"","","cell_html");
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.$id_utente.php","pp_dal","","","",$id_utente,$tema,"","","cell_html");
 echo "
 cell_html += ' ".mex("al",$pag)." ';
 var pp_al = 'pp_al'+numcaselle;
 ";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.$id_utente.php","pp_al","","","",$id_utente,$tema,"","","cell_html");
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.$id_utente.php","pp_al","","","",$id_utente,$tema,"","","cell_html");
 echo "
 cella.innerHTML = cell_html;
 cella = nlinea.insertCell(3);
@@ -1401,7 +1401,7 @@ if ($periodi_permessi != "tutti" and $periodi_permessi != "sel") $errore = "SI";
 if ($periodi_permessi == "sel") {
 if (controlla_num_pos($num_periodi_permessi_sel) == "NO" or $num_periodi_permessi_sel == 0) $errore = "SI";
 else {
-$file_date_int = implode("",file(C_DATI_PATH."/selectperiodi$anno.1.php"));
+$file_date_int = implode("",file(C_DATA_PATH."/selectperiodi$anno.1.php"));
 $ultima_data = 0;
 for ($num1 = 1 ; $num1 <= $num_periodi_permessi_sel ; $num1++) {
 if (str_replace("\\\"".${"pp_dal".$num1}."\\\">","",$file_date_int) == $file_date_int) $errore = "SI";
@@ -2032,9 +2032,9 @@ if ($num1 > 1) echo "<tr><td></td><td></td><td>";
 echo mex("dal",$pag)." ";
 $pp_dal = ${"pp_dal".$num1};
 $pp_al = ${"pp_al".$num1};
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.$id_utente.php","pp_dal$num1",$pp_dal,"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.$id_utente.php","pp_dal$num1",$pp_dal,"","",$id_utente,$tema);
 echo " ".mex("al",$pag)." ";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.$id_utente.php","pp_al$num1",$pp_al,"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.$id_utente.php","pp_al$num1",$pp_al,"","",$id_utente,$tema);
 if ($num1 == $num_periodi_permessi_sel) {
 $id_minus = " id=\"minus_pp".($num1 + 1)."\"";
 if ($num1 > 1) echo "</td><td id=\"minus_pp$num1\"><input class=\"sbutton\" type=\"submit\" name=\"elimina_periodo_permesso\" value=\"".mex("Elimina un periodo",$pag)."\" onclick=\"elim_lin_per_perm();\"></td></tr><tr><td></td><td></td><td>";
@@ -2061,12 +2061,12 @@ cella = nlinea.insertCell(2);
 var cell_html = '".str_replace("'","\\'",mex("dal",$pag))." ';
 var pp_dal = 'pp_dal'+numcaselle;
 ";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.$id_utente.php","pp_dal","","","",$id_utente,$tema,"","","cell_html");
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.$id_utente.php","pp_dal","","","",$id_utente,$tema,"","","cell_html");
 echo "
 cell_html += ' ".mex("al",$pag)." ';
 var pp_al = 'pp_al'+numcaselle;
 ";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.$id_utente.php","pp_al","","","",$id_utente,$tema,"","","cell_html");
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.$id_utente.php","pp_al","","","",$id_utente,$tema,"","","cell_html");
 echo "
 cella.innerHTML = cell_html;
 cella = nlinea.insertCell(3);
@@ -2710,7 +2710,7 @@ $inserire = "NO";
 } # fine if (strcmp($$prezzoperiodo,"") or strcmp($$prezzoperiodop,""))
 } # fine for $numperiodo
 
-# Inserisco i nuovi dati
+# Inserisco i nuovi data
 if ($inserire == "SI") {
 $aggiorna_tariffe_interconn = "SI";
 esegui_query("delete from $tablepersonalizza where idpersonalizza = 'ultime_sel_ins_prezzi' and idutente = '$id_utente' ");
@@ -2882,11 +2882,11 @@ $prezzoperiodo = "prezzoperiodo".$numperiodo;
 echo "<tr><td>$numperiodo. ".mex("Dal",$pag)." ";
 if ($ultime_sel_ins_prezzi[1] == $anno) $date_selected = $ultime_sel_ins_prezzi[($numperiodo * 2)];
 else $date_selected = $$inizioperiodo;
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.$id_utente.php",$inizioperiodo,$date_selected,"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.$id_utente.php",$inizioperiodo,$date_selected,"","",$id_utente,$tema);
 echo " ".mex("al",$pag)." ";
 if ($ultime_sel_ins_prezzi[1] == $anno) $date_selected = $ultime_sel_ins_prezzi[(($numperiodo * 2) + 1)];
 else $date_selected = $$fineperiodo;
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.$id_utente.php",$fineperiodo,$date_selected,"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.$id_utente.php",$fineperiodo,$date_selected,"","",$id_utente,$tema);
 echo " : </td><td><input type=\"text\" name=\"$prezzoperiodo\" value=\"".$$prezzoperiodo."\" size=\"12\"></td>
 <td> + </td><td style=\"white-space: nowrap;\"><input type=\"text\" name=\"$prezzoperiodo"."p\" value=\"".${$prezzoperiodo."p"}."\" size=\"10\">*$p_pers </td><td>$Euro</td>
 <td id=\"minus$numperiodo\">";
@@ -2911,12 +2911,12 @@ var cella = nlinea.insertCell(0);
 cell_html = numcaselle+'. ".mex("Dal",$pag)." ';
 var inizioperiodo = 'inizioperiodo'+numcaselle;
 ";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.$id_utente.php","inizioperiodo","","","",$id_utente,$tema,"","","cell_html");
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.$id_utente.php","inizioperiodo","","","",$id_utente,$tema,"","","cell_html");
 echo "
 cell_html += ' ".mex("al",$pag)." ';
 var fineperiodo = 'fineperiodo'+numcaselle;
 ";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.$id_utente.php","fineperiodo","","","",$id_utente,$tema,"","","cell_html");
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.$id_utente.php","fineperiodo","","","",$id_utente,$tema,"","","cell_html");
 echo "
 cell_html += ' : ';
 cella.innerHTML = cell_html;
@@ -2985,7 +2985,7 @@ $giorno_vedi_ini_sett = esegui_query("select valpersonalizza_num from $tablepers
 if (numlin_query($giorno_vedi_ini_sett) == 1) $giorno_vedi_ini_sett = risul_query($giorno_vedi_ini_sett,0,'valpersonalizza_num');
 else $giorno_vedi_ini_sett = 0;
 
-$file_date = file(C_DATI_PATH."/selectperiodi$anno.$id_utente.php");
+$file_date = file(C_DATA_PATH."/selectperiodi$anno.$id_utente.php");
 $num_linee_file_date = count($file_date);
 for ($num1 = 0 ; $num1 < $num_linee_file_date ; $num1++) {
 if (substr($file_date[$num1],0,7) == "<option") {
@@ -3277,9 +3277,9 @@ $lista_opt_tariffe
  <select name=\"tipotariffa\">
 $lista_opt_tariffe
 </select> ".mex("dal",$pag)." ";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.1.php","comm_dal",$comm_dal,"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.1.php","comm_dal",$comm_dal,"","",$id_utente,$tema);
 echo " ".mex("al",$pag)." ";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.1.php","comm_al",$comm_al,"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.1.php","comm_al",$comm_al,"","",$id_utente,$tema);
 echo ":</td><td onclick=\"document.getElementById('tipo_com_percp').checked='1'\"><label>
 <input type=\"radio\" id=\"tipo_com_percp\" name=\"tipo_commissioni\" value=\"perc\" checked>
  ".mex("il",$pag)." </label><input type=\"text\" name=\"commissioni_percent\" size=\"2\" maxlength=\"3\"><label for=\"tipo_com_percp\">%

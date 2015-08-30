@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f3f27ca4-4388-4d44-80a4-726370357b12" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/costanti.php" afterPath="$PROJECT_DIR$/constants.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/dati/DATI" afterPath="$PROJECT_DIR$/data/DATI" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aggiorna.php" afterPath="$PROJECT_DIR$/aggiorna.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/interconnect/aggiorna_ic.php" afterPath="$PROJECT_DIR$/includes/interconnect/aggiorna_ic.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/interconnect/aggiorna_ic_fork.php" afterPath="$PROJECT_DIR$/includes/interconnect/aggiorna_ic_fork.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/clienti.php" afterPath="$PROJECT_DIR$/clienti.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/en/clienti.php" afterPath="$PROJECT_DIR$/includes/lang/en/clienti.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/es/clienti.php" afterPath="$PROJECT_DIR$/includes/lang/es/clienti.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/costi.php" afterPath="$PROJECT_DIR$/costi.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crea_backup.php" afterPath="$PROJECT_DIR$/crea_backup.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/en/crea_backup.php" afterPath="$PROJECT_DIR$/includes/lang/en/crea_backup.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/es/crea_backup.php" afterPath="$PROJECT_DIR$/includes/lang/es/crea_backup.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crea_modelli.php" afterPath="$PROJECT_DIR$/crea_modelli.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/en/crea_modelli.php" afterPath="$PROJECT_DIR$/includes/lang/en/crea_modelli.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/es/crea_modelli.php" afterPath="$PROJECT_DIR$/includes/lang/es/crea_modelli.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/creaanno.php" afterPath="$PROJECT_DIR$/creaanno.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/creadb.php" afterPath="$PROJECT_DIR$/creadb.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/en/creadb.php" afterPath="$PROJECT_DIR$/includes/lang/en/creadb.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/es/creadb.php" afterPath="$PROJECT_DIR$/includes/lang/es/creadb.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/creaprezzi.php" afterPath="$PROJECT_DIR$/creaprezzi.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crearegole.php" afterPath="$PROJECT_DIR$/crearegole.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/en/crearegole.php" afterPath="$PROJECT_DIR$/includes/lang/en/crearegole.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/es/crearegole.php" afterPath="$PROJECT_DIR$/includes/lang/es/crearegole.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dati_relutenti.php" afterPath="$PROJECT_DIR$/dati_relutenti.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/disponibilita.php" afterPath="$PROJECT_DIR$/disponibilita.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/files_sorgente.php" afterPath="$PROJECT_DIR$/includes/files_sorgente.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/templates/cal/form.php" afterPath="$PROJECT_DIR$/includes/templates/cal/form.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/templates/rat/form.php" afterPath="$PROJECT_DIR$/includes/templates/rat/form.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/templates/cal/functions.php" afterPath="$PROJECT_DIR$/includes/templates/cal/functions.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/templates/rat/functions.php" afterPath="$PROJECT_DIR$/includes/templates/rat/functions.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/funzioni.php" afterPath="$PROJECT_DIR$/includes/funzioni.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/funzioni_anno.php" afterPath="$PROJECT_DIR$/includes/funzioni_anno.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/funzioni_backup.php" afterPath="$PROJECT_DIR$/includes/funzioni_backup.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/funzioni_contratti.php" afterPath="$PROJECT_DIR$/includes/funzioni_contratti.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/funzioni_log.php" afterPath="$PROJECT_DIR$/includes/funzioni_log.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/templates/funzioni_mod_disp.php" afterPath="$PROJECT_DIR$/includes/templates/funzioni_mod_disp.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/funzioni_mod_prenota.php" afterPath="$PROJECT_DIR$/includes/funzioni_mod_prenota.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/templates/funzioni_modelli.php" afterPath="$PROJECT_DIR$/includes/templates/funzioni_modelli.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/funzioni_mysql.php" afterPath="$PROJECT_DIR$/includes/funzioni_mysql.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/funzioni_mysqli.php" afterPath="$PROJECT_DIR$/includes/funzioni_mysqli.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/funzioni_relutenti.php" afterPath="$PROJECT_DIR$/includes/funzioni_relutenti.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/funzioni_sqlite.php" afterPath="$PROJECT_DIR$/includes/funzioni_sqlite.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gestione_utenti.php" afterPath="$PROJECT_DIR$/gestione_utenti.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/sim/php/head.php" afterPath="$PROJECT_DIR$/themes/sim/php/head.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inizio.php" afterPath="$PROJECT_DIR$/inizio.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/en/inizio.php" afterPath="$PROJECT_DIR$/includes/lang/en/inizio.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/es/inizio.php" afterPath="$PROJECT_DIR$/includes/lang/es/inizio.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/interconnessioni.php" afterPath="$PROJECT_DIR$/interconnessioni.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/en/interconnessioni.php" afterPath="$PROJECT_DIR$/includes/lang/en/interconnessioni.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/es/interconnessioni.php" afterPath="$PROJECT_DIR$/includes/lang/es/interconnessioni.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inventario.php" afterPath="$PROJECT_DIR$/inventario.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/liberasettimane.php" afterPath="$PROJECT_DIR$/includes/liberasettimane.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/messaggi.php" afterPath="$PROJECT_DIR$/messaggi.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/en/messaggi.php" afterPath="$PROJECT_DIR$/includes/lang/en/messaggi.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/es/messaggi.php" afterPath="$PROJECT_DIR$/includes/lang/es/messaggi.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modifica_app.php" afterPath="$PROJECT_DIR$/modifica_app.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modifica_cliente.php" afterPath="$PROJECT_DIR$/modifica_cliente.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/en/modifica_cliente.php" afterPath="$PROJECT_DIR$/includes/lang/en/modifica_cliente.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/es/modifica_cliente.php" afterPath="$PROJECT_DIR$/includes/lang/es/modifica_cliente.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modifica_contratto.php" afterPath="$PROJECT_DIR$/modifica_contratto.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modifica_costi.php" afterPath="$PROJECT_DIR$/modifica_costi.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/en/modifica_costi.php" afterPath="$PROJECT_DIR$/includes/lang/en/modifica_costi.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/es/modifica_costi.php" afterPath="$PROJECT_DIR$/includes/lang/es/modifica_costi.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modifica_ospiti.php" afterPath="$PROJECT_DIR$/modifica_ospiti.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modifica_prenota.php" afterPath="$PROJECT_DIR$/modifica_prenota.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/en/modifica_prenota.php" afterPath="$PROJECT_DIR$/includes/lang/en/modifica_prenota.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/es/modifica_prenota.php" afterPath="$PROJECT_DIR$/includes/lang/es/modifica_prenota.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modifica_var_contr.php" afterPath="$PROJECT_DIR$/modifica_var_contr.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/en/modifica_var_contr.php" afterPath="$PROJECT_DIR$/includes/lang/en/modifica_var_contr.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/es/modifica_var_contr.php" afterPath="$PROJECT_DIR$/includes/lang/es/modifica_var_contr.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mostra_sorgente.php" afterPath="$PROJECT_DIR$/mostra_sorgente.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/personalizza.php" afterPath="$PROJECT_DIR$/personalizza.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/en/personalizza.php" afterPath="$PROJECT_DIR$/includes/lang/en/personalizza.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/es/personalizza.php" afterPath="$PROJECT_DIR$/includes/lang/es/personalizza.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/prenota.php" afterPath="$PROJECT_DIR$/prenota.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/privilegi_utenti.php" afterPath="$PROJECT_DIR$/privilegi_utenti.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/punto_vendita.php" afterPath="$PROJECT_DIR$/punto_vendita.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storia_soldi.php" afterPath="$PROJECT_DIR$/storia_soldi.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tab_tariffe.php" afterPath="$PROJECT_DIR$/tab_tariffe.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tabella.php" afterPath="$PROJECT_DIR$/tabella.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tabella2.php" afterPath="$PROJECT_DIR$/tabella2.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tabella3.php" afterPath="$PROJECT_DIR$/tabella3.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/unit.php" afterPath="$PROJECT_DIR$/includes/unit.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/en/unit.php" afterPath="$PROJECT_DIR$/includes/lang/en/unit.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/es/unit.php" afterPath="$PROJECT_DIR$/includes/lang/es/unit.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/visualizza_contratto.php" afterPath="$PROJECT_DIR$/visualizza_contratto.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/visualizza_tabelle.php" afterPath="$PROJECT_DIR$/visualizza_tabelle.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/en/visualizza_tabelle.php" afterPath="$PROJECT_DIR$/includes/lang/en/visualizza_tabelle.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/lang/es/visualizza_tabelle.php" afterPath="$PROJECT_DIR$/includes/lang/es/visualizza_tabelle.php" />
+    </list>
+    <ignored path="hotel.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="hotel" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="creadb.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/creadb.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.75">
+              <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+              <folding>
+                <marker date="1440967570000" expanded="true" signature="10292:10383" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="10401:10474" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="12592:12751" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="12769:12898" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="13031:13151" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="13169:13307" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="13325:13463" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="13481:13588" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="13606:13715" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="13883:13997" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="14015:14130" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="14148:14270" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="14288:14411" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="14429:14544" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="14562:14699" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="14717:14836" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="14854:14959" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="14977:15102" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="15120:15243" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="15261:15386" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="15404:15520" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="15538:15666" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="15684:15803" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="15821:15944" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="15962:16086" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="16104:16211" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="16229:16348" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="16366:16487" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="16505:16630" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="16648:16752" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="16770:16877" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="16895:17002" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="17020:17126" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="17144:17251" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="17269:17378" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="17396:17508" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="17526:17633" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="17651:17782" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="17800:17901" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="18654:18736" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="22068:22143" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="24464:24634" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="31512:31681" placeholder="..." />
+                <marker date="1440967570000" expanded="true" signature="31517:31681" placeholder="..." />
+                <marker date="1440967570000" expanded="false" signature="31669:31679" placeholder="..." />
+                <marker date="1440967570000" expanded="true" signature="33572:33582" placeholder="..." />
+                <marker date="1440967570000" expanded="true" signature="33629:33648" placeholder="..." />
+                <marker date="1440967570000" expanded="true" signature="34297:34308" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="34344:34355" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="34386:34397" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="34425:34436" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="34468:34479" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="34510:34521" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="34552:34563" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="34592:34603" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="34638:34649" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="34682:34693" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="34729:34740" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="34770:34781" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="34811:34822" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="34855:34866" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="34899:34910" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="34942:34953" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="34988:34999" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="35037:35048" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="35081:35092" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="35121:35132" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="35172:35183" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="35215:35226" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="35261:35272" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="35306:35317" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="35350:35361" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="35398:35409" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="35438:35449" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="35483:35494" placeholder="drop table $..." />
+                <marker date="1440967570000" expanded="true" signature="38101:38289" placeholder="..." />
+                <marker date="1440967570000" expanded="true" signature="38106:38282" placeholder="..." />
+                <marker date="1440967570000" expanded="true" signature="41131:41201" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="42318:42332" placeholder="select * fro..." />
+                <marker date="1440967570000" expanded="true" signature="42571:42669" placeholder="select idapp..." />
+                <marker date="1440967570000" expanded="true" signature="44768:44803" placeholder="..." />
+                <marker date="1440967570000" expanded="true" signature="47056:47263" placeholder="insert into ..." />
+                <marker date="1440967570000" expanded="true" signature="47446:47592" placeholder="..." />
+                <marker date="1440967570000" expanded="true" signature="47451:47585" placeholder="..." />
+                <marker date="1440967570000" expanded="true" signature="48226:48301" placeholder="..." />
+                <marker date="1440967570000" expanded="true" signature="48231:48301" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="constants.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/constants.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.3857143">
+              <caret line="27" column="55" selection-start-line="27" selection-start-column="55" selection-end-line="27" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="funzioni.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/funzioni.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.875">
+              <caret line="49" column="46" selection-start-line="49" selection-start-column="46" selection-end-line="49" selection-end-column="46" />
+              <folding>
+                <marker date="1440968073000" expanded="true" signature="4402:4494" placeholder="select * fro..." />
+                <marker date="1440968073000" expanded="true" signature="4786:4882" placeholder="select * fro..." />
+                <marker date="1440968073000" expanded="true" signature="5727:5824" placeholder="select * fro..." />
+                <marker date="1440968073000" expanded="true" signature="8427:8479" placeholder="select * fro..." />
+                <marker date="1440968073000" expanded="true" signature="8808:8881" placeholder="insert into ..." />
+                <marker date="1440968073000" expanded="true" signature="11118:11243" placeholder="select ultim..." />
+                <marker date="1440968073000" expanded="true" signature="11376:11404" placeholder="..." />
+                <marker date="1440968073000" expanded="true" signature="11671:11788" placeholder="select valpe..." />
+                <marker date="1440968073000" expanded="true" signature="12009:12092" placeholder="delete from ..." />
+                <marker date="1440968073000" expanded="true" signature="12129:12252" placeholder="select tipo_..." />
+                <marker date="1440968073000" expanded="true" signature="12417:12445" placeholder="..." />
+                <marker date="1440968073000" expanded="true" signature="12841:12907" placeholder="select * fro..." />
+                <marker date="1440968073000" expanded="true" signature="14506:14705" placeholder="insert into ..." />
+                <marker date="1440968073000" expanded="true" signature="14742:14918" placeholder="insert into ..." />
+                <marker date="1440968073000" expanded="true" signature="15217:15245" placeholder="..." />
+                <marker date="1440968073000" expanded="true" signature="16456:16657" placeholder="insert into ..." />
+                <marker date="1440968073000" expanded="true" signature="17556:17673" placeholder="select valpe..." />
+                <marker date="1440968073000" expanded="true" signature="17891:17968" placeholder="delete from ..." />
+                <marker date="1440968073000" expanded="true" signature="18478:18540" placeholder="select * fro..." />
+                <marker date="1440968073000" expanded="true" signature="19004:19079" placeholder="select nome_..." />
+                <marker date="1440968073000" expanded="true" signature="19755:19783" placeholder="..." />
+                <marker date="1440968073000" expanded="true" signature="22052:22063" placeholder="..." />
+                <marker date="1440968073000" expanded="true" signature="22138:22643" placeholder="..." />
+                <marker date="1440968073000" expanded="true" signature="22143:22636" placeholder="..." />
+                <marker date="1440968073000" expanded="false" signature="22489:22501" placeholder="..." />
+                <marker date="1440968073000" expanded="true" signature="22991:23087" placeholder="..." />
+                <marker date="1440968073000" expanded="true" signature="23089:23348" placeholder="..." />
+                <marker date="1440968073000" expanded="false" signature="23116:23131" placeholder="..." />
+                <marker date="1440968073000" expanded="false" signature="23228:23243" placeholder="..." />
+                <marker date="1440968073000" expanded="true" signature="24303:24386" placeholder="select idloc..." />
+                <marker date="1440968073000" expanded="true" signature="25144:25372" placeholder="..." />
+                <marker date="1440968073000" expanded="true" signature="25149:25365" placeholder="..." />
+                <marker date="1440968073000" expanded="true" signature="27359:27387" placeholder="..." />
+                <marker date="1440968073000" expanded="true" signature="28791:28908" placeholder="select valpe..." />
+                <marker date="1440968073000" expanded="true" signature="29267:29351" placeholder="delete from ..." />
+                <marker date="1440968073000" expanded="true" signature="29553:29625" placeholder="select * fro..." />
+                <marker date="1440968073000" expanded="true" signature="30772:30918" placeholder="select valpe..." />
+                <marker date="1440968073000" expanded="true" signature="31230:31317" placeholder="select idper..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/includes/funzioni.php" />
+        <option value="$PROJECT_DIR$/constants.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="10" />
+    <option name="y" value="43" />
+    <option name="width" value="1260" />
+    <option name="height" value="669" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f3f27ca4-4388-4d44-80a4-726370357b12" name="Default" comment="" />
+      <created>1440966501787</created>
+      <option name="number" value="Default" />
+      <updated>1440966501787</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="10" y="43" width="1260" height="669" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/creadb.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.75">
+          <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+          <folding>
+            <marker date="1440967570000" expanded="true" signature="10292:10383" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="10401:10474" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="12592:12751" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="12769:12898" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="13031:13151" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="13169:13307" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="13325:13463" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="13481:13588" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="13606:13715" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="13883:13997" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="14015:14130" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="14148:14270" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="14288:14411" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="14429:14544" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="14562:14699" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="14717:14836" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="14854:14959" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="14977:15102" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="15120:15243" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="15261:15386" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="15404:15520" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="15538:15666" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="15684:15803" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="15821:15944" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="15962:16086" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="16104:16211" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="16229:16348" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="16366:16487" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="16505:16630" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="16648:16752" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="16770:16877" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="16895:17002" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="17020:17126" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="17144:17251" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="17269:17378" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="17396:17508" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="17526:17633" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="17651:17782" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="17800:17901" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="18654:18736" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="22068:22143" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="24464:24634" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="31512:31681" placeholder="..." />
+            <marker date="1440967570000" expanded="true" signature="31517:31681" placeholder="..." />
+            <marker date="1440967570000" expanded="false" signature="31669:31679" placeholder="..." />
+            <marker date="1440967570000" expanded="true" signature="33572:33582" placeholder="..." />
+            <marker date="1440967570000" expanded="true" signature="33629:33648" placeholder="..." />
+            <marker date="1440967570000" expanded="true" signature="34297:34308" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="34344:34355" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="34386:34397" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="34425:34436" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="34468:34479" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="34510:34521" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="34552:34563" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="34592:34603" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="34638:34649" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="34682:34693" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="34729:34740" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="34770:34781" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="34811:34822" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="34855:34866" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="34899:34910" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="34942:34953" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="34988:34999" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="35037:35048" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="35081:35092" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="35121:35132" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="35172:35183" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="35215:35226" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="35261:35272" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="35306:35317" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="35350:35361" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="35398:35409" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="35438:35449" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="35483:35494" placeholder="drop table $..." />
+            <marker date="1440967570000" expanded="true" signature="38101:38289" placeholder="..." />
+            <marker date="1440967570000" expanded="true" signature="38106:38282" placeholder="..." />
+            <marker date="1440967570000" expanded="true" signature="41131:41201" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="42318:42332" placeholder="select * fro..." />
+            <marker date="1440967570000" expanded="true" signature="42571:42669" placeholder="select idapp..." />
+            <marker date="1440967570000" expanded="true" signature="44768:44803" placeholder="..." />
+            <marker date="1440967570000" expanded="true" signature="47056:47263" placeholder="insert into ..." />
+            <marker date="1440967570000" expanded="true" signature="47446:47592" placeholder="..." />
+            <marker date="1440967570000" expanded="true" signature="47451:47585" placeholder="..." />
+            <marker date="1440967570000" expanded="true" signature="48226:48301" placeholder="..." />
+            <marker date="1440967570000" expanded="true" signature="48231:48301" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/funzioni.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.875">
+          <caret line="49" column="46" selection-start-line="49" selection-start-column="46" selection-end-line="49" selection-end-column="46" />
+          <folding>
+            <marker date="1440968073000" expanded="true" signature="4402:4494" placeholder="select * fro..." />
+            <marker date="1440968073000" expanded="true" signature="4786:4882" placeholder="select * fro..." />
+            <marker date="1440968073000" expanded="true" signature="5727:5824" placeholder="select * fro..." />
+            <marker date="1440968073000" expanded="true" signature="8427:8479" placeholder="select * fro..." />
+            <marker date="1440968073000" expanded="true" signature="8808:8881" placeholder="insert into ..." />
+            <marker date="1440968073000" expanded="true" signature="11118:11243" placeholder="select ultim..." />
+            <marker date="1440968073000" expanded="true" signature="11376:11404" placeholder="..." />
+            <marker date="1440968073000" expanded="true" signature="11671:11788" placeholder="select valpe..." />
+            <marker date="1440968073000" expanded="true" signature="12009:12092" placeholder="delete from ..." />
+            <marker date="1440968073000" expanded="true" signature="12129:12252" placeholder="select tipo_..." />
+            <marker date="1440968073000" expanded="true" signature="12417:12445" placeholder="..." />
+            <marker date="1440968073000" expanded="true" signature="12841:12907" placeholder="select * fro..." />
+            <marker date="1440968073000" expanded="true" signature="14506:14705" placeholder="insert into ..." />
+            <marker date="1440968073000" expanded="true" signature="14742:14918" placeholder="insert into ..." />
+            <marker date="1440968073000" expanded="true" signature="15217:15245" placeholder="..." />
+            <marker date="1440968073000" expanded="true" signature="16456:16657" placeholder="insert into ..." />
+            <marker date="1440968073000" expanded="true" signature="17556:17673" placeholder="select valpe..." />
+            <marker date="1440968073000" expanded="true" signature="17891:17968" placeholder="delete from ..." />
+            <marker date="1440968073000" expanded="true" signature="18478:18540" placeholder="select * fro..." />
+            <marker date="1440968073000" expanded="true" signature="19004:19079" placeholder="select nome_..." />
+            <marker date="1440968073000" expanded="true" signature="19755:19783" placeholder="..." />
+            <marker date="1440968073000" expanded="true" signature="22052:22063" placeholder="..." />
+            <marker date="1440968073000" expanded="true" signature="22138:22643" placeholder="..." />
+            <marker date="1440968073000" expanded="true" signature="22143:22636" placeholder="..." />
+            <marker date="1440968073000" expanded="false" signature="22489:22501" placeholder="..." />
+            <marker date="1440968073000" expanded="true" signature="22991:23087" placeholder="..." />
+            <marker date="1440968073000" expanded="true" signature="23089:23348" placeholder="..." />
+            <marker date="1440968073000" expanded="false" signature="23116:23131" placeholder="..." />
+            <marker date="1440968073000" expanded="false" signature="23228:23243" placeholder="..." />
+            <marker date="1440968073000" expanded="true" signature="24303:24386" placeholder="select idloc..." />
+            <marker date="1440968073000" expanded="true" signature="25144:25372" placeholder="..." />
+            <marker date="1440968073000" expanded="true" signature="25149:25365" placeholder="..." />
+            <marker date="1440968073000" expanded="true" signature="27359:27387" placeholder="..." />
+            <marker date="1440968073000" expanded="true" signature="28791:28908" placeholder="select valpe..." />
+            <marker date="1440968073000" expanded="true" signature="29267:29351" placeholder="delete from ..." />
+            <marker date="1440968073000" expanded="true" signature="29553:29625" placeholder="select * fro..." />
+            <marker date="1440968073000" expanded="true" signature="30772:30918" placeholder="select valpe..." />
+            <marker date="1440968073000" expanded="true" signature="31230:31317" placeholder="select idper..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/constants.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3857143">
+          <caret line="27" column="55" selection-start-line="27" selection-start-column="55" selection-end-line="27" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

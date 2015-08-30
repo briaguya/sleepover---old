@@ -52,7 +52,7 @@ $minuti_durata_insprenota = risul_query($minuti_durata_insprenota,0,'valpersonal
 $limiti_var['lim_prenota_temp'] = date("Y-m-d H:i:s",(time() + (C_DIFF_ORE * 3600) - ($minuti_durata_insprenota * 60)));
 } # fine if (!$limiti_var['lim_prenota_temp'])
 
-# metto i dati della tabella appartamenti in $dati_app
+# metto i data della tabella appartamenti in $dati_app
 if (!$dati_app) {
 $idapp = esegui_query("select idappartamenti,maxoccupanti,app_vicini from $tableappartamenti order by priorita");
 $numappartamenti = numlin_query($idapp);
@@ -616,7 +616,7 @@ if ($liberabile[$idprenotainperiodo] != "SI") $tutti_liberabili = "NO";
 if ($liberabile[$idprenotainperiodo] != "SI" and $scambiabile[$idprenotainperiodo] != "SI") $mobile2 = "NO";
 } # fine for $num2
 
-# Applico gli eventuali spostamenti, altrimenti metto i dati in $da_liberare
+# Applico gli eventuali spostamenti, altrimenti metto i data in $da_liberare
 if ($tutti_liberabili != "NO") {
 for ($num2 = 1 ; $num2 <= $num_pp ; $num2++) {
 $idprenotainperiodo = $prenotainperiodo[$num2];
@@ -664,7 +664,7 @@ else $riprova_app[$numapp] = "NO";
 
 
 
-# Se non è ancora $fatto chiamo ricorsivamente liberasettimane con i dati
+# Se non è ancora $fatto chiamo ricorsivamente liberasettimane con i data
 # in $da_liberare e $da_scambiare, operando su una variabile temporanea.
 if ($fatto == "NO" and $limiti_var['t_limite'] >= time()) {
 $nuova_profondita = $profondita;

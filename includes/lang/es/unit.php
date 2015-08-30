@@ -28,10 +28,10 @@ $trad_var['special_characters'] = 'a,e,i,o,u';
 
 
 if (substr($messaggio,0,3) == '[1]') {
-@include(C_DATI_PATH."/unit_single.php");
+@include(C_DATA_PATH."/unit_single.php");
 $messaggio = substr($messaggio,3);
 } # fine if substr($messaggio,0,3) == '[1]')
-else @include(C_DATI_PATH."/unit.php");
+else @include(C_DATA_PATH."/unit.php");
 
 if ($unit['gender'] == "m") {
 if ($unit['special']) {
@@ -41,11 +41,11 @@ switch ($messaggio) {
 
 # Translations for rental units with MASCULINE name (or no gender) that begins with SPECIAL characters
 case "APPARTAMENTI":  					$messaggio = "[UNITS]"; break;
-case "Inserisci ora i dati sugli appartamenti":		$messaggio = "Insertar ahora los datos sobre los [units]"; break;
+case "Inserisci ora i data sugli appartamenti":		$messaggio = "Insertar ahora los datos sobre los [units]"; break;
 case "almeno il numero, diverso per ogni appartamento":	$messaggio = "almenos el número, diferente para cada [unit]"; break;
 case "Numero (o nome) dell' appartamento":  		$messaggio = "Número (o nombre) del [unit]"; break;
 case "Priorità (più bassa è, prima viene assegnato)":	$messaggio = "Prioridad (la más baja se asigna antes)"; break;
-case "Inserisci i dati sugli appartamenti":  		$messaggio = "Inserta los datos sobre los [units]"; break;
+case "Inserisci i data sugli appartamenti":  		$messaggio = "Inserta los datos sobre los [units]"; break;
 case "tutti gli appartamenti":  			$messaggio = "todos los [units]"; break;
 case "Non ci sono appartamenti con le caratteristiche richieste":	$messaggio = "No hay [units] con las características pedidas"; break;
 case "Non c'è nessun appartamento tra quelli richiesti che possa ospitare":	$messaggio = "No hay ningún [unit] entre los que se han pedido que pueda acoger"; break;
@@ -247,11 +247,11 @@ switch ($messaggio) {
 
 # Translations for rental units with MASCULINE name (or no gender) that begins with NORMAL characters
 case "APPARTAMENTI":  					$messaggio = "[UNITS]"; break;
-case "Inserisci ora i dati sugli appartamenti":		$messaggio = "Insertar ahora los datos sobre los [units]"; break;
+case "Inserisci ora i data sugli appartamenti":		$messaggio = "Insertar ahora los datos sobre los [units]"; break;
 case "almeno il numero, diverso per ogni appartamento":	$messaggio = "almenos el número, diferente para cada [unit]"; break;
 case "Numero (o nome) dell' appartamento":  		$messaggio = "Número (o nombre) del [unit]"; break;
 case "Priorità (più bassa è, prima viene assegnato)":	$messaggio = "Prioridad (la más baja se asigna antes)"; break;
-case "Inserisci i dati sugli appartamenti":  		$messaggio = "Inserta los datos sobre los [units]"; break;
+case "Inserisci i data sugli appartamenti":  		$messaggio = "Inserta los datos sobre los [units]"; break;
 case "tutti gli appartamenti":  			$messaggio = "todos los [units]"; break;
 case "Non ci sono appartamenti con le caratteristiche richieste":	$messaggio = "No hay [units] con las características pedidas"; break;
 case "Non c'è nessun appartamento tra quelli richiesti che possa ospitare":	$messaggio = "No hay ningún [unit] entre los que se han pedido que pueda acoger"; break;
@@ -455,11 +455,11 @@ switch ($messaggio) {
 
 # Translations for rental units with FEMENINE name that begins with SPECIAL characters
 case "APPARTAMENTI":  					$messaggio = "[UNITS]"; break;
-case "Inserisci ora i dati sugli appartamenti":		$messaggio = "Insertar ahora los datos sobre las [units]"; break;
+case "Inserisci ora i data sugli appartamenti":		$messaggio = "Insertar ahora los datos sobre las [units]"; break;
 case "almeno il numero, diverso per ogni appartamento":	$messaggio = "almenos el número, diferente para cada [unit]"; break;
 case "Numero (o nome) dell' appartamento":  		$messaggio = "Número (o nombre) de la [unit]"; break;
 case "Priorità (più bassa è, prima viene assegnato)":	$messaggio = "Prioridad (la más baja se asigna antes)"; break;
-case "Inserisci i dati sugli appartamenti":  		$messaggio = "Inserta los datos sobre las [units]"; break;
+case "Inserisci i data sugli appartamenti":  		$messaggio = "Inserta los datos sobre las [units]"; break;
 case "tutti gli appartamenti":  			$messaggio = "todas las [units]"; break;
 case "Non ci sono appartamenti con le caratteristiche richieste":	$messaggio = "No hay [units] con las características pedidas"; break;
 case "Non c'è nessun appartamento tra quelli richiesti che possa ospitare":	$messaggio = "No hay ninguna [unit] entre las que se han pedido que pueda acoger"; break;
@@ -661,11 +661,11 @@ switch ($messaggio) {
 
 # Translations for rental units with FEMENINE name that begins with NORMAL characters
 case "APPARTAMENTI":  					$messaggio = "[UNITS]"; break;
-case "Inserisci ora i dati sugli appartamenti":		$messaggio = "Insertar ahora los datos sobre las [units]"; break;
+case "Inserisci ora i data sugli appartamenti":		$messaggio = "Insertar ahora los datos sobre las [units]"; break;
 case "almeno il numero, diverso per ogni appartamento":	$messaggio = "almenos el número, diferente para cada [unit]"; break;
 case "Numero (o nome) dell' appartamento":  		$messaggio = "Número (o nombre) de la [unit]"; break;
 case "Priorità (più bassa è, prima viene assegnato)":	$messaggio = "Prioridad (la más baja se asigna antes)"; break;
-case "Inserisci i dati sugli appartamenti":  		$messaggio = "Inserta los datos sobre las [units]"; break;
+case "Inserisci i data sugli appartamenti":  		$messaggio = "Inserta los datos sobre las [units]"; break;
 case "tutti gli appartamenti":  			$messaggio = "todas las [units]"; break;
 case "Non ci sono appartamenti con le caratteristiche richieste":	$messaggio = "No hay [units] con las características pedidas"; break;
 case "Non c'è nessun appartamento tra quelli richiesti che possa ospitare":	$messaggio = "No hay ninguna [unit] entre las que se han pedido que pueda acoger"; break;

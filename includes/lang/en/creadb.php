@@ -2,8 +2,8 @@
 
 switch ($messaggio) {
 
-case "Inserimento dei dati permanenti":  	$messaggio = "Insert the permanent data."; break;
-case "Inserisci questi dati per poi creare il database":	$messaggio = "Insert this data to create the database"; break;
+case "Inserimento dei data permanenti":  	$messaggio = "Insert the permanent data."; break;
+case "Inserisci questi data per poi creare il database":	$messaggio = "Insert this data to create the database"; break;
 case "Nome del database da utilizzare":		$messaggio = "Name of the database to be used"; break;
 case "Nome del computer a cui collegarsi":  	$messaggio = "Name of the computer to connect to"; break;
 case "Numero della porta a cui collegarsi":  	$messaggio = "Number of the port to connect to"; break;
@@ -22,12 +22,12 @@ case "Numero (o nome) piano":  				$messaggio = "Floor number (or name)"; break;
 case "Numero (o nome) casa":  				$messaggio = "House number (or name)"; break;
 case "Non è stato possibile creare il database, controllare i privilegi dell' utente, il nome del database o se esiste già un database chiamato":
 						$messaggio = "It hasn't been possible to create the database, check the user privileges, the name of the database or if already exists a database called"; break;
-case "I dati inseriti per il collegamento al database non sono esatti o il database non è in ascolto":	$messaggio = "Data inserted for database connection are not correct or the database isn't listening"; break;
+case "I data inseriti per il collegamento al database non sono esatti o il database non è in ascolto":	$messaggio = "Data inserted for database connection are not correct or the database isn't listening"; break;
 case "se postgres assicurarsi che venga avviato con -i e di avere i permessi giusti in pg_hba.conf":	$messaggio = "if it's postgres make sure it is started with -i and you have right permissions in pg_hba.conf"; break;
 case "Torna indietro":  			$messaggio = "Go back"; break;
 case "Dati inseriti":  				$messaggio = "Data inserted"; break;
-case "Tutti i dati permanenti sono stati inseriti":	$messaggio = "All the permanent data has been inserted"; break;
-case "Non ho i permessi di scrittura sulla directory dati, cambiarli e reiniziare l'installazione":	$messaggio = "I don't have write permissions on dati folder, change them and begin again installation"; break;
+case "Tutti i data permanenti sono stati inseriti":	$messaggio = "All the permanent data has been inserted"; break;
+case "Non ho i permessi di scrittura sulla directory data, cambiarli e reiniziare l'installazione":	$messaggio = "I don't have write permissions on data folder, change them and begin again installation"; break;
 case "Tipo di database":			$messaggio = "Database type"; break;
 case "Database già esistente":			$messaggio = "Existing database"; break;
 case "Se già esistente e non vuoto usare un prefisso non presente nel database per il nome delle tabelle":	$messaggio = "If already existing and not empty use a prefix not present in the database for tables names"; break;

@@ -90,7 +90,7 @@ unset($rel_canc);
 unset($rel_usate);
 unset($relutente_usate);
 if ($rel_predefinite) {
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 global ${"lista_".$rel_plur},${"cod_".$rel_plur},${"cod2_".$rel_plur},${"cod3_".$rel_plur},${"cod_".$rel_sup_sing."_".$rel_plur};
 if ($lingua[$id_utente_mod] == "ita") include_once("./includes/lista_$rel_plur.php");
 else if (@is_file("./includes/lang/".$lingua[$id_utente_mod]."/lista_$rel_plur.php")) include_once("./includes/lang/".$lingua[$id_utente_mod]."/lista_$rel_plur.php");

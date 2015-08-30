@@ -24,8 +24,8 @@
 $pag = "crea_backup.php";
 $titolo = "HotelDruid: Backup";
 
-include("./costanti.php");
-include(C_DATI_PATH."/dati_connessione.php");
+include("./constants.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 include("./includes/funzioni_backup.php");
 $numconnessione = connetti_db_per_backup($PHPR_DB_TYPE,$PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT,$PHPR_TAB_PRE,$ext_pgsql_caricata,$ext_mysql_caricata);
@@ -191,8 +191,8 @@ $num_lock++;
 $altre_tab_lock[$num_lock] = $PHPR_TAB_PRE."cache";
 $num_lock++;
 $tabelle_lock = lock_tabelle($tabelle_lock,$altre_tab_lock);
-if ($id_utente == "b") $file = @fopen(C_DATI_PATH."/backup_ext.php","w+");
-else $file = @fopen(C_DATI_PATH."/hoteld_backup.php","w+");
+if ($id_utente == "b") $file = @fopen(C_DATA_PATH."/backup_ext.php","w+");
+else $file = @fopen(C_DATA_PATH."/hoteld_backup.php","w+");
 if ($file) {
 flock($file,2);
 allunga_tempo_limite();
@@ -220,17 +220,17 @@ dump_testo("/unit_single.php",$file);
 dump_testo("/tema.php",$file);
 dump_testo("/selectappartamenti.php",$file);
 dump_testo("/versione.php",$file);
-if (@is_file(C_DATI_PATH."/abilita_login")) dump_testo("/abilita_login",$file);
-if (@is_file(C_DATI_PATH."/parole_sost.php")) dump_testo("/parole_sost.php",$file);
-if (@is_file(C_DATI_PATH."/dati_interconnessioni.php")) dump_testo("/dati_interconnessioni.php",$file);
-if (@is_file(C_DATI_PATH."/log_utenti.php")) dump_testo("/log_utenti.php",$file);
+if (@is_file(C_DATA_PATH."/abilita_login")) dump_testo("/abilita_login",$file);
+if (@is_file(C_DATA_PATH."/parole_sost.php")) dump_testo("/parole_sost.php",$file);
+if (@is_file(C_DATA_PATH."/dati_interconnessioni.php")) dump_testo("/dati_interconnessioni.php",$file);
+if (@is_file(C_DATA_PATH."/log_utenti.php")) dump_testo("/log_utenti.php",$file);
 for ($num1 = 0 ; $num1 < $num_anni ; $num1++) {
 $anno_reg = risul_query($anni,$num1,'idanni');
 if (!$anni_backup or ${'anno_sel'.$anno_reg}) {
 for ($num2 = 0 ; $num2 < numlin_query($utenti) ; $num2++) {
 $idutente_reg = risul_query($utenti,$num2,'idutenti');
-if (@is_file(C_DATI_PATH."/selectperiodi$anno_reg.$idutente_reg.php")) dump_testo("/selectperiodi$anno_reg.$idutente_reg.php",$file);
-if (@is_file(C_DATI_PATH."/selperiodimenu$anno_reg.$idutente_reg.php")) dump_testo("/selperiodimenu$anno_reg.$idutente_reg.php",$file);
+if (@is_file(C_DATA_PATH."/selectperiodi$anno_reg.$idutente_reg.php")) dump_testo("/selectperiodi$anno_reg.$idutente_reg.php",$file);
+if (@is_file(C_DATA_PATH."/selperiodimenu$anno_reg.$idutente_reg.php")) dump_testo("/selperiodimenu$anno_reg.$idutente_reg.php",$file);
 } # fine for $num2
 } # fine if (!$anni_backup or ${'anno_sel'.$anno_reg})
 } # fine for $num1
@@ -319,7 +319,7 @@ closedir($templates_dir);
 fwrite($file,"</backup>");
 flock($file,3);
 fclose($file);
-@chmod(C_DATI_PATH."/hoteld_backup.php", 0640);
+@chmod(C_DATA_PATH."/hoteld_backup.php", 0640);
 unlock_tabelle($tabelle_lock);
 echo mex("File creato",$pag).".<br>";
 } # fine if (@fopen(C_DATI_PATH."/hoteld_backup.php","w+"))
@@ -334,7 +334,7 @@ $tabelle_lock = lock_tabelle($tabelle_lock,$altre_tab_lock);
 $nomi_contratti = esegui_query("select valpersonalizza from $PHPR_TAB_PRE"."personalizza where idpersonalizza = 'nomi_contratti' and idutente = '1'");
 $nomi_contratti = risul_query($nomi_contratti,0,'valpersonalizza');
 esegui_query("insert into $PHPR_TAB_PRE"."contratti (numero,tipo,testo) values ('1','nomi_con','".aggslashdb($nomi_contratti)."')");
-$file = @fopen(C_DATI_PATH."/hoteld_doc_backup.php","w+");
+$file = @fopen(C_DATA_PATH."/hoteld_doc_backup.php","w+");
 if ($file) {
 flock($file,2);
 $versione_corrente = esegui_query("select * from $tableversioni where idversioni = 1");
@@ -360,12 +360,12 @@ fwrite($file,"</database>
 </backup>");
 flock($file,3);
 fclose($file);
-@chmod(C_DATI_PATH."/hoteld_doc_backup.php", 0640);
+@chmod(C_DATA_PATH."/hoteld_doc_backup.php", 0640);
 esegui_query("delete from $PHPR_TAB_PRE"."contratti where numero = '1' and tipo = 'nomi_con' ");
 unlock_tabelle($tabelle_lock);
 echo mex("File creato",$pag).".<br>";
 } # fine if ($file)
-else echo mex("Non ho il permesso di scrittura sul file",$pag)." dati/hoteld_doc_backup.php.<br>";
+else echo mex("Non ho il permesso di scrittura sul file",$pag)." data/hoteld_doc_backup.php.<br>";
 } # fine else if ($backup_contratti != "SI")
 } # fine if ($crea_backup)
 
@@ -374,12 +374,12 @@ else echo mex("Non ho il permesso di scrittura sul file",$pag)." dati/hoteld_doc
 if ($upload_backup and $id_utente == 1) {
 $errore = "NO";
 if ($backup_contratti != "SI") {
-$file_tmp = C_DATI_PATH."/hoteld_backup.php.tmp";
-$file_backup = C_DATI_PATH."/hoteld_backup.php";
+$file_tmp = C_DATA_PATH."/hoteld_backup.php.tmp";
+$file_backup = C_DATA_PATH."/hoteld_backup.php";
 } # fine if ($backup_contratti != "SI")
 else {
-$file_tmp = C_DATI_PATH."/hoteld_doc_backup.php.tmp";
-$file_backup = C_DATI_PATH."/hoteld_doc_backup.php";
+$file_tmp = C_DATA_PATH."/hoteld_doc_backup.php.tmp";
+$file_backup = C_DATA_PATH."/hoteld_doc_backup.php";
 } # fine else if ($backup_contratti != "SI")
 if (!$file_backup_upload) {
 if ($HTTP_POST_FILES['file_backup_upload']['tmp_name']) $file_backup_upload = $HTTP_POST_FILES['file_backup_upload']['tmp_name'];
@@ -425,19 +425,19 @@ $tasto_torna_indietro = "NO";
 if ($backup_contratti != "SI") {
 $nome_file = "hoteld_backup.php";
 $nome_file_compresso = "hoteld_backup.php.gz";
-if ($id_utente == "b") $file = C_DATI_PATH."/backup_ext.php";
-else $file = C_DATI_PATH."/hoteld_backup.php";
+if ($id_utente == "b") $file = C_DATA_PATH."/backup_ext.php";
+else $file = C_DATA_PATH."/hoteld_backup.php";
 } # fine if ($backup_contratti != "SI")
 else {
 $nome_file = "hoteld_doc_backup.php";
 $nome_file_compresso = "hoteld_doc_backup.php.gz";
-$file = C_DATI_PATH."/hoteld_doc_backup.php";
+$file = C_DATA_PATH."/hoteld_doc_backup.php";
 } # fine else if ($backup_contratti != "SI")
 $filelock = @crea_lock_file($file);
 if ($filelock) {
 if ($compresso == "SI") {
 mt_srand((float) $sec + ((float) $usec * 100000));
-$file_compresso = C_DATI_PATH."/backup".mt_rand(10000,99999).".php.gz";
+$file_compresso = C_DATA_PATH."/backup".mt_rand(10000,99999).".php.gz";
 $cfp = gzopen($file_compresso,"wb9");
 $fbackup = fopen($file,"r");
 if ($fbackup) {
@@ -474,15 +474,15 @@ fclose ($fbackup);
 } # fine if ($fbackup)
 if ($compresso == "SI") unlink($file_compresso);
 distruggi_lock_file($filelock,$file);
-if ($id_utente == "b") unlink(C_DATI_PATH."/backup_ext.php");
+if ($id_utente == "b") unlink(C_DATA_PATH."/backup_ext.php");
 } # fine if ($filelock)
 } # fine if ($salva_backup)
 
 
 
 if ($cancella_backup) {
-if ($backup_contratti != "SI") $file_backup = C_DATI_PATH."/hoteld_backup.php";
-else $file_backup = C_DATI_PATH."/hoteld_doc_backup.php";
+if ($backup_contratti != "SI") $file_backup = C_DATA_PATH."/hoteld_backup.php";
+else $file_backup = C_DATA_PATH."/hoteld_doc_backup.php";
 if (!@unlink($file_backup)) echo mex("Si è verificato un errore cancellando il file",$pag).".<br>";
 else echo mex("File cancellato",$pag).".<br>";
 } # fine if ($cancella_backup)
@@ -490,7 +490,7 @@ else echo mex("File cancellato",$pag).".<br>";
 
 
 if ($copia_def_backup and $backup_contratti == "SI" and $id_utente == 1) {
-$file_backup = C_DATI_PATH."/hoteld_doc_backup.php";
+$file_backup = C_DATA_PATH."/hoteld_doc_backup.php";
 if (($lingua != "ita" and !is_dir("./includes/lang/$lingua")) or strlen($lingua) > 3 or str_replace("/","",$lingua) != $lingua) $lingua = "en";
 if ($lingua != "ita" and !is_dir("./includes/lang/$lingua")) $lingua = "ita";
 if ($lingua == "ita") $file_copia = "./includes/hoteld_doc_backup.php";
@@ -519,7 +519,7 @@ else echo ucfirst(mex("file copiato",$pag)).".<br>";
 if ($ripristina_backup and $id_utente == 1) {
 if ($backup_contratti != "SI") {
 if (C_BACKUP_E_MODELLI_CON_NUOVI_DATI == "NO") $dati_conn = "attuali";
-$file = C_DATI_PATH."/hoteld_backup.php";
+$file = C_DATA_PATH."/hoteld_backup.php";
 if (@is_file($file)) {
 if ($fbackup = fopen($file,"r")) {
 $versione_corrente = esegui_query("select * from $tableversioni where idversioni = 1");
@@ -534,16 +534,16 @@ break;
 } # fine if (substr($linea,0,10) == "<versione>")
 } # fine while (!feof($fbackup))
 fclose($fbackup);
-if ($prova = @fopen(C_DATI_PATH."/prova","w+")) {
+if ($prova = @fopen(C_DATA_PATH."/prova","w+")) {
 fclose($prova);
-@unlink(C_DATI_PATH."/prova");
+@unlink(C_DATA_PATH."/prova");
 } # fine if ($prova = @fopen(C_DATI_PATH."/prova","w+"))
 else $dati_scrivibile = "NO";
 if ($versione_file and $versione_file == $versione_corrente) {
 if ($dati_scrivibile != "NO") {
 
 if ($continua != "SI") {
-echo "<br><big>".mex("<b style=\"color: red;\">ATTENZIONE</b>: premendo su <b>\"<i>Continua</i>\"</b>, prima di ripristinare i dati dal <i>file</i>, tutti i dati del <i>database attuale</i> verranno <b>cancellati</b>",$pag)."!</big><br><br>";
+echo "<br><big>".mex("<b style=\"color: red;\">ATTENZIONE</b>: premendo su <b>\"<i>Continua</i>\"</b>, prima di ripristinare i data dal <i>file</i>, tutti i data del <i>database attuale</i> verranno <b>cancellati</b>",$pag)."!</big><br><br>";
 echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"./crea_backup.php\"><div>
 <input type=\"hidden\" name=\"anno\" value=\"$anno\">
 <input type=\"hidden\" name=\"id_sessione\" value=\"$id_sessione\">
@@ -565,7 +565,7 @@ $HOTELD_DB_PASS = "";
 $HOTELD_TAB_PRE = "";
 if (defined('C_EXT_DB_DATA_PATH') and C_EXT_DB_DATA_PATH) include(C_EXT_DB_DATA_PATH);
 
-echo "".mex("Inserisci i nuovi dati per la connessione al database",$pag).".<br><br>";
+echo "".mex("Inserisci i nuovi data per la connessione al database",$pag).".<br><br>";
 if (!$HOTELD_DB_TYPE) echo "".mex("Tipo di database",$pag).": 
 <select name=\"N_PHPR_DB_TYPE\">
 <option value=\"postgresql\" selected>".mex("Postgresql",$pag)."</option>
@@ -620,7 +620,7 @@ $N_PHPR_TAB_PRE = $PHPR_TAB_PRE;
 if ($continua == "SI" and (C_RESTRIZIONI_DEMO_ADMIN != "SI" or C_PASS_DEMO_ADMIN == $pass_demo_admin)) ripristina_backup($file,"NO",$pag,$numconnessione,$database_esistente,$tempdatabase,$PHPR_DB_TYPE,$PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT,$PHPR_TAB_PRE,$N_PHPR_DB_TYPE,$N_PHPR_DB_NAME,$N_PHPR_DB_HOST,$N_PHPR_DB_PORT,$N_PHPR_DB_USER,$N_PHPR_DB_PASS,$N_PHPR_LOAD_EXT,$N_PHPR_TAB_PRE,$ext_pgsql_caricata,$ext_mysql_caricata,$mantieni_anni);
 
 } # fine if ($dati_scrivibile != "NO")
-else echo mex("Non ho i permessi di scrittura sulla cartella dati",$pag).".<br>";
+else echo mex("Non ho i permessi di scrittura sulla cartella data",$pag).".<br>";
 } # fine if ($versione_file and $versione_file == $versione_corrente)
 else echo mex("La versione attuale di HotelDruid e quella del file non coincidono",$pag).".<br>";
 } # fine if ($fbackup = fopen($file,"r"))
@@ -631,8 +631,8 @@ else echo mex("Non ho potuto leggere il file",$pag).".<br>";
 
 
 else {
-if (@is_file(C_DATI_PATH."/hoteld_doc_backup.php")) {
-if ($linee_backup = file(C_DATI_PATH."/hoteld_doc_backup.php")) {
+if (@is_file(C_DATA_PATH."/hoteld_doc_backup.php")) {
+if ($linee_backup = file(C_DATA_PATH."/hoteld_doc_backup.php")) {
 
 if (C_RESTRIZIONI_DEMO_ADMIN != "SI") ripristina_backup_contr($linee_backup,"NO",$pag,$PHPR_TAB_PRE,$modalita,$contr_agg);
 
@@ -668,7 +668,7 @@ if ($backup_contratti == "SI") {
 echo "<h3>".mex("Backup dei documenti",$pag).".</h3>
 <hr style=\"width: 95%\">";
 
-if (@is_file(C_DATI_PATH."/hoteld_doc_backup.php")) $file_esistente = "SI";
+if (@is_file(C_DATA_PATH."/hoteld_doc_backup.php")) $file_esistente = "SI";
 else $file_esistente = "NO";
 
 echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"./crea_backup.php\"><div>
@@ -681,7 +681,7 @@ if ($file_esistente == "NO") echo mex("Crea il file di backup dei documenti",$pa
 else echo mex("Crea un nuovo file di backup dei documenti",$pag);
 echo "\">";
 if ($file_esistente == "SI") {
-$fbackup = fopen(C_DATI_PATH."/hoteld_doc_backup.php","r");
+$fbackup = fopen(C_DATA_PATH."/hoteld_doc_backup.php","r");
 $data_creazione = fread($fbackup,200);
 fclose ($fbackup);
 $data_creazione = explode("<!--",$data_creazione);
@@ -692,8 +692,8 @@ echo " (".mex("sovrascrivendo l'attuale",$pag)." ".mex("creato il",$pag)." $data
 } # fine if ($file_esistente == "SI")
 echo ".</div></form><table><tr><td style=\"height: 8px;\"></td></tr></table>";
 if ($file_esistente == "SI") {
-#echo "<a href=\"./crea_backup.php?azione=SI&tasto_torna_indietro=NO&anno=$anno&guarda_backup=SI\">".mex("Guarda il file dati/hoteld_doc_backup.php</a> per salvarlo (usa il bottone indietro del browser per tornare qui)",$pag).".<br>";
-#echo "<a href=\C_DATI_PATH."/backup.txt\">".mex("Guarda il file dati/backup.txt</a> per salvarlo (usa il bottone indietro del browser per tornare qui)",$pag).".<br>";
+#echo "<a href=\"./crea_backup.php?azione=SI&tasto_torna_indietro=NO&anno=$anno&guarda_backup=SI\">".mex("Guarda il file data/hoteld_doc_backup.php</a> per salvarlo (usa il bottone indietro del browser per tornare qui)",$pag).".<br>";
+#echo "<a href=\C_DATI_PATH."/backup.txt\">".mex("Guarda il file data/backup.txt</a> per salvarlo (usa il bottone indietro del browser per tornare qui)",$pag).".<br>";
 echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"./crea_backup.php\"><div>
 <input type=\"hidden\" name=\"anno\" value=\"$anno\">
 <input type=\"hidden\" name=\"id_sessione\" value=\"$id_sessione\">
@@ -701,7 +701,7 @@ echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"./crea_backup.php\
 <input type=\"hidden\" name=\"azione\" value=\"SI\">
 <input type=\"hidden\" name=\"mostra_header\" value=\"NO\">
 <input class=\"sbutton\" type=\"submit\" name=\"salva_backup\" value=\"".mex("Guarda il file",$pag)."\">
- dati/hoteld_doc_backup.php ".mex("per salvarlo (eventualmente usa il bottone indietro del browser per tornare qui)",$pag).".<br><table><tr><td style=\"width: 30px;\"></td><td>
+ data/hoteld_doc_backup.php ".mex("per salvarlo (eventualmente usa il bottone indietro del browser per tornare qui)",$pag).".<br><table><tr><td style=\"width: 30px;\"></td><td>
 <label><input type=\"checkbox\" name=\"compresso\" value=\"SI\" checked> ".mex("Compresso",$pag)."</label>
 </td></tr></table></div></form><table><tr><td style=\"height: 4px;\"></td></tr></table>";
 #if ($id_utente == 1) {
@@ -760,7 +760,7 @@ echo ".<br><table><tr><td style=\"width: 30px;\"></td><td>
 <label><input type=\"checkbox\" name=\"compresso\" value=\"SI\" checked> ".mex("Compresso",$pag)."</label>
 </td></tr></table></div></form><table><tr><td style=\"height: 4px;\"></td></tr></table>";
 if ($file_esistente == "SI") {
-$linee_backup = file(C_DATI_PATH."/hoteld_doc_backup.php");
+$linee_backup = file(C_DATA_PATH."/hoteld_doc_backup.php");
 $info_contr = ripristina_backup_contr($linee_backup,"SI",$pag,$PHPR_TAB_PRE,"info");
 echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"./crea_backup.php\"><div>
 <input type=\"hidden\" name=\"anno\" value=\"$anno\">
@@ -810,7 +810,7 @@ if (C_NASCONDI_MARCA == "SI") echo "<h3>".mex("Sistema di backup","personalizza.
 else echo "<h3>".mex("Sistema di backup per HotelDruid",$pag).".</h3>";
 echo "<hr style=\"width: 95%\">";
 
-if (@is_file(C_DATI_PATH."/hoteld_backup.php")) $file_esistente = "SI";
+if (@is_file(C_DATA_PATH."/hoteld_backup.php")) $file_esistente = "SI";
 else $file_esistente = "NO";
 
 echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"./crea_backup.php\"><div>
@@ -822,7 +822,7 @@ if ($file_esistente == "NO") echo mex("Crea il file di backup",$pag);
 else echo mex("Crea un nuovo file di backup",$pag);
 echo "\">";
 if ($file_esistente == "SI") {
-$fbackup = fopen(C_DATI_PATH."/hoteld_backup.php","r");
+$fbackup = fopen(C_DATA_PATH."/hoteld_backup.php","r");
 $data_creazione = fread($fbackup,200);
 fclose($fbackup);
 $data_creazione = explode("<!--",$data_creazione);
@@ -849,15 +849,15 @@ echo "<label><input type=\"checkbox\" name=\"includi_modelli\" value=\"SI\" chec
 <table><tr><td style=\"height: 8px;\"></td></tr></table>";
 
 if ($file_esistente == "SI") {
-#echo "<a href=\"./crea_backup.php?azione=SI&tasto_torna_indietro=NO&anno=$anno&guarda_backup=SI\">".mex("Guarda il file dati/hoteld_backup.php</a> per salvarlo (usa il bottone indietro del browser per tornare qui)",$pag).".<br>";
-#echo "<a href=\C_DATI_PATH."/backup.txt\">".mex("Guarda il file dati/backup.txt</a> per salvarlo (usa il bottone indietro del browser per tornare qui)",$pag).".<br>";
+#echo "<a href=\"./crea_backup.php?azione=SI&tasto_torna_indietro=NO&anno=$anno&guarda_backup=SI\">".mex("Guarda il file data/hoteld_backup.php</a> per salvarlo (usa il bottone indietro del browser per tornare qui)",$pag).".<br>";
+#echo "<a href=\C_DATI_PATH."/backup.txt\">".mex("Guarda il file data/backup.txt</a> per salvarlo (usa il bottone indietro del browser per tornare qui)",$pag).".<br>";
 echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"./crea_backup.php\"><div>
 <input type=\"hidden\" name=\"anno\" value=\"$anno\">
 <input type=\"hidden\" name=\"id_sessione\" value=\"$id_sessione\">
 <input type=\"hidden\" name=\"azione\" value=\"SI\">
 <input type=\"hidden\" name=\"mostra_header\" value=\"NO\">
 <input class=\"sbutton\" type=\"submit\" name=\"salva_backup\" value=\"".mex("Guarda il file",$pag)."\">
- dati/hoteld_backup.php ".mex("per salvarlo (eventualmente usa il bottone indietro del browser per tornare qui)",$pag).".<br>
+ data/hoteld_backup.php ".mex("per salvarlo (eventualmente usa il bottone indietro del browser per tornare qui)",$pag).".<br>
 <table><tr><td style=\"width: 30px;\"></td><td>
 <label><input type=\"checkbox\" name=\"compresso\" value=\"SI\" checked> ".mex("Compresso",$pag)."</label>
 </td></tr></table></div></form><table><tr><td style=\"height: 4px;\"></td></tr></table>";
@@ -892,15 +892,15 @@ echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"./crea_backup.php\
 <input type=\"hidden\" name=\"anno\" value=\"$anno\">
 <input type=\"hidden\" name=\"id_sessione\" value=\"$id_sessione\">
 <input type=\"hidden\" name=\"azione\" value=\"SI\">
-<input class=\"sbutton\" type=\"submit\" name=\"ripristina_backup\" value=\"".mex("Ripristina i dati dal file",$pag)."\">
-".mex(" (i dati attuali verranno cancellati), utilizzando per la connessione al database:",$pag)."<br>
+<input class=\"sbutton\" type=\"submit\" name=\"ripristina_backup\" value=\"".mex("Ripristina i data dal file",$pag)."\">
+".mex(" (i data attuali verranno cancellati), utilizzando per la connessione al database:",$pag)."<br>
 <table><tr><td style=\"width: 30px;\"></td><td>
-<div><label><input type=\"radio\" name=\"dati_conn\" value=\"attuali\" checked>".mex("i dati dell'attuale connessione",$pag)."</label></div>";
+<div><label><input type=\"radio\" name=\"dati_conn\" value=\"attuali\" checked>".mex("i data dell'attuale connessione",$pag)."</label></div>";
 echo "<table><tr><td style=\"width: 30px;\"></td><td>
-<label><input type=\"checkbox\" name=\"mantieni_anni\" value=\"1\">".mex("Prova a mantenere i dati degli anni non contenuti nel backup",$pag)."</label>
- <small>(".mex("alcuni dati di questi anni potrebbero comunque venir persi",$pag).")</small>
+<label><input type=\"checkbox\" name=\"mantieni_anni\" value=\"1\">".mex("Prova a mantenere i data degli anni non contenuti nel backup",$pag)."</label>
+ <small>(".mex("alcuni data di questi anni potrebbero comunque venir persi",$pag).")</small>
 </td></tr></table>";
-if (C_BACKUP_E_MODELLI_CON_NUOVI_DATI != "NO") echo "<div><label><input type=\"radio\" name=\"dati_conn\" value=\"nuovi\">".mex("nuovi dati",$pag)."</label></div>";
+if (C_BACKUP_E_MODELLI_CON_NUOVI_DATI != "NO") echo "<div><label><input type=\"radio\" name=\"dati_conn\" value=\"nuovi\">".mex("nuovi data",$pag)."</label></div>";
 echo "</td></tr></table></div></form><table><tr><td style=\"height: 1px;\"></td></tr></table>";
 } # fine if ($file_esistente == "SI")
 } # fine if ($id_utente == 1)

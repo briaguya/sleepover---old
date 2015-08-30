@@ -245,7 +245,7 @@ echo "</ul>";
 echo "</li></ul></div></div></td><td>";
 if ($priv_vedi_tab_mesi != "n") {
 if ($anno_corrente == ($anno + 1)) $mese_attuale = $mese_attuale + 12;
-if ($anno < $anno_corrente and @is_file(C_DATI_PATH."/selectperiodi$anno_corrente.1.php")) $mese_attuale = 1;
+if ($anno < $anno_corrente and @is_file(C_DATA_PATH."/selectperiodi$anno_corrente.1.php")) $mese_attuale = 1;
 echo "</td><td><div class=\"drop\"><ul>
 <li><a class=\"nav\" href=\"./tabella.php?$sessione_anno_var&amp;mese=$mese_attuale\">&nbsp;<b>".mex(nome_mese_menu($mese_attuale),"head.php")."</b>&nbsp;</a><ul>";
 for ($num1 = $mese_attuale + 1 ; $num1 < $mese_attuale + 12 ; $num1++) echo "<li><a href=\"./tabella.php?$sessione_anno_var&amp;mese=".$num1."\">&nbsp;<b>".mex(nome_mese_menu($num1),"head.php")."</b>&nbsp;</a></li>";

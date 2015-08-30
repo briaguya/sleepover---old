@@ -23,8 +23,8 @@
 $pag = "tab_tariffe.php";
 $titolo = "HotelDruid: Tariffe";
 
-include("./costanti.php");
-include(C_DATI_PATH."/dati_connessione.php");
+include("./constants.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 include("./includes/funzioni.php");
@@ -70,7 +70,7 @@ $priv_mod_tariffe = "s";
 } # fine else if ($id_utente != 1)
 if ($anno_utente_attivato == "SI" and $priv_vedi_tab_periodi != "n") {
 
-if (@is_file(C_DATI_PATH."/dati_subordinazione.php")) {
+if (@is_file(C_DATA_PATH."/dati_subordinazione.php")) {
 $priv_mod_tariffe = "n";
 } # fine if (@is_file(C_DATI_PATH."/dati_subordinazione.php"))
 
@@ -120,7 +120,7 @@ else esegui_query("insert into $tabledescrizioni (nome,tipo,lingua,numero,testo)
 } # fine if (strcmp($n_descrizione_ita,""))
 else esegui_query("delete from $tabledescrizioni where nome = 'tariffa".$numtariffa1."' and tipo = 'tardescr' and lingua = 'ita' and numero = '1' ");
 $lang_dir = opendir("./includes/lang/");
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 while ($ini_lingua = readdir($lang_dir)) {
 if ($ini_lingua != "." && $ini_lingua != ".." and strlen($ini_lingua) <= 3 and preg_replace("/[a-z]/","",$ini_lingua) == "") {
 $n_descrizione = ${"n_descrizione_".$ini_lingua};
@@ -174,7 +174,7 @@ else esegui_query("insert into $tabledescrizioni (nome,tipo,lingua,numero,testo)
 } # fine if (strcmp($n_commento_ita,""))
 else esegui_query("delete from $tabledescrizioni where nome = 'tariffa".$numtariffa1."' and tipo = 'tarcommfoto' and lingua = 'ita' and numero = '$numfoto' ");
 $lang_dir = opendir("./includes/lang/");
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 while ($ini_lingua = readdir($lang_dir)) {
 if ($ini_lingua != "." && $ini_lingua != ".." and strlen($ini_lingua) <= 3 and preg_replace("/[a-z]/","",$ini_lingua) == "") {
 $n_commento = ${"n_commento_".$ini_lingua};
@@ -219,7 +219,7 @@ echo "<br><div style=\"text-align: center;\">
 
 if ($mostra_tab_tariffe != "NO") {
 
-include(C_DATI_PATH."/selperiodimenu$anno.$id_utente.php");
+include(C_DATA_PATH."/selperiodimenu$anno.$id_utente.php");
 $raggr_per = 0;
 $date_menu = array();
 for ($num1 = 0 ; $num1 <  count($d_increment) ; $num1++) if ($d_increment[$num1] != 1) $raggr_per = 1;
@@ -423,7 +423,7 @@ $col = 0;
 $max_col = 2;
 unset($lingue_vett);
 $lang_dir = opendir("./includes/lang/");
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 while ($ini_lingua = readdir($lang_dir)) {
 if ($ini_lingua != "." && $ini_lingua != ".." and strlen($ini_lingua) <= 3 and preg_replace("/[a-z]/","",$ini_lingua) == "") {
 $nome_lingua = file("./includes/lang/$ini_lingua/l_n");

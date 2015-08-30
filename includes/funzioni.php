@@ -1,32 +1,11 @@
 <?php
 
-##################################################################################
-#    HOTELDRUID
-#    Copyright (C) 2001-2015 by Marco Maria Francesco De Santis (marco@digitaldruid.net)
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#    any later version accepted by Marco Maria Francesco De Santis, which
-#    shall act as a proxy as defined in Section 14 of version 3 of the
-#    license.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-##################################################################################
-
+// Copyright information available in the README
 
 error_reporting(E_ALL ^ E_NOTICE);
 if (function_exists('mb_internal_encoding')) mb_internal_encoding('UTF-8');
 if (function_exists('date_default_timezone_set')) if (!ini_get('date.timezone')) date_default_timezone_set('UTC');
 
-
-# nel caso fosse settato register_globals = Off
 if (@is_array($_POST)) reset($_POST);
 for($num1 = 0 ; $num1 < count($_POST); $num1++) {
 $var_POST = key($_POST);
@@ -41,36 +20,31 @@ next($_GET);
 } # fine for $num1
 
 
-if (@is_file(C_DATI_PATH."/tema.php")) include(C_DATI_PATH."/tema.php");
+if (@is_file(C_DATA_PATH."/tema.php")) include(C_DATA_PATH."/tema.php");
 else {
 unset($tema);
 $trad_ui = 0;
-} # fine else if (@is_file(C_DATI_PATH."/tema.php"))
-
-#$pag = explode("/", $SCRIPT_NAME);
-#$pag = end($pag);
+}
 $tablepersonalizza = $PHPR_TAB_PRE."personalizza";
 
-#@include("./includes/costanti.php");
-#@include(C_DATI_PATH."/costanti.php");
-define('C_PHPR_VERSIONE_NUM',2.12);
-define('C_PHPR_VERSIONE_TXT',"2.1.2");
+define('C_PHP_VERSION_NUM',2.12);
+define('C_PHP_VERSION_TXT',"2.1.2");
 
-# Se non si specifica nessun anno uso l'attuale
+# If you do not specify any using the current year todo: better translation
 $anno_corrente = date("Y",(time() + (C_DIFF_ORE * 3600)));
 if (!$anno) {
 if ($id_sessione) $anno = substr($id_sessione,0,4);
 else {
-if (!defined('C_GIORNI_NUOVO_ANNO')) include("./costanti.php");
-$anno = date("Y",(time() + (C_DIFF_ORE * 3600) - (C_GIORNI_NUOVO_ANNO * 86400)));
+if (!defined('C_GIORNI_NUOVO_ANNO')) include("./constants.php");
+$anno = date("Y",(time() + (C_DIFF_ORE * 3600) - (C_DAYS_NEW_YEAR * 86400)));
 # Se ci troviamo nel periodo di C_GIORNI_NUOVO_ANNO ma il nuovo anno è già stato creato
 if ($anno_corrente != $anno) {
-if (@is_file(C_DATI_PATH."/selectperiodi$anno_corrente.1.php")) $anno = $anno_corrente;
+if (@is_file(C_DATA_PATH."/selectperiodi$anno_corrente.1.php")) $anno = $anno_corrente;
 } # fine if ($anno_corrente != $anno)
 } # fine else if ($id_sessione)
 } # fine if (!$anno)
 
-if ($vers_hinc) $vers_hinc = "?v=".C_PHPR_VERSIONE_NUM;
+if ($vers_hinc) $vers_hinc = "?v=".C_PHP_VERSION_NUM;
 
 if ($_SERVER['SERVER_NAME']) $HOSTNAME = $_SERVER['SERVER_NAME'];
 elseif ($SERVER_NAME) $HOSTNAME = $SERVER_NAME;
@@ -116,7 +90,7 @@ if ($lingua_mex != "ita") {
 include("./includes/lang/$lingua_mex/$pagina");
 } # fine if ($lingua_mex != "ita")
 elseif ($pagina == "unit.php") include("./includes/unit.php");
-if (substr($messaggio,0,4) != 'var_') @include(C_DATI_PATH."/parole_sost.php");
+if (substr($messaggio,0,4) != 'var_') @include(C_DATA_PATH."/parole_sost.php");
 
 return $messaggio;
 
@@ -379,21 +353,21 @@ if (defined("C_HTML_POST_LOGIN") and C_HTML_POST_LOGIN != "") echo C_HTML_POST_L
 if (!$disattivato) {
 
 global $lingua_mex,$tema,$pag,$ILIKE,$LIKE,$DATETIME,$nome_utente_login,$PHPR_LOG;
-@include(C_DATI_PATH."/lingua.php");
-@include(C_DATI_PATH."/versione.php");
+@include(C_DATA_PATH."/lingua.php");
+@include(C_DATA_PATH."/versione.php");
 if ($lingua[1] and @is_dir("./includes/lang/".$lingua[1])) $lingua_mex = $lingua[1];
 else $lingua_mex = "ita";
 $nome_utente_login = "";
 
 
-if (!is_file(C_DATI_PATH."/abilita_login")) $id_utente = 1;
+if (!is_file(C_DATA_PATH."/abilita_login")) $id_utente = 1;
 
 else {
 
 if (!$id_sessione) {
 if ($nome_utente_phpr and $password_phpr) {
 if (!$numconnessione) {
-include(C_DATI_PATH."/dati_connessione.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 } # fine if (!$numconnessione)
@@ -499,7 +473,7 @@ else $mostra_form_login = "SI";
 
 else {
 if (!$numconnessione) {
-include(C_DATI_PATH."/dati_connessione.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 } # fine if ($numconnessione)
@@ -582,7 +556,7 @@ else echo "<div style=\"background: url(".C_URL_LOGO.") no-repeat right top; pad
 echo $messaggio_errore;
 } # fine if ($messaggio_errore or $mostra_form_login == "SI")
 if ($mostra_form_login == "SI") {
-if (@is_file(C_DATI_PATH."/dati_subordinazione.php")) include(C_DATI_PATH."/dati_subordinazione.php");
+if (@is_file(C_DATA_PATH."/dati_subordinazione.php")) include(C_DATA_PATH."/dati_subordinazione.php");
 if (defined("C_HTML_PRE_LOGIN") and C_HTML_PRE_LOGIN != "") echo C_HTML_PRE_LOGIN;
 $mess = $titolo;
 if ($commento_subordinazione) $mess .= " ($commento_subordinazione)";
@@ -617,8 +591,8 @@ if ($id_utente and ($lingua[$id_utente] == "ita" or @is_dir("./includes/lang/".$
 
 if ($id_utente and $tema[$id_utente] != "base" and (!$tema[$id_utente] or !@is_dir("./themes/".$tema[$id_utente]."/php"))) $tema[$id_utente] = "base";
 
-if (C_VERSIONE_ATTUALE < C_PHPR_VERSIONE_NUM and $id_utente and $pag != "aggiorna.php") {
-if (@is_file(C_DATI_PATH."/dati_connessione.php") or @is_file("./dati/connessione_db.php") or @is_file("./datipermanenti/connessione_db.inc")) {
+if (C_VERSIONE_ATTUALE < C_PHP_VERSION_NUM and $id_utente and $pag != "aggiorna.php") {
+if (@is_file(C_DATA_PATH."/dati_connessione.php") or @is_file("./data/connessione_db.php") or @is_file("./datipermanenti/connessione_db.inc")) {
 if ($pag == "interconnessioni.php" and $id_utente != 1) {
 $id_utente_az = esegui_query("select idlocale from $PHPR_TAB_PRE"."interconnessioni where tipoid = 'id_utente_az' ");
 if (numlin_query($id_utente_az) == 1) $id_utente_azione_ic = risul_query($id_utente_az,0,'idlocale');
@@ -822,7 +796,7 @@ $d_increment = "";
 $partial_dates = 0;
 if (!$standalone_dates_menu) $current_dates_menu = 1;
 else $current_dates_menu = 0;
-if (substr($file,0,(strlen(C_DATI_PATH) + 15)) == C_DATI_PATH."/selperiodimenu" and $mos_tut_dat == "SI" and $modifica_pers != "NO") include(C_DATI_PATH."/selectperiodi".substr($file,(strlen(C_DATI_PATH) + 15)));
+if (substr($file,0,(strlen(C_DATA_PATH) + 15)) == C_DATA_PATH."/selperiodimenu" and $mos_tut_dat == "SI" and $modifica_pers != "NO") include(C_DATA_PATH."/selectperiodi".substr($file,(strlen(C_DATA_PATH) + 15)));
 else include("$file");
 } # fine if ($last_dates_menu != $file)
 else if (!$standalone_dates_menu) $current_dates_menu++;
@@ -859,7 +833,7 @@ else echo "$js += '".str_replace("\n","\\\n",$out)."';
 } # fine if (!$hide_default_dates)
 else unset($dates_options_list);
 
-if (substr($file,0,(strlen(C_DATI_PATH) + 15)) == C_DATI_PATH."/selperiodimenu" and floor($current_dates_menu / 2) != (($current_dates_menu - 1) / 2) and $mos_tut_dat != "SI" and $modifica_pers != "NO" and $partial_dates) {
+if (substr($file,0,(strlen(C_DATA_PATH) + 15)) == C_DATA_PATH."/selperiodimenu" and floor($current_dates_menu / 2) != (($current_dates_menu - 1) / 2) and $mos_tut_dat != "SI" and $modifica_pers != "NO" and $partial_dates) {
 if (@is_array($_POST)) reset($_POST);
 for($num1 = 0 ; $num1 < count($_POST); $num1++) {
 if (key($_POST) != "mos_tut_dat" and substr(key($_POST),0,8) != "modifica") $lista_var .= "&amp;".htmlspecialchars(key($_POST))."=".htmlspecialchars(strip_magic_slashs($_POST[key($_POST)]));

@@ -25,7 +25,7 @@
 $pag = "inizio.php";
 $titolo = "HotelDruid";
 
-include("./costanti.php");
+include("./constants.php");
 include("./includes/funzioni.php");
 
 
@@ -44,8 +44,8 @@ if ($id_utente) {
 
 
 
-# Controllo se sono stati inseriti i dati permanenti.
-if (@is_file(C_DATI_PATH."/dati_connessione.php") != true) {
+# Controllo se sono stati inseriti i data permanenti.
+if (@is_file(C_DATA_PATH."/dati_connessione.php") != true) {
 $show_bar = "NO";
 if ($tema[$id_utente] != "base") include("./themes/".$tema[$id_utente]."/php/head.php");
 else include("./includes/head.php");
@@ -68,7 +68,7 @@ break;
 if (@is_file("./COPYING")) $file_copying = "file <a href=\"COPYING\">COPYING</a>";
 else $file_copying = "<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\">AGPLv3</a> License";
 echo "<div style=\"text-align: center;\"><h3>".mex("Benvenuto a HOTELDRUID",$pag).".</h3><br><br>
-HOTELDRUID version ".C_PHPR_VERSIONE_TXT.", Copyright (C) 2001-2015 Marco M. F. De Santis<br>
+HOTELDRUID version ".C_PHP_VERSION_TXT.", Copyright (C) 2001-2015 Marco M. F. De Santis<br>
 HotelDruid comes with ABSOLUTELY NO WARRANTY; <br>for details see the $file_copying.<br>
 This is free software, and you are welcome to redistribute it<br>
  under certain conditions; see the $file_copying for details.<br>
@@ -100,7 +100,7 @@ else include("./includes/foot.php");
 else {
 
 if (C_CREA_ULTIMO_ACCESSO == "SI") {
-$fileaperto = @fopen(C_DATI_PATH."/ultimo_accesso","w+");
+$fileaperto = @fopen(C_DATA_PATH."/ultimo_accesso","w+");
 @fwrite($fileaperto,date("d-m-Y H:i:s"));
 @fclose($fileaperto);
 } # fine if (C_CREA_ULTIMO_ACCESSO == "SI")
@@ -204,11 +204,11 @@ $priv_ins_costi_agg = "s";
 
 
 
-if (@is_file(C_DATI_PATH."/dati_subordinazione.php")) {
-include(C_DATI_PATH."/dati_subordinazione.php");
+if (@is_file(C_DATA_PATH."/dati_subordinazione.php")) {
+include(C_DATA_PATH."/dati_subordinazione.php");
 $installazione_subordinata = "SI";
 if (!$numconnessione) {
-include(C_DATI_PATH."/dati_connessione.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 } # fine if (!$numconnessione)
@@ -236,12 +236,12 @@ else $form_aggiorna_sub = "";
 
 
 $anno_esistente = "SI";
-if (!@is_file(C_DATI_PATH."/selectperiodi$anno.1.php") or $anno_utente_attivato != "SI") {
+if (!@is_file(C_DATA_PATH."/selectperiodi$anno.1.php") or $anno_utente_attivato != "SI") {
 $anno_esistente = "NO";
-$anno_attuale = date("Y",(time() + (C_DIFF_ORE * 3600) - (C_GIORNI_NUOVO_ANNO * 86400)));
+$anno_attuale = date("Y",(time() + (C_DIFF_ORE * 3600) - (C_DAYS_NEW_YEAR * 86400)));
 if ($anno == $anno_attuale) {
 if (!$numconnessione) {
-include(C_DATI_PATH."/dati_connessione.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 } # fine if (!$numconnessione)
@@ -459,9 +459,9 @@ $inizio_select = risul_query($date_select,0,'datainizio');
 $fine_select = risul_query($date_select,0,'datafine');
 } # fine if (numlin_query($date_select) != 0)
 } # fine if ($numconnessione)
-mostra_menu_date(C_DATI_PATH."/selperiodimenu$anno.$id_utente.php","inizioperiodo",$inizio_select,"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selperiodimenu$anno.$id_utente.php","inizioperiodo",$inizio_select,"","",$id_utente,$tema);
 echo " ".mex("al",$pag)." ";
-mostra_menu_date(C_DATI_PATH."/selperiodimenu$anno.$id_utente.php","fineperiodo",$fine_select,"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selperiodimenu$anno.$id_utente.php","fineperiodo",$fine_select,"","",$id_utente,$tema);
 echo " (".mex("per",$pag)."
  <input type=\"text\" name=\"numpersone\" size=\"2\" maxlength=\"2\">
  ".mex("persone",$pag).")
@@ -729,9 +729,9 @@ if (controlla_anno($anno) == "NO" or $id_utente != 1 or $installazione_subordina
 else {
 
 echo "<br> ".mex("Non esiste l'anno ",$pag).$anno.mex(" nel database",$pag).". <br>";
-$anno_attuale = date("Y",(time() + (C_DIFF_ORE * 3600) - (C_GIORNI_NUOVO_ANNO * 86400)));
-if ($anno > $anno_attuale and @is_file(C_DATI_PATH."/selectperiodi$anno_attuale.1.php")) {
-$data_crea_anno = formatta_data(date("Y-m-d",mktime(0,0,0,1,(C_GIORNI_NUOVO_ANNO + 1),($anno_attuale + 1))),$stile_data);
+$anno_attuale = date("Y",(time() + (C_DIFF_ORE * 3600) - (C_DAYS_NEW_YEAR * 86400)));
+if ($anno > $anno_attuale and @is_file(C_DATA_PATH."/selectperiodi$anno_attuale.1.php")) {
+$data_crea_anno = formatta_data(date("Y-m-d",mktime(0,0,0,1,(C_DAYS_NEW_YEAR + 1),($anno_attuale + 1))),$stile_data);
 echo "<br>".mex("<span class=\"colred\">Avviso</span>: è consigliabile attendere fino al",$pag)." $data_crea_anno ".mex("per creare il nuovo anno, nel frattempo si possono aggiungere periodi oltre il",$pag)." $anno_attuale ".mex("dalla",$pag)."
  <a href=\"./visualizza_tabelle.php?anno=$anno_attuale&amp;id_sessione=$id_sessione&amp;tipo_tabella=periodi#agg_per\">".mex("tabella con i periodi e le tariffe",$pag)."</a> ".mex("anche senza creare un nuovo anno",$pag).".<br>";
 } # fine if ($anno > $anno_attuale and @is_file(C_DATI_PATH."/selectperiodi$anno_attuale.1.php"))
@@ -745,7 +745,7 @@ unset($tipo_periodi_obbligati);
 unset($checked_g);
 unset($checked_s);
 if (!$numconnessione) {
-include(C_DATI_PATH."/dati_connessione.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 } # fine if (!$numconnessione)
@@ -835,7 +835,7 @@ echo "<option value=\"".(($num1*12) + $num2)."\">".$n_mese[$num2].". $num1 ".mex
 } # fine for $num1
 echo "</select>.<br>";
 $anno_prec = $anno -1;
-if (@is_file(C_DATI_PATH."/selectperiodi$anno_prec.1.php")) {
+if (@is_file(C_DATA_PATH."/selectperiodi$anno_prec.1.php")) {
 echo "<label><input type=\"checkbox\" name=\"importa_anno_prec\" value=\"SI\" checked>
 ".mex("Importa dall'anno precedente prenotazioni, tariffe (compresi costi aggiuntivi), privilegi degli utenti e regole d'assegnazione.",$pag)."</label>";
 } # fine if (@is_file(C_DATI_PATH."/selectperiodi$anno_prec.1.php"))

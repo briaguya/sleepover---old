@@ -29,7 +29,7 @@ allunga_tempo_limite();
 global $lingua_mex,$LIKE,$ILIKE,$PHPR_DB_TYPE;
 $lingua_mex_orig = $lingua_mex;
 include_once("./includes/funzioni_menu.php");
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 $lingua_mex = $lingua[1];
 
 $tableanni = $PHPR_TAB_PRE."anni";
@@ -46,7 +46,7 @@ $tablerelclienti = $PHPR_TAB_PRE."relclienti";
 
 if ($PHPR_DB_TYPE == "mysql" or $PHPR_DB_TYPE == "mysqli") @esegui_query("SET default_storage_engine=MYISAM",1);
 
-$filelock = fopen(C_DATI_PATH."/anni.lock","w+");
+$filelock = fopen(C_DATA_PATH."/anni.lock","w+");
 if ($filelock) {
 flock($filelock,2);
 $anno_esistente = esegui_query("select * from $tableanni where idanni = $anno");
@@ -200,7 +200,7 @@ if ($mese_fine < 12) $mese_fine = 12;
 $anno_fine = $anno + 3;
 
 $idperiodi = 1;
-$fileaperto = fopen(C_DATI_PATH."/selectperiodi$anno.1.php","a+");
+$fileaperto = fopen(C_DATA_PATH."/selectperiodi$anno.1.php","a+");
 flock($fileaperto,2);
 $date_option = "";
 $n_date_menu = 0;
@@ -298,8 +298,8 @@ $date_option
 ?>");
 flock($fileaperto,3);
 fclose($fileaperto);
-if ($importa_anno_prec == "SI" and @is_file(C_DATI_PATH."/selperiodimenu".($anno - 1).".1.php")) estendi_menu_date(C_DATI_PATH."/selperiodimenu".($anno - 1).".1.php",C_DATI_PATH."/selperiodimenu$anno.1.php",$tipo_periodi,date("Y-m-d",mktime(0,0,0,$mese_ini,1,$anno)),$data_ini_agg,date("Y-m-d",mktime(0,0,0,($mese_fine + 1),1,$anno)),$anno,$pag);
-else copy(C_DATI_PATH."/selectperiodi$anno.1.php",C_DATI_PATH."/selperiodimenu$anno.1.php");
+if ($importa_anno_prec == "SI" and @is_file(C_DATA_PATH."/selperiodimenu".($anno - 1).".1.php")) estendi_menu_date(C_DATA_PATH."/selperiodimenu".($anno - 1).".1.php",C_DATA_PATH."/selperiodimenu$anno.1.php",$tipo_periodi,date("Y-m-d",mktime(0,0,0,$mese_ini,1,$anno)),$data_ini_agg,date("Y-m-d",mktime(0,0,0,($mese_fine + 1),1,$anno)),$anno,$pag);
+else copy(C_DATA_PATH."/selectperiodi$anno.1.php",C_DATA_PATH."/selperiodimenu$anno.1.php");
 
 $lista_clienti_importati = "";
 
@@ -315,7 +315,7 @@ $tipo_periodi_prec = esegui_query("select * from $tableanni where idanni = $anno
 $tipo_periodi_prec = risul_query($tipo_periodi_prec,0,'tipo_periodi');
 if ($tipo_periodi_prec != $tipo_periodi) $num_periodo_interferenza = 0;
 if ($num_periodo_interferenza == 0) {
-if ($silenzio != "SI") echo mex("Non ci sono periodi che riguardano il ",$pag).$anno.mex(" nel ",$pag).$anno_prec.mex(", o il giorno di inizio/fine locazione era differente, sono stati importati solo i dati riguardanti costi aggiuntivi, caparra, nome delle tariffe, privilegi degli utenti e regole di assegnazione 2 e 3",$pag).".<br>";
+if ($silenzio != "SI") echo mex("Non ci sono periodi che riguardano il ",$pag).$anno.mex(" nel ",$pag).$anno_prec.mex(", o il giorno di inizio/fine locazione era differente, sono stati importati solo i data riguardanti costi aggiuntivi, caparra, nome delle tariffe, privilegi degli utenti e regole di assegnazione 2 e 3",$pag).".<br>";
 } # fine if ($num_periodo_interferenza == 0)
 else {
 
@@ -572,7 +572,7 @@ if (defined("C_CARTELLA_CREA_MODELLI") and C_CARTELLA_CREA_MODELLI != "") {
 if (C_CARTELLA_DOC != "" and @is_dir(C_CARTELLA_CREA_MODELLI."/".C_CARTELLA_DOC)) $dir_salva_home = C_CARTELLA_DOC;
 else $dir_salva_home = "";
 } # fine if (defined("C_CARTELLA_CREA_MODELLI") and C_CARTELLA_CREA_MODELLI != "")
-else $dir_salva_home = C_DATI_PATH;
+else $dir_salva_home = C_DATA_PATH;
 $utenti = esegui_query("select * from ".$PHPR_TAB_PRE."utenti order by idutenti");
 $num_utenti = numlin_query($utenti);
 unset($nomi_contr_ut);
@@ -708,9 +708,9 @@ $priv_ins_tariffe_p = risul_query($privilegi_prec,$num1,'priv_ins_tariffe');
 $priv_ins_regole_p = risul_query($privilegi_prec,$num1,'priv_ins_regole');
 esegui_query("insert into $tableprivilegi (idutente,anno,regole1_consentite,tariffe_consentite,costi_agg_consentiti,contratti_consentiti,cassa_pagamenti,priv_ins_prenota,priv_mod_prenota,priv_mod_pers,priv_ins_clienti,prefisso_clienti,priv_ins_costi,priv_vedi_tab,priv_ins_tariffe,priv_ins_regole) values ('$idutente_p','$anno','$regole1_consentite_p','$tariffe_consentite_p','$costi_agg_consentiti_p','$contratti_consentiti_p','$cassa_pagamenti_p','$priv_ins_prenota_p','$priv_mod_prenota_p','$priv_mod_pers_p','$priv_ins_clienti_p','$prefisso_clienti_p','$priv_ins_costi_p','$priv_vedi_tab_p','$priv_ins_tariffe_p','$priv_ins_regole_p')");
 $lingua_mex = $lingua[$idutente_p];
-crea_menu_date(C_DATI_PATH."/selectperiodi$anno.1.php",C_DATI_PATH."/selectperiodi$anno.$idutente_p.php",$tipo_periodi);
-if (@is_file(C_DATI_PATH."/selperiodimenu".($anno - 1).".$idutente_p.php")) estendi_menu_date(C_DATI_PATH."/selperiodimenu".($anno - 1).".$idutente_p.php",C_DATI_PATH."/selperiodimenu$anno.$idutente_p.php",$tipo_periodi,date("Y-m-d",mktime(0,0,0,$mese_ini,1,$anno)),$data_ini_agg,date("Y-m-d",mktime(0,0,0,($mese_fine + 1),1,$anno)),$anno,$pag);
-else copy(C_DATI_PATH."/selectperiodi$anno.$idutente_p.php",C_DATI_PATH."/selperiodimenu$anno.$idutente_p.php");
+crea_menu_date(C_DATA_PATH."/selectperiodi$anno.1.php",C_DATA_PATH."/selectperiodi$anno.$idutente_p.php",$tipo_periodi);
+if (@is_file(C_DATA_PATH."/selperiodimenu".($anno - 1).".$idutente_p.php")) estendi_menu_date(C_DATA_PATH."/selperiodimenu".($anno - 1).".$idutente_p.php",C_DATA_PATH."/selperiodimenu$anno.$idutente_p.php",$tipo_periodi,date("Y-m-d",mktime(0,0,0,$mese_ini,1,$anno)),$data_ini_agg,date("Y-m-d",mktime(0,0,0,($mese_fine + 1),1,$anno)),$anno,$pag);
+else copy(C_DATA_PATH."/selectperiodi$anno.$idutente_p.php",C_DATA_PATH."/selperiodimenu$anno.$idutente_p.php");
 $lingua_mex = $lingua[1];
 $giorno_vedi_ini_sett = esegui_query("select valpersonalizza_num from $tablepersonalizza where idpersonalizza = 'giorno_vedi_ini_sett$anno_prec' and idutente = '$idutente_p'");
 if (numlin_query($giorno_vedi_ini_sett) == 1 and $tipo_periodi == "g") esegui_query("insert into $tablepersonalizza (idpersonalizza,valpersonalizza_num,idutente) values ('giorno_vedi_ini_sett$anno','".risul_query($giorno_vedi_ini_sett,0,"valpersonalizza_num")."','$idutente_p')");
@@ -763,7 +763,7 @@ crea_modello_disponibilita($percorso_cartella_modello,$anno_modello,$PHPR_TAB_PR
 } # fine if (@is_file("$percorso_cartella_modello/modello_disponibilita.php"))
 } # fine for $num_cart
 $lang_dir = opendir("./includes/lang/");
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 while ($ini_lingua = readdir($lang_dir)) {
 if ($ini_lingua != "." && $ini_lingua != "..") {
 $nome_file = mex2("mdl_disponibilita",$pag,$ini_lingua).".php";
@@ -843,9 +843,9 @@ else if ($silenzio != "SI") echo mex("Anno già creato",$pag).".<br>";
 
 flock($filelock,3);
 fclose($filelock);
-unlink(C_DATI_PATH."/anni.lock");
+unlink(C_DATA_PATH."/anni.lock");
 } # fine if ($filelock)
-else if ($silenzio != "SI") echo mex("Non ho i permessi di scrittura sulla cartella dati",$pag).".<br>";
+else if ($silenzio != "SI") echo mex("Non ho i permessi di scrittura sulla cartella data",$pag).".<br>";
 
 
 $lingua_mex = $lingua_mex_orig;

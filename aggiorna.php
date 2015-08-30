@@ -35,11 +35,11 @@
 $pag = "aggiorna.php";
 error_reporting(E_ALL ^ E_NOTICE);
 
-include("./costanti.php");
+include("./constants.php");
 
 
 $molto_vecchio = @is_file("./datipermanenti/connessione_db.inc");
-$vecchio = @is_file("./dati/connessione_db.php");
+$vecchio = @is_file("./data/connessione_db.php");
 if ($molto_vecchio) {
 $numconnessione = "SI";
 include ("./datipermanenti/connessione_db.inc");
@@ -50,13 +50,13 @@ include("./includes/funzioni_$PHPR_DB_TYPE.php");
 else {
 if ($vecchio) {
 $numconnessione = "SI";
-include ("./dati/connessione_db.php");
+include("./data/connessione_db.php");
 $PHPR_DB_TYPE = "postgresql";
 $PHPR_TAB_PRE = "";
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 } # fine if ($vecchio)
 else {
-include(C_DATI_PATH."/dati_connessione.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 } # fine else if ($vecchio)

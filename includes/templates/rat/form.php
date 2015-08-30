@@ -31,7 +31,7 @@ esegui_query("delete from $tablepersonalizza where idpersonalizza = 'ultime_sel_
 esegui_query("insert into $tablepersonalizza (idpersonalizza,valpersonalizza,idutente) values ('ultime_sel_crea_modelli','".aggslashdb($anno_modello).";;".aggslashdb($lingua_modello).";;".aggslashdb($perc_cart_mod_sel)."','$id_utente') ");
 
 
-# Prendo i dati dal file se già esistente
+# Prendo i data dal file se già esistente
 if ($template_file_name[$lingua_modello]) $nome_file = $template_file_name[$lingua_modello];
 else {
 $nome_file = mext_rat($template_file_name["ita"],$pag,$lingua_modello);
@@ -72,9 +72,9 @@ $numero_date_menu = $n_dates_menu;
 $numero_data = 0;
 for ($num1 = 0 ; $num1 < $num_periodi_date ; $num1++) {
 echo mex("dal",$pag)." ";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno_modello.1.php","inizioperiodo$num1",${"inizioperiodo".$num1},"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno_modello.1.php","inizioperiodo$num1",${"inizioperiodo".$num1},"","",$id_utente,$tema);
 echo " ".mex("al",$pag)." ";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno_modello.1.php","fineperiodo$num1",${"fineperiodo".$num1},"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno_modello.1.php","fineperiodo$num1",${"fineperiodo".$num1},"","",$id_utente,$tema);
 if (!${"intervalloperiodo".$num1}) ${"intervalloperiodo".$num1} = 1;
 echo ",&nbsp;".str_replace(" ","&nbsp;",mex("$parola_settimane di intervallo",$pag)).":&nbsp;
 <input type=\"text\" name=\"intervalloperiodo$num1\" value=\"".${"intervalloperiodo".$num1}."\" size=\"2\" maxlength=\"2\"><br>";

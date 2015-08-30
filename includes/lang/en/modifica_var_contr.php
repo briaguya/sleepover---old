@@ -13,7 +13,7 @@ case "è diverso da":  				$messaggio = "is different from"; break;
 case "allora porre":  				$messaggio = "then put"; break;
 case "uguale a":  				$messaggio = "equal to"; break;
 case "Nuova variabile personalizzata inserita":	$messaggio = "New custom variable inserted"; break;
-case "I dati inseriti sono <div style=\"display: inline; color: red;\">errati</div>":	$messaggio = "Inserted data are <div style=\"display: inline; color: red;\">wrong</div>"; break;
+case "I data inseriti sono <div style=\"display: inline; color: red;\">errati</div>":	$messaggio = "Inserted data are <div style=\"display: inline; color: red;\">wrong</div>"; break;
 case "Variabile personalizzata eliminata":  	$messaggio = "Custom variable deleted"; break;
 case "Nuova condizione inserita":  		$messaggio = "New condition inserted"; break;
 case "Condizione eliminata":  			$messaggio = "Condition deleted"; break;

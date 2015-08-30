@@ -2,8 +2,8 @@
 
 switch ($messaggio) {
 
-case "Inserimento dei dati permanenti":  	$messaggio = "Inserción de los datos permanentes."; break;
-case "Inserisci questi dati per poi creare il database":	$messaggio = "Inserta estos datos para crear la base de datos"; break;
+case "Inserimento dei data permanenti":  	$messaggio = "Inserción de los datos permanentes."; break;
+case "Inserisci questi data per poi creare il database":	$messaggio = "Inserta estos datos para crear la base de datos"; break;
 case "Nome del database da utilizzare":		$messaggio = "Nombre de la base de datos a utilizar"; break;
 case "Nome del computer a cui collegarsi":  	$messaggio = "Nombre del ordenador al que conectarse"; break;
 case "Numero della porta a cui collegarsi":  	$messaggio = "Número de la puerta a la que conectarse"; break;
@@ -21,12 +21,12 @@ case "Massimo numero di occupanti":  		$messaggio = "Máximo número de personas
 case "Numero (o nome) piano":  				$messaggio = "Número (o nombre) de piso"; break;
 case "Numero (o nome) casa":  				$messaggio = "Número (o nombre) de casa"; break;
 case "Non è stato possibile creare il database, controllare i privilegi dell' utente, il nome del database o se esiste già un database chiamato": 						$messaggio = "No ha sido posible crear la base de datos, controlar los privilegios del usuario, el nombre de la base de datos o si ya existe una base de datos llamada"; break;
-case "I dati inseriti per il collegamento al database non sono esatti o il database non è in ascolto":	$messaggio = "Los datos insertados para la conexión a la base de datos no son exactos o la base de datos no está a la escucha"; break;
+case "I data inseriti per il collegamento al database non sono esatti o il database non è in ascolto":	$messaggio = "Los datos insertados para la conexión a la base de datos no son exactos o la base de datos no está a la escucha"; break;
 case "se postgres assicurarsi che venga avviato con -i e di avere i permessi giusti in pg_hba.conf":	$messaggio = "si es postgresql asegurarse que sea arrancado con -i y tener los permisos necesarios en pg_hba.conf"; break;
 case "Torna indietro":  			$messaggio = "Vuelve atrás"; break;
 case "Dati inseriti":  				$messaggio = "Datos insertados"; break;
-case "Tutti i dati permanenti sono stati inseriti":	$messaggio = "Todos los datos permanentes han sido insertados"; break;
-case "Non ho i permessi di scrittura sulla directory dati, cambiarli e reiniziare l'installazione":	$messaggio = "No tengo los permisos de escritura sobre el directorio dati, cambiarlos y volver a iniciar la instalación"; break;
+case "Tutti i data permanenti sono stati inseriti":	$messaggio = "Todos los datos permanentes han sido insertados"; break;
+case "Non ho i permessi di scrittura sulla directory data, cambiarli e reiniziare l'installazione":	$messaggio = "No tengo los permisos de escritura sobre el directorio data, cambiarlos y volver a iniciar la instalación"; break;
 case "Tipo di database":			$messaggio = "Tipo de base de datos"; break;
 case "Database già esistente":			$messaggio = "Base de datos ya existente"; break;
 case "Se già esistente e non vuoto usare un prefisso non presente nel database per il nome delle tabelle":	$messaggio = "Si existe ya y no está vacío utilizar un prefijo no presente en la base de datos para el nombre de las tablas"; break;

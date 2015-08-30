@@ -22,13 +22,13 @@
 
 
 
-include("./costanti.php");
+include("./constants.php");
 include("./includes/funzioni.php");
 if (!defined("C_CREADB_TIPODB")) include("./includes/costanti.php");
 $pag = "creadb.php";
 $titolo = "HotelDruid: Crea Database";
 
-if (C_CREA_ULTIMO_ACCESSO != "SI" or !@is_file(C_DATI_PATH."/ultimo_accesso")) {
+if (C_CREA_ULTIMO_ACCESSO != "SI" or !@is_file(C_DATA_PATH."/ultimo_accesso")) {
 
 unset($numconnessione);
 unset($PHPR_TAB_PRE);
@@ -61,7 +61,7 @@ if (C_UTILIZZA_SEMPRE_DEFAULTS == "AUTO") $creabase = 1;
 
 
 
-if ($creabase and !@is_file(C_DATI_PATH."/dati_connessione.php")) {
+if ($creabase and !@is_file(C_DATA_PATH."/dati_connessione.php")) {
 $mostra_form_iniziale = "NO";
 $insappartamenti = "";
 
@@ -142,7 +142,7 @@ $encoding = "";
 if ($tipo_db == "sqlite") {
 if ($carica_estensione == "SI") dl("sqlite.so");
 $database_phprdb = str_replace("..","",$database_phprdb);
-$numconnessione = new SQLite3(C_DATI_PATH."/db_".$database_phprdb);
+$numconnessione = new SQLite3(C_DATA_PATH."/db_".$database_phprdb);
 $database_esistente = "SI";
 } # fine if ($tipo_db == "sqlite")
 
@@ -184,7 +184,7 @@ if ($character_set_db != "utf8" or $collation_db != "utf8_general_ci") esegui_qu
 } # fine if (numlin_query($character_set) == 1 and...
 } # fine if ($tipo_db == "mysql" or $tipo_db == "mysqli")
 if ($tipo_db == "sqlite") {
-$numconnessione = new SQLite3(C_DATI_PATH."/db_".$database_phprdb);
+$numconnessione = new SQLite3(C_DATA_PATH."/db_".$database_phprdb);
 } # fine if ($tipo_db == "sqlite")
 
 # creo la tabella appartamenti.
@@ -193,7 +193,7 @@ esegui_query("create table $tableappartamenti ( idappartamenti varchar(100) prim
 # creo la tabella clienti.
 $tableclienti = $prefisso_tab."clienti";
 esegui_query("create table $tableclienti (idclienti integer primary key, cognome varchar(70) not null, nome varchar(70), soprannome varchar(70), sesso char, titolo varchar(30), lingua varchar(14), datanascita date, cittanascita varchar(70), regionenascita varchar(70), nazionenascita varchar(70), documento varchar(70), scadenzadoc date, tipodoc varchar(70), cittadoc varchar(70), regionedoc varchar(70), nazionedoc  varchar(70), nazionalita varchar(70), nazione varchar(70), regione varchar(70), citta varchar(70), via varchar(70), numcivico varchar(30), cap varchar(30), telefono varchar(50), telefono2 varchar(50), telefono3 varchar(50), fax varchar(50), email text, cod_fiscale varchar(50), partita_iva varchar(50), commento text, max_num_ordine integer, idclienti_compagni text, doc_inviati text, datainserimento $DATETIME, hostinserimento varchar(50), utente_inserimento integer )");
-# creo la tabella di relazione tra clienti e dati vari.
+# creo la tabella di relazione tra clienti e data vari.
 $tablerelclienti = $prefisso_tab."relclienti";
 esegui_query("create table $tablerelclienti (idclienti integer, numero integer, tipo varchar(12), testo1 text, testo2 text, testo3 text, testo4 text, testo5 text, testo6 text, testo7 text, testo8 text, datainserimento $DATETIME, hostinserimento varchar(50), utente_inserimento integer )");
 crea_indice($tablerelclienti,"idclienti",$prefisso_tab."iidprelclienti");
@@ -203,7 +203,7 @@ esegui_query("create table $tableanni (idanni integer primary key, tipo_periodi 
 # creo la tabella versione ed inserisco quella corrente.
 $tableversioni = $prefisso_tab."versioni";
 esegui_query("create table $tableversioni (idversioni integer primary key, num_versione float4)");
-esegui_query("insert into $tableversioni (idversioni, num_versione) values ('1', '".C_PHPR_VERSIONE_NUM."')");
+esegui_query("insert into $tableversioni (idversioni, num_versione) values ('1', '".C_PHP_VERSION_NUM."')");
 esegui_query("insert into $tableversioni (idversioni, num_versione) values ('2', '100')");
 # creo la tabella per la lista delle nazioni.
 $tablenazioni = $prefisso_tab."nazioni";
@@ -262,7 +262,7 @@ esegui_query("insert into $tablepersonalizza (idpersonalizza,idutente,valpersona
 esegui_query("insert into $tablepersonalizza (idpersonalizza,idutente,valpersonalizza) values ('mostra_quadro_disp','1','')");
 esegui_query("insert into $tablepersonalizza (idpersonalizza,idutente,valpersonalizza) values ('ultime_sel_ins_prezzi','1','')");
 esegui_query("insert into $tablepersonalizza (idpersonalizza,idutente,valpersonalizza) values ('subordinazione','1','NO')");
-esegui_query("insert into $tablepersonalizza (idpersonalizza,idutente,valpersonalizza) values ('percorso_cartella_modello','1','".C_DATI_PATH."')");
+esegui_query("insert into $tablepersonalizza (idpersonalizza,idutente,valpersonalizza) values ('percorso_cartella_modello','1','".C_DATA_PATH."')");
 esegui_query("insert into $tablepersonalizza (idpersonalizza,idutente,valpersonalizza) values ('gest_cvc','1','NO')");
 if (defined("C_CARTELLA_CREA_MODELLI") and C_CARTELLA_CREA_MODELLI != "") {
 $c_cartella_crea_mod = C_CARTELLA_CREA_MODELLI;
@@ -309,13 +309,13 @@ crea_indice($tablerelinventario,"idbeneinventario",$prefisso_tab."iidprelinventa
 $tablecasse = $prefisso_tab."casse";
 esegui_query("create table $tablecasse (idcasse integer primary key, nome_cassa varchar(70), stato varchar(8), codice_cassa varchar(50), descrizione_cassa text, datainserimento $DATETIME, hostinserimento varchar(50), utente_inserimento integer) ");
 esegui_query("insert into $tablecasse (idcasse,datainserimento,hostinserimento,utente_inserimento) values ('1','".date("Y-m-d H:i:s",(time() + (C_DIFF_ORE * 3600)))."','$HOSTNAME','1')");
-# Creo la tabella con i dati dei documenti
+# Creo la tabella con i data dei documenti
 $tablecontratti = $prefisso_tab."contratti";
 esegui_query("create table $tablecontratti (numero integer, tipo varchar(8), testo $MEDIUMTEXT )");
 # Creo la tabella con la cache per interconnessioni, ecc.
 $tablecache = $prefisso_tab."cache";
 esegui_query("create table $tablecache (numero integer, tipo varchar(8), testo $MEDIUMTEXT, data_modifica $DATETIME, datainserimento $DATETIME )");
-# Creo la tabella con i dati delle interconnessioni
+# Creo la tabella con i data delle interconnessioni
 $tableinterconnessioni = $prefisso_tab."interconnessioni";
 esegui_query("create table $tableinterconnessioni (idlocale integer, idremoto1 text, idremoto2 text, tipoid varchar(12), nome_ic varchar(24), anno integer, datainserimento $DATETIME, hostinserimento varchar(50), utente_inserimento integer )");
 
@@ -336,7 +336,7 @@ ripristina_backup_contr($linee_backup,"SI","crea_backup.php",$prefisso_tab,"rimp
 
 
 # creo i file permanenti.
-if ($fileaperto = fopen(C_DATI_PATH."/dati_connessione.php","a+")) {
+if ($fileaperto = fopen(C_DATA_PATH."/dati_connessione.php","a+")) {
 if (defined('C_EXT_DB_DATA_PATH') and C_EXT_DB_DATA_PATH) {
 if ($HOTELD_DB_TYPE) $tipo_db = "";
 if ($HOTELD_DB_NAME) $database_phprdb = "";
@@ -383,15 +383,15 @@ if (\$HOTELD_TAB_PRE) \$PHPR_TAB_PRE = \$HOTELD_TAB_PRE;
 ");
 fwrite($fileaperto,"?>");
 fclose($fileaperto);
-@chmod(C_DATI_PATH."/dati_connessione.php", 0640);
+@chmod(C_DATA_PATH."/dati_connessione.php", 0640);
 if ($lingua != "ita" and (!@is_dir("./includes/lang/".$lingua) or strlen($lingua) > 3)) $lingua = "en";
-$fileaperto = fopen(C_DATI_PATH."/lingua.php","w+");
+$fileaperto = fopen(C_DATA_PATH."/lingua.php","w+");
 fwrite($fileaperto,"<?php
 \$lingua[1] = \"$lingua\";
 ?>");
 fclose($fileaperto);
 if ($nomeappartamenti != "appartamenti") $nomeappartamenti = "camere";
-$fileaperto = fopen(C_DATI_PATH."/unit.php","w+");
+$fileaperto = fopen(C_DATA_PATH."/unit.php","w+");
 fwrite($fileaperto,"<?php
 ");
 if ($nomeappartamenti == "appartamenti") {
@@ -411,7 +411,7 @@ fwrite($fileaperto,"\$unit['special'] = 0;
 for (\$num1 = 0 ; \$num1 < count(\$car_spec) ; \$num1++) if (substr(\$unit['p_n'],0,strlen(\$car_spec[\$num1])) == \$car_spec[\$num1]) \$unit['special'] = 1;
 ?>");
 fclose($fileaperto);
-$fileaperto = fopen(C_DATI_PATH."/unit_single.php","w+");
+$fileaperto = fopen(C_DATA_PATH."/unit_single.php","w+");
 fwrite($fileaperto,"<?php
 \$unit['s_n'] = \$trad_var['bed'];
 \$unit['p_n'] = \$trad_var['beds'];
@@ -421,15 +421,15 @@ fwrite($fileaperto,"<?php
 for (\$num1 = 0 ; \$num1 < count(\$car_spec) ; \$num1++) if (substr(\$unit['p_n'],0,strlen(\$car_spec[\$num1])) == \$car_spec[\$num1]) \$unit['special'] = 1;
 ?>");
 fclose($fileaperto);
-$fileaperto = fopen(C_DATI_PATH."/tema.php","w+");
+$fileaperto = fopen(C_DATA_PATH."/tema.php","w+");
 fwrite($fileaperto,"<?php
 \$parole_sost = 0;
 \$tema[1] = \"sim\";
 ?>");
 fclose($fileaperto);
-$fileaperto = fopen(C_DATI_PATH."/versione.php","w+");
+$fileaperto = fopen(C_DATA_PATH."/versione.php","w+");
 fwrite($fileaperto,"<?php
-define(C_VERSIONE_ATTUALE,".C_PHPR_VERSIONE_NUM.");
+define(C_VERSIONE_ATTUALE,".C_PHP_VERSION_NUM.");
 define(C_DIFF_ORE,0);
 ?>");
 fclose($fileaperto);
@@ -445,7 +445,7 @@ if (C_NASCONDI_MARCA == "SI" and @is_file(C_CARTELLA_CREA_MODELLI."/index.html")
 
 if (C_UTILIZZA_SEMPRE_DEFAULTS != "AUTO") {
 # seconda form di inserimento (appartamenti).
-echo "<br>".mex2("Inserisci ora i dati sugli appartamenti",'unit.php',$lingua)." (<b>".mex2("almeno il numero, diverso per ogni appartamento",'unit.php',$lingua)."</b>).<br>
+echo "<br>".mex2("Inserisci ora i data sugli appartamenti",'unit.php',$lingua)." (<b>".mex2("almeno il numero, diverso per ogni appartamento",'unit.php',$lingua)."</b>).<br>
 <form accept-charset=\"utf-8\" method=\"post\" action=\"creadb.php\"><div>
 <input type=\"hidden\" name=\"numappartamenti\" value=\"$numappartamenti\">
 <input type=\"hidden\" name=\"numletti\" value=\"$numletti\">
@@ -494,7 +494,7 @@ echo "<div style=\"text-align: center;\">";
 #echo "<input type=\"checkbox\" name=\"assegna_vicini_nc\" value=\"SI\">
 #Assegna come vicini gli appartamenti nella stessa casa (invalida i campi dei singoli appartamenti).<br>
 #<input type=\"checkbox\" name=\"assegna_vicini_np\" value=\"SI\">Devono essere anche sullo stesso piano.<br>";
-echo "<input class=\"sbutton\" type=\"submit\" name=\"insappartamenti\" value=\"".mex2("Inserisci i dati sugli appartamenti",'unit.php',$lingua)."\">
+echo "<input class=\"sbutton\" type=\"submit\" name=\"insappartamenti\" value=\"".mex2("Inserisci i data sugli appartamenti",'unit.php',$lingua)."\">
 </div><br></div></form>";
 } # fine if (C_UTILIZZA_SEMPRE_DEFAULTS != "AUTO")
 else $insappartamenti = 1;
@@ -541,7 +541,7 @@ $numconnessione = mysql_connect("$host_phprdb:$port_phprdb", "$user_phprdb", "$p
 } # fine if ($tipo_db == "mysql")
 esegui_query("drop database $database_phprdb");
 } # fine if ($database_esistente == "NO")
-echo "<br>".mex2("Non ho i permessi di scrittura sulla directory dati, cambiarli e reiniziare l'installazione",$pag,$lingua).".<br>";
+echo "<br>".mex2("Non ho i permessi di scrittura sulla directory data, cambiarli e reiniziare l'installazione",$pag,$lingua).".<br>";
 $permessi_scrittura_controllati = "SI";
 $torna_indietro = "SI";
 } # fine else if ($fileaperto = @fopen(C_DATI_PATH."/dati_connessione.php","a+"))
@@ -555,7 +555,7 @@ $torna_indietro = "SI";
 } # fine else if ($query)
 } # fine if ($numconnessione)
 else {
-echo "<br>".mex2("I dati inseriti per il collegamento al database non sono esatti o il database non è in ascolto",$pag,$lingua);
+echo "<br>".mex2("I data inseriti per il collegamento al database non sono esatti o il database non è in ascolto",$pag,$lingua);
 if ($tipo_db == "postgresql") echo " (".mex2("se postgres assicurarsi che venga avviato con -i e di avere i permessi giusti in pg_hba.conf",$pag,$lingua).")";
 echo ".<br>";
 $torna_indietro = "SI";
@@ -566,11 +566,11 @@ echo "<br>".mex2("Il prefisso del nome delle tabelle è sbagliato (accettate sol
 $torna_indietro = "SI";
 } # fine else if (!$prefisso_tab or preg_match('/^[_a-z][_0-9a-z]*$/',$prefisso_tab))
 if ($permessi_scrittura_controllati != "SI") {
-$fileaperto = @fopen(C_DATI_PATH."/prova.tmp","a+");
-if (!$fileaperto) echo "<br>".mex2("Non ho i permessi di scrittura sulla directory dati, cambiarli e reiniziare l'installazione",$pag,$lingua).".<br>";
+$fileaperto = @fopen(C_DATA_PATH."/prova.tmp","a+");
+if (!$fileaperto) echo "<br>".mex2("Non ho i permessi di scrittura sulla directory data, cambiarli e reiniziare l'installazione",$pag,$lingua).".<br>";
 else {
 fclose($fileaperto);
-unlink(C_DATI_PATH."/prova.tmp");
+unlink(C_DATA_PATH."/prova.tmp");
 } # fine else if (!$fileaperto)
 } # fine if ($permessi_scrittura_controllati != "SI")
 if ($torna_indietro == "SI") {
@@ -584,19 +584,19 @@ echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"creadb.php\"><div>
 
 
 
-// inserisco i dati forniti nella tabella appartamenti e creo il file selezione appartamenti.
-if ($insappartamenti and !@is_file(C_DATI_PATH."/selectappartamenti.php")) {
+// inserisco i data forniti nella tabella appartamenti e creo il file selezione appartamenti.
+if ($insappartamenti and !@is_file(C_DATA_PATH."/selectappartamenti.php")) {
 $mostra_form_iniziale = "NO";
 if (!controlla_num_pos($numletti) == "NO") $numletti = 0;
 if ((!$numappartamenti and !$numletti) or controlla_num_pos($numappartamenti) == "NO") $numappartamenti = 5;
 unset($lingua);
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 $lingua_mex = $lingua[1];
-include(C_DATI_PATH."/dati_connessione.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include_once("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 $tableappartamenti = $PHPR_TAB_PRE."appartamenti";
-$fileaperto = fopen(C_DATI_PATH."/selectappartamenti.php","a+");
+$fileaperto = fopen(C_DATA_PATH."/selectappartamenti.php","a+");
 fwrite($fileaperto,"<?php \necho \"\n");
 $zeri = (string) "0000000000000000000000000000";
 $lettere = (string) "abcdefghijklmnopqrstuvwxyz";
@@ -681,8 +681,8 @@ esegui_query("update $tableappartamenti set app_vicini = '$app_vicini' where ida
 } # fine for $num1
 } # fine if ($assegna_vicini_nc == "SI")
 
-if (C_UTILIZZA_SEMPRE_DEFAULTS == "AUTO" and @is_file(C_DATI_PATH."/ini.php")) {
-include(C_DATI_PATH."/ini.php");
+if (C_UTILIZZA_SEMPRE_DEFAULTS == "AUTO" and @is_file(C_DATA_PATH."/ini.php")) {
+include(C_DATA_PATH."/ini.php");
 $admin = "";
 if (defined('C_ADMIN_NAME')) $admin = C_ADMIN_NAME;
 if (htmlspecialchars($admin) != $admin) $admin = "";
@@ -706,11 +706,11 @@ for ($num1 = 0 ; $num1 < 19 ; $num1++) $salt .= substr($valori,rand(0,60),1);
 } # fine else if (defined('C_ADMIN_SALT'))
 for ($num1 = $md5p ; $num1 < 15 ; $num1++) $passw = md5($passw.substr($salt,0,(20 - $num1)));
 esegui_query("update $tableutenti set password = '$passw', salt = '$salt', tipo_pass = '5' where idutenti = '1'");
-$fileaperto = fopen(C_DATI_PATH."/abilita_login","w+");
+$fileaperto = fopen(C_DATA_PATH."/abilita_login","w+");
 fclose($fileaperto);
 } # fine if (strcmp($passw,""))
 } # fine if (strcmp($admin,""))
-@unlink(C_DATI_PATH."/ini.php");
+@unlink(C_DATA_PATH."/ini.php");
 } # fine if (C_UTILIZZA_SEMPRE_DEFAULTS == "AUTO" and @is_file(C_DATI_PATH."/ini.php"))
 
 $tablemessaggi = $PHPR_TAB_PRE."messaggi";
@@ -739,16 +739,16 @@ $testo = aggslashdb($testo);
 $datainserimento = date("Y-m-d H:i:s",(time() + (C_DIFF_ORE * 3600)));
 esegui_query("insert into $tablemessaggi (idmessaggi,tipo_messaggio,idutenti,idutenti_visto,datavisione,mittente,testo,datainserimento) values ('1','sistema',',1,',',1,','$datainserimento','1','$testo','$datainserimento')");
 
-echo mex("Dati inseriti",$pag)."!<br>".mex("Tutti i dati permanenti sono stati inseriti",$pag).".<br>";
+echo mex("Dati inseriti",$pag)."!<br>".mex("Tutti i data permanenti sono stati inseriti",$pag).".<br>";
 echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"inizio.php\"><div>
 <input type=\"hidden\" name=\"nuovo_mess\" value=\"1\">
 <input class=\"sbutton\" type=\"submit\" name=\"ok\" value=\"OK\"><br>
 </div></form>";
 if (C_CREA_ULTIMO_ACCESSO == "SI") {
-$fileaperto = @fopen(C_DATI_PATH."/ultimo_accesso","w+");
+$fileaperto = @fopen(C_DATA_PATH."/ultimo_accesso","w+");
 @fwrite($fileaperto,date("d-m-Y H:i:s"));
 @fclose($fileaperto);
-@chmod(C_DATI_PATH."/ultimo_accesso",0644);
+@chmod(C_DATA_PATH."/ultimo_accesso",0644);
 } # fine if (C_CREA_ULTIMO_ACCESSO == "SI")
 } # fine if ($insappartamenti and !@is_file(C_DATI_PATH."/selectappartamenti.php"))
 
@@ -758,8 +758,8 @@ $fileaperto = @fopen(C_DATI_PATH."/ultimo_accesso","w+");
 if ($mostra_form_iniziale != "NO") {
 
 // prima form di inserimento
-echo "<h4>".mex2("Inserimento dei dati permanenti",$pag,$lingua)."</h4><br>
-".mex2("Inserisci questi dati per poi creare il database",$pag,$lingua).".<br>
+echo "<h4>".mex2("Inserimento dei data permanenti",$pag,$lingua)."</h4><br>
+".mex2("Inserisci questi data per poi creare il database",$pag,$lingua).".<br>
 <br>
 <form accept-charset=\"utf-8\" method=\"post\" action=\"creadb.php\"><div>
 ".mex2("Tipo di database",$pag,$lingua).": 

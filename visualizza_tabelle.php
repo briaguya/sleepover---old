@@ -23,8 +23,8 @@
 $pag = "visualizza_tabelle.php";
 $titolo = "HotelDruid: Visualizza Tabelle";
 
-include("./costanti.php");
-include(C_DATI_PATH."/dati_connessione.php");
+include("./constants.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 include("./includes/funzioni.php");
@@ -279,7 +279,7 @@ $priv_canc_costi_agg = "s";
 } # fine else if ($id_utente != 1)
 if ($anno_utente_attivato == "SI") {
 
-if (@is_file(C_DATI_PATH."/dati_subordinazione.php")) {
+if (@is_file(C_DATA_PATH."/dati_subordinazione.php")) {
 $installazione_subordinata = "SI";
 $inserimento_nuovi_clienti = "NO";
 $modifica_clienti = "NO";
@@ -627,7 +627,7 @@ $oggi = esegui_query("select idperiodi,datainizio,datafine from $tableperiodi wh
 if (numlin_query($oggi) != 0) {
 $oggi_ini = risul_query($oggi,0,'datainizio');
 $oggi_fine = risul_query($oggi,0,'datafine');
-include(C_DATI_PATH."/selperiodimenu$anno.$id_utente.php");
+include(C_DATA_PATH."/selperiodimenu$anno.$id_utente.php");
 $num_periodi_date = count($d_increment);
 if ($num_periodi_date > 1 or $d_increment[0] > 1) {
 for ($num1 = 0 ; $num1 < $num_periodi_date ; $num1++) {
@@ -689,9 +689,9 @@ if (numlin_query($date_select) != 0) {
 $inizio_select = risul_query($date_select,0,'datainizio');
 $fine_select = risul_query($date_select,0,'datafine');
 } # fine if (numlin_query($date_select) != 0)
-mostra_menu_date(C_DATI_PATH."/selperiodimenu$anno.$id_utente.php","cerca_ini",$inizio_select,"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selperiodimenu$anno.$id_utente.php","cerca_ini",$inizio_select,"","",$id_utente,$tema);
 echo " ".mex("al",$pag)." ";
-mostra_menu_date(C_DATI_PATH."/selperiodimenu$anno.$id_utente.php","cerca_fine",$fine_select,1,"",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selperiodimenu$anno.$id_utente.php","cerca_fine",$fine_select,1,"",$id_utente,$tema);
 echo " <input class=\"sbutton\" type=\"submit\" value=\"".mex("Vedi",$pag)."\">
 </div></form></td>";
 } # fine if (!$cerca_prenota or $cerca_prenota == "tutte")
@@ -950,7 +950,7 @@ if ($suff_file_corr) {
 $resto_nome_contr = substr($contr_corr,strlen($nome_contr));
 if (substr($resto_nome_contr,0,1) != "_" or substr($resto_nome_contr,5,1) != "_") $anno_doc = "";
 else $anno_doc = substr($resto_nome_contr,1,4);
-if ($anno_doc == $anno or ($anno_doc == $anno_corrente and !@is_file(C_DATI_PATH."/selectperiodi$anno_corrente.1.php"))) {
+if ($anno_doc == $anno or ($anno_doc == $anno_corrente and !@is_file(C_DATA_PATH."/selectperiodi$anno_corrente.1.php"))) {
 if (preg_replace("/_[0-9]{4,4}_[0-9]{5,8}(-[0-9]{5,8})?(_[0-9]+(-[0-9]+)?)*\.$suff_file_corr/","",$resto_nome_contr) == "") {
 $n_contr_corr = explode("_",$resto_nome_contr);
 $n_contr_corr = $n_contr_corr[2];
@@ -1052,8 +1052,8 @@ $c_idfineperiodo_q--;
 } # fine if ($opz_cerc_pren == "part")
 $prenotazioni = esegui_query("select * from $tableprenota where $iddatainizio < $c_idfineperiodo_q and $iddatafine >= $c_idinizioperiodo_q and idclienti != '0' $condizione_prenota_proprie order by $ordine_prenota");
 $num_prenotazioni = numlin_query($prenotazioni);
-if ($mos_tut_dat == "SI") include(C_DATI_PATH."/selectperiodi$anno.$id_utente.php");
-else include(C_DATI_PATH."/selperiodimenu$anno.$id_utente.php");
+if ($mos_tut_dat == "SI") include(C_DATA_PATH."/selectperiodi$anno.$id_utente.php");
+else include(C_DATA_PATH."/selperiodimenu$anno.$id_utente.php");
 $lista_date0 = explode("<option value=\"$cerca_ini\">",$dates_options_list);
 $lista_date1 = explode("<option value=\"",$lista_date0[1]);
 if (substr($lista_date1[2],0,10) == $cerca_fine) $num_fine = 2;
@@ -2779,7 +2779,7 @@ $periodi = esegui_query("select * from $tableperiodi order by idperiodi");
 $num_periodi = numlin_query($periodi);
 $utenti = esegui_query("select * from $tableutenti order by idutenti");
 $num_utenti = numlin_query($utenti);
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 $lingua_mex2 = $lingua_mex;
 
 for ($num_utente = 0 ; $num_utente < $num_utenti ; $num_utente++) {
@@ -2795,8 +2795,8 @@ $numgiorno = risul_query($periodi,0,'datainizio');
 $numgiorno = explode("-",$numgiorno);
 $mese_ini = $numgiorno[1];
 $numgiorno = $numgiorno[2];
-$selectperiodi_vecchio = implode("",file(C_DATI_PATH."/selectperiodi$anno.$id_utente_cambia.php"));
-$fileaperto = fopen(C_DATI_PATH."/selectperiodi$anno.$id_utente_cambia.php","w+");
+$selectperiodi_vecchio = implode("",file(C_DATA_PATH."/selectperiodi$anno.$id_utente_cambia.php"));
+$fileaperto = fopen(C_DATA_PATH."/selectperiodi$anno.$id_utente_cambia.php","w+");
 flock($fileaperto,2);
 $date_option = "";
 $n_date_menu = 0;
@@ -2888,8 +2888,8 @@ $date_option
 flock($fileaperto,3);
 fclose($fileaperto);
 
-$selperiodimenu_vecchio = implode("",file(C_DATI_PATH."/selperiodimenu$anno.$id_utente_cambia.php"));
-if ($selperiodimenu_vecchio == $selectperiodi_vecchio) copy (C_DATI_PATH."/selectperiodi$anno.$id_utente_cambia.php",C_DATI_PATH."/selperiodimenu$anno.$id_utente_cambia.php");
+$selperiodimenu_vecchio = implode("",file(C_DATA_PATH."/selperiodimenu$anno.$id_utente_cambia.php"));
+if ($selperiodimenu_vecchio == $selectperiodi_vecchio) copy (C_DATA_PATH."/selectperiodi$anno.$id_utente_cambia.php",C_DATA_PATH."/selperiodimenu$anno.$id_utente_cambia.php");
 else {
 $date_option_agg_ut = $date_option_agg;
 if ($tipo_periodi == "g") {
@@ -2918,9 +2918,9 @@ unset($m_ini_menu);
 unset($d_ini_menu);
 unset($n_dates_menu);
 unset($d_increment);
-include(C_DATI_PATH."/selperiodimenu$anno.$id_utente_cambia.php");
+include(C_DATA_PATH."/selperiodimenu$anno.$id_utente_cambia.php");
 $num_periodi_vecchi = count($y_ini_menu);
-$fileaperto = fopen(C_DATI_PATH."/selperiodimenu$anno.$id_utente_cambia.php","w+");
+$fileaperto = fopen(C_DATA_PATH."/selperiodimenu$anno.$id_utente_cambia.php","w+");
 flock($fileaperto,2);
 fwrite($fileaperto,"<?php 
 
@@ -3000,7 +3000,7 @@ if ($cancella_anno and $id_utente == 1 and (C_CANCELLA_ANNO_ATTUALE != "NO" or $
 if (!$continua) {
 $tabelle_lock = array("$tableanni");
 $tabelle_lock = lock_tabelle($tabelle_lock);
-echo "<br><big>".mex("<b style=\"color: red;\">ATTENZIONE</b>: premendo su <b>\"<i>Continua</i>\"</b>, tutti i dati riguardanti l'anno",$pag)." <b><i>$anno</i></b> ".mex("verranno <b>cancellati</b>",$pag)."!</big><br><br>
+echo "<br><big>".mex("<b style=\"color: red;\">ATTENZIONE</b>: premendo su <b>\"<i>Continua</i>\"</b>, tutti i data riguardanti l'anno",$pag)." <b><i>$anno</i></b> ".mex("verranno <b>cancellati</b>",$pag)."!</big><br><br>
 <div style=\"text-align: center;\"><form accept-charset=\"utf-8\" method=\"post\" action=\"visualizza_tabelle.php\"><div>
 <input type=\"hidden\" name=\"anno\" value=\"$anno\">
 <input type=\"hidden\" name=\"id_sessione\" value=\"$id_sessione\">
@@ -3018,14 +3018,14 @@ unlock_tabelle($tabelle_lock);
 } # fine if (!$continua)
 
 else {
-$filelock = fopen(C_DATI_PATH."/anni.lock","w+");
+$filelock = fopen(C_DATA_PATH."/anni.lock","w+");
 flock($filelock,2);
 $tabelle_lock = array($tableanni,$tableprenota,$tablecostiprenota,$tablerclientiprenota,$tablenometariffe,$tableperiodi,$tablecosti,$tableregole,$tablesoldi,$tableinterconnessioni,$tablepersonalizza,$tableprivilegi);
 $tabelle_lock = lock_tabelle($tabelle_lock);
 $anno_esiste = esegui_query("select * from $tableanni where idanni = $anno");
 if (numlin_query($anno_esiste) > 0) {
-if (@unlink(C_DATI_PATH."/selectperiodi$anno.$id_utente.php")) {
-unlink(C_DATI_PATH."/selperiodimenu$anno.$id_utente.php");
+if (@unlink(C_DATA_PATH."/selectperiodi$anno.$id_utente.php")) {
+unlink(C_DATA_PATH."/selperiodimenu$anno.$id_utente.php");
 esegui_query("drop table $tableprenota");
 esegui_query("drop table $tablecostiprenota");
 esegui_query("drop table $tablerclientiprenota");
@@ -3040,8 +3040,8 @@ esegui_query("delete from $tableinterconnessioni where anno = '$anno'");
 $utenti_privilegi = esegui_query("select idutente from $tableprivilegi where anno = '$anno' ");
 for ($num1 = 0 ; $num1 < numlin_query($utenti_privilegi) ; $num1++) {
 $idutente_priv = risul_query($utenti_privilegi,$num1,'idutente');
-unlink(C_DATI_PATH."/selectperiodi$anno.$idutente_priv.php");
-unlink(C_DATI_PATH."/selperiodimenu$anno.$idutente_priv.php");
+unlink(C_DATA_PATH."/selectperiodi$anno.$idutente_priv.php");
+unlink(C_DATA_PATH."/selperiodimenu$anno.$idutente_priv.php");
 } # fine for $num1
 esegui_query("delete from $tableprivilegi where anno = '$anno'");
 echo mex("L'anno",$pag)." $anno ".mex("è stato cancellato dal batabase",$pag).".<br>";
@@ -3050,12 +3050,12 @@ else $cancellato = "NO";
 } # fine if (numlin_query($anno_esiste) > 0)
 else $cancellato = "NO";
 if ($cancellato == "NO") {
-echo mex("Non è stato possibile cancellare l'anno",$pag)." $anno ".mex("dal database, controllare i permessi sulla cartella dati",$pag).".<br>";
+echo mex("Non è stato possibile cancellare l'anno",$pag)." $anno ".mex("dal database, controllare i permessi sulla cartella data",$pag).".<br>";
 } # fine if ($cancellato == "NO")
 unlock_tabelle($tabelle_lock);
 flock($filelock,3);
 fclose($filelock);
-unlink(C_DATI_PATH."/anni.lock");
+unlink(C_DATA_PATH."/anni.lock");
 } # fine else if (!$continua)
 } # fine if ($cancella_anno and $id_utente == 1 and (C_CANCELLA_ANNO_ATTUALE != "NO" or $anno != $anno_attuale))
 
@@ -3298,7 +3298,7 @@ if (!numlin_query($periodi) or $oggi > ($anno + 1)."-01-10") $periodi = esegui_q
 } # fine else if ($mos_tutti_per == "SI")
 $num_periodi = numlin_query($periodi);
 
-include(C_DATI_PATH."/selperiodimenu$anno.$id_utente.php");
+include(C_DATA_PATH."/selperiodimenu$anno.$id_utente.php");
 $raggr_per = 0;
 $date_menu = array();
 for ($num1 = 0 ; $num1 <  count($d_increment) ; $num1++) if ($d_increment[$num1] != 1) $raggr_per = 1;
@@ -4778,7 +4778,7 @@ echo mex("[1]L'appartamento",'unit.php')." <b>$n_letto</b> ".mex("[1]è stato ag
 if ($crea_app == "SI" and $inserire != "NO") {
 $id_appartamenti = esegui_query("select idappartamenti from $tableappartamenti order by idappartamenti ");
 $num_appartamenti = numlin_query($id_appartamenti);
-$fileaperto = fopen(C_DATI_PATH."/selectappartamenti.php","w+");
+$fileaperto = fopen(C_DATA_PATH."/selectappartamenti.php","w+");
 flock($fileaperto,2);
 fwrite($fileaperto,"<?php \necho \"\n");
 for ( $num = 0; $num < $num_appartamenti; $num = $num + 1) {
@@ -5756,7 +5756,7 @@ return $max_contr;
 if ($canc_doc and $priv_cancella_contratti != "n") {
 if (controlla_num_pos($num_contr) == "SI" and $num_doc_canc and controlla_num_pos($num_doc_canc) == "SI" and controlla_anno($anno_doc_canc) == "SI") {
 if ($attiva_contratti_consentiti == "n" or $contratti_consentiti_vett[$num_contr] == "SI") {
-if ($anno_doc_canc == $anno or ($anno_doc_canc == $anno_corrente and !@is_file(C_DATI_PATH."/selectperiodi$anno_corrente.1.php"))) {
+if ($anno_doc_canc == $anno or ($anno_doc_canc == $anno_corrente and !@is_file(C_DATA_PATH."/selectperiodi$anno_corrente.1.php"))) {
 $dir_salva = "";
 $max_contr_esist = trova_max_contr_salv($num_contr,$anno_doc_canc,$dir_salva,$nome_max_contr,$suff_file,$nomi_contratti,$tablecontratti);
 if ($max_contr_esist == $num_doc_canc) {
@@ -5798,7 +5798,7 @@ if (unlink("$dir_salva/$nome_max_contr")) echo "<small><b>".ucfirst(mex("documen
 
 if ($upload_doc) {
 if (controlla_num_pos($num_contr) == "SI" and controlla_anno($anno_doc_upload) == "SI") {
-if ($anno_doc_upload == $anno or ($anno_doc_upload == $anno_corrente and !@is_file(C_DATI_PATH."/selectperiodi$anno_corrente.1.php"))) {
+if ($anno_doc_upload == $anno or ($anno_doc_upload == $anno_corrente and !@is_file(C_DATA_PATH."/selectperiodi$anno_corrente.1.php"))) {
 if ($attiva_contratti_consentiti == "n" or $contratti_consentiti_vett[$num_contr] == "SI") {
 if (!$file_doc_upload) {
 if ($HTTP_POST_FILES['file_doc_upload']['tmp_name']) $file_doc_upload = $HTTP_POST_FILES['file_doc_upload']['tmp_name'];
@@ -5871,7 +5871,7 @@ if ($suff_file_corr) {
 $resto_nome_contr = substr($contr_corr,strlen($nome_contr));
 if (substr($resto_nome_contr,0,1) != "_" or substr($resto_nome_contr,5,1) != "_") $anno_doc = "";
 else $anno_doc = substr($resto_nome_contr,1,4);
-if ($anno_doc == $anno or ($anno_doc == $anno_corrente and !@is_file(C_DATI_PATH."/selectperiodi$anno_corrente.1.php"))) {
+if ($anno_doc == $anno or ($anno_doc == $anno_corrente and !@is_file(C_DATA_PATH."/selectperiodi$anno_corrente.1.php"))) {
 if (preg_replace("/_[0-9]{4,4}_[0-9]{5,8}(-[0-9]{5,8})?(_[0-9]+(-[0-9]+)?)*\.$suff_file_corr/","",$resto_nome_contr) == "") {
 $n_contr_corr = explode("_",$resto_nome_contr);
 $n_contr_corr = $n_contr_corr[2];
@@ -6056,7 +6056,7 @@ if ($attiva_contratti_consentiti == "n" or $contratti_consentiti_vett[$num_contr
 $anno_doc = $anno;
 $max_contr_esist = trova_max_contr_salv($num_contr,$anno_doc,$dir_salva,$nome_max_contr,$suff_file,$nomi_contratti,$tablecontratti);
 $nuovo_n_contr = $max_contr_esist + 1;
-if ($anno_doc != $anno_corrente and !@is_file(C_DATI_PATH."/selectperiodi$anno_corrente.1.php")) $anno_doc = $anno_corrente;
+if ($anno_doc != $anno_corrente and !@is_file(C_DATA_PATH."/selectperiodi$anno_corrente.1.php")) $anno_doc = $anno_corrente;
 echo "<tr><td colspan=\"4\">
 <form accept-charset=\"utf-8\" enctype=\"multipart/form-data\" method=\"post\" action=\"$pag\"><div>
 <input type=\"hidden\" name=\"MAX_FILE_SIZE\" value=\"900000000\">

@@ -24,8 +24,8 @@ $pag = "prenota.php";
 $titolo = "HotelDruid: Prenota";
 
 
-include("./costanti.php");
-include(C_DATI_PATH."/dati_connessione.php");
+include("./constants.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 include("./includes/funzioni.php");
@@ -264,7 +264,7 @@ $num_tipologie = $num_tipologie + $num_tipologie_da_aggiungere;
 
 
 
-# Se si viene da clienti.php e si devono ancora inserire i dati del cliente
+# Se si viene da clienti.php e si devono ancora inserire i data del cliente
 if ($inserire_dati_cliente == "SI") {
 if ($cognome == "") {
 echo mex("É necessario inserire il cognome del cliente",$pag).".<br>";
@@ -415,7 +415,7 @@ unset($num_app_richiesti);
 unset($lista_app);
 unset($spezzetta);
 
-$file_interconnessioni = C_DATI_PATH."/dati_interconnessioni.php";
+$file_interconnessioni = C_DATA_PATH."/dati_interconnessioni.php";
 if (@is_file($file_interconnessioni)) {
 include($file_interconnessioni);
 if (@is_array($ic_present)) {
@@ -804,7 +804,7 @@ $vett_idfine[$n_t][1] = $fineperiodo;
 if (!$torna_invece_di_ok) {
 
 
-$file_interconnessioni = C_DATI_PATH."/dati_interconnessioni.php";
+$file_interconnessioni = C_DATA_PATH."/dati_interconnessioni.php";
 if ($idmessaggi) $tabelle_lock = array($tableprenota,$tablecostiprenota,$tablerclientiprenota,$tablemessaggi,$tablerelinventario);
 else $tabelle_lock = array($tableprenota,$tablecostiprenota,$tablerclientiprenota,$tablerelinventario);
 #if (@is_file($file_interconnessioni)) $tabelle_lock[count($tabelle_lock)] = $tablecache;
@@ -1855,7 +1855,7 @@ $date_selected = risul_query($date_selected,0,'datainizio');
 } # fine if (controlla_num($date_selected) == "SI")
 } # fine if (${"inizioperiodo".$n_t})
 else $date_selected = $inizio_select;
-mostra_menu_date(C_DATI_PATH."/selperiodimenu$anno.$id_utente.php","inizioperiodo$n_t",$date_selected,"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selperiodimenu$anno.$id_utente.php","inizioperiodo$n_t",$date_selected,"","",$id_utente,$tema);
 echo " ".mex("al",$pag)." ";
 if (${"fineperiodo".$n_t}) {
 $date_selected = ${"fineperiodo".$n_t};
@@ -1865,7 +1865,7 @@ $date_selected = risul_query($date_selected,0,'datafine');
 } # fine if (controlla_num($date_selected) == "SI")
 } # fine if (${"fineperiodo".$n_t})
 else $date_selected = $fine_select;
-mostra_menu_date(C_DATI_PATH."/selperiodimenu$anno.$id_utente.php","fineperiodo$n_t",$date_selected,"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selperiodimenu$anno.$id_utente.php","fineperiodo$n_t",$date_selected,"","",$id_utente,$tema);
 if (!$nometipotariffa) $sel = " selected";
 else $sel = "";
 echo "<br>

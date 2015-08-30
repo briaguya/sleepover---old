@@ -24,8 +24,8 @@ $pag = "modifica_costi.php";
 $titolo = "HotelDruid: Modifica Costi";
 $base_js = 1;
 
-include("./costanti.php");
-include(C_DATI_PATH."/dati_connessione.php");
+include("./constants.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 include("./includes/funzioni.php");
@@ -370,7 +370,7 @@ if ($periodi_permessi != "tutti" and $periodi_permessi != "sel") $errore = "SI";
 if ($periodi_permessi == "sel") {
 if (controlla_num_pos($num_periodi_permessi_sel) == "NO" or $num_periodi_permessi_sel == 0) $errore = "SI";
 else {
-$file_date_int = implode("",file(C_DATI_PATH."/selectperiodi$anno.1.php"));
+$file_date_int = implode("",file(C_DATA_PATH."/selectperiodi$anno.1.php"));
 $ultima_data = 0;
 for ($num1 = 1 ; $num1 <= $num_periodi_permessi_sel ; $num1++) {
 if (str_replace("\\\"".${"pp_dal".$num1}."\\\">","",$file_date_int) == $file_date_int) { $errore = "SI"; $conflitti .= "13;"; }
@@ -1291,14 +1291,14 @@ if (numlin_query(${"pp_dal".$num1}) == 1) ${"pp_dal".$num1} = risul_query(${"pp_
 } # fine if (!${"pp_dal".$num1} and...
 echo mex("dal",$pag)." ";
 $pp_dal = ${"pp_dal".$num1};
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.1.php","pp_dal$num1",$pp_dal,"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.1.php","pp_dal$num1",$pp_dal,"","",$id_utente,$tema);
 if (!${"pp_al".$num1} and $num1 <= count($dati_ca[$num_costo]['sett_periodipermessi_ini'])) {
 ${"pp_al".$num1} = esegui_query("select datafine from $tableperiodi where idperiodi = '".$dati_ca[$num_costo]['sett_periodipermessi_fine'][($num1 - 1)]."'");
 if (numlin_query(${"pp_al".$num1}) == 1) ${"pp_al".$num1} = risul_query(${"pp_al".$num1},0,'datafine');
 } # fine if (!${"pp_al".$num1} and...
 echo mex("al",$pag)." ";
 $pp_al = ${"pp_al".$num1};
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.1.php","pp_al$num1",$pp_al,"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.1.php","pp_al$num1",$pp_al,"","",$id_utente,$tema);
 if ($num1 == $num_periodi_permessi_sel) {
 $id_minus = " id=\"minus_pp".($num1 + 1)."\"";
 if ($num1 > 1) echo "</td><td id=\"minus_pp$num1\"><input class=\"sbutton\" type=\"submit\" name=\"elimina_periodo_permesso\" value=\"".mex("Elimina un periodo",$pag)."\" onclick=\"elim_lin_per_perm();\"></td></tr><tr><td></td><td>";
@@ -1324,12 +1324,12 @@ cella = nlinea.insertCell(1);
 var cell_html = '".str_replace("'","\\'",mex("dal",$pag))." ';
 var pp_dal = 'pp_dal'+numcaselle;
 ";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.$id_utente.php","pp_dal","","","",$id_utente,$tema,"","","cell_html");
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.$id_utente.php","pp_dal","","","",$id_utente,$tema,"","","cell_html");
 echo "
 cell_html += ' ".mex("al",$pag)." ';
 var pp_al = 'pp_al'+numcaselle;
 ";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.$id_utente.php","pp_al","","","",$id_utente,$tema,"","","cell_html");
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.$id_utente.php","pp_al","","","",$id_utente,$tema,"","","cell_html");
 echo "
 cella.innerHTML = cell_html;
 cella = nlinea.insertCell(2);

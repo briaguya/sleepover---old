@@ -520,7 +520,7 @@ $tablecache = $PHPR_TAB_PRE."cache";
 $tablecosti = $PHPR_TAB_PRE."costi".$anno;
 
 
-$file_interconnessioni = C_DATI_PATH."/dati_interconnessioni.php";
+$file_interconnessioni = C_DATA_PATH."/dati_interconnessioni.php";
 if ($tableprenota_da_aggiornare == "SI") {
 if (@is_file($file_interconnessioni)) {
 include($file_interconnessioni);

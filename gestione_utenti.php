@@ -23,8 +23,8 @@
 $pag = "gestione_utenti.php";
 $titolo = "HotelDruid: Gestione Utenti";
 
-include("./costanti.php");
-include(C_DATI_PATH."/dati_connessione.php");
+include("./constants.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 include("./includes/funzioni.php");
@@ -176,14 +176,14 @@ for ($num2 = 0 ; $num2 < 15 ; $num2++) $n_pass = md5($n_pass.substr($salt,0,(20 
 } # fine if ($n_tipo_pass == "5")
 esegui_query("update $tableutenti set password = '$n_pass', salt = '$salt' where idutenti = '$id'");
 if ($id == 1) {
-$fileaperto = fopen(C_DATI_PATH."/abilita_login","w+");
+$fileaperto = fopen(C_DATA_PATH."/abilita_login","w+");
 fclose($fileaperto);
 } # fine if ($id == 1)
 } # fine if ($n_tipo_pass != "n")
 else {
 esegui_query("update $tableutenti set password = '' where idutenti = '$id'");
 esegui_query("delete from $tablesessioni where idutente = '$id'");
-if ($id == 1 and @is_file(C_DATI_PATH."/abilita_login")) unlink(C_DATI_PATH."/abilita_login");
+if ($id == 1 and @is_file(C_DATA_PATH."/abilita_login")) unlink(C_DATA_PATH."/abilita_login");
 } # fine else if ($n_tipo_pass != "n")
 } # fine if ($n_tipo_pass and $tipo_pass != $n_tipo_pass)
 } # fine for $num1
@@ -257,9 +257,9 @@ esegui_query("insert into $tablepersonalizza (idpersonalizza,idutente,valpersona
 esegui_query("insert into $tablepersonalizza (idpersonalizza,idutente,valpersonalizza) values ('origini_prenota','$nuovo_id','')");
 esegui_query("insert into $tablepersonalizza (idpersonalizza,idutente,valpersonalizza) values ('attiva_checkin','$nuovo_id','NO')");
 esegui_query("insert into $tablepersonalizza (idpersonalizza,idutente,valpersonalizza) values ('mostra_quadro_disp','$nuovo_id','')");
-$filelock = crea_lock_file(C_DATI_PATH."/lingua.php");
-include(C_DATI_PATH."/lingua.php");
-$file_lingua = @file(C_DATI_PATH."/lingua.php");
+$filelock = crea_lock_file(C_DATA_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
+$file_lingua = @file(C_DATA_PATH."/lingua.php");
 $linee = "";
 $num_lin = 0;
 for ($num1 = 0 ; $num1 < count($file_lingua) ; $num1++) {
@@ -272,11 +272,11 @@ $linee[$num_lin] = $file_lingua[$num1];
 else $linee[$num_lin] = $file_lingua[$num1];
 $num_lin++;
 } # fine for $num1
-scrivi_file ($linee,C_DATI_PATH."/lingua.php");
-distruggi_lock_file($filelock,C_DATI_PATH."/lingua.php");
-$filelock = crea_lock_file(C_DATI_PATH."/tema.php");
-include(C_DATI_PATH."/tema.php");
-$file_tema = @file(C_DATI_PATH."/tema.php");
+scrivi_file ($linee,C_DATA_PATH."/lingua.php");
+distruggi_lock_file($filelock,C_DATA_PATH."/lingua.php");
+$filelock = crea_lock_file(C_DATA_PATH."/tema.php");
+include(C_DATA_PATH."/tema.php");
+$file_tema = @file(C_DATA_PATH."/tema.php");
 unset($linee);
 $num_lin = 0;
 for ($num1 = 0 ; $num1 < count($file_tema) ; $num1++) {
@@ -289,8 +289,8 @@ $linee[$num_lin] = $file_tema[$num1];
 else $linee[$num_lin] = $file_tema[$num1];
 $num_lin++;
 } # fine for $num1
-scrivi_file ($linee,C_DATI_PATH."/tema.php");
-distruggi_lock_file($filelock,C_DATI_PATH."/tema.php");
+scrivi_file ($linee,C_DATA_PATH."/tema.php");
+distruggi_lock_file($filelock,C_DATA_PATH."/tema.php");
 include("./includes/funzioni_relutenti.php");
 unlock_tabelle($tabelle_lock);
 aggiorna_relutenti("","","","SI",$id_utente,$nuovo_id,"","","","","",1,"","nazione","nazioni",$tablenazioni,$tablerelutenti);
@@ -439,16 +439,16 @@ esegui_query("insert into $tablegruppi (idgruppi,nome_gruppo) values ('$nuovo_id
 esegui_query("insert into $tablerelgruppi (idutente,idgruppo) values ('$id_utente_mod','$nuovo_id')");
 } # fine if ($nuovo_gruppo)
 if ($n_phpr_log) {
-$filelock = crea_lock_file(C_DATI_PATH."/dati_connessione.php");
-if ($file_dati_conn = @file(C_DATI_PATH."/dati_connessione.php")) {
+$filelock = crea_lock_file(C_DATA_PATH."/dati_connessione.php");
+if ($file_dati_conn = @file(C_DATA_PATH."/dati_connessione.php")) {
 for ($num1 = 0 ; $num1 < count($file_dati_conn) ; $num1++) {
 if (substr($file_dati_conn[$num1],0,9) == "\$PHPR_LOG") $file_dati_conn[$num1] = "\$PHPR_LOG = \"$n_phpr_log\";
 ";
 } # fine for $num1
-scrivi_file ($file_dati_conn,C_DATI_PATH."/dati_connessione.php");
-if ($n_phpr_log == "NO" and @is_file(C_DATI_PATH."/log_utenti.php")) unlink(C_DATI_PATH."/log_utenti.php");
+scrivi_file ($file_dati_conn,C_DATA_PATH."/dati_connessione.php");
+if ($n_phpr_log == "NO" and @is_file(C_DATA_PATH."/log_utenti.php")) unlink(C_DATA_PATH."/log_utenti.php");
 } # fine if ($file_dati_conn = @file(C_DATI_PATH."/dati_connessione.php"))
-distruggi_lock_file($filelock,C_DATI_PATH."/dati_connessione.php");
+distruggi_lock_file($filelock,C_DATA_PATH."/dati_connessione.php");
 } # fine if ($n_phpr_log)
 echo "".mex("Aggiornati i gruppi dell'utente",$pag)." $nome_utente!<br>";
 } # fine if ($continua == "SI")
@@ -532,9 +532,9 @@ cancella_relazioni_utente($tablerelutenti,"idnazione",$tablenazioni,"idnazioni")
 cancella_relazioni_utente($tablerelutenti,"idregione",$tableregioni,"idregioni");
 cancella_relazioni_utente($tablerelutenti,"idcitta",$tablecitta,"idcitta");
 cancella_relazioni_utente($tablerelutenti,"idparentela",$tableparentele,"idparentele");
-$filelock = crea_lock_file(C_DATI_PATH."/lingua.php");
-include(C_DATI_PATH."/lingua.php");
-$file_lingua = @file(C_DATI_PATH."/lingua.php");
+$filelock = crea_lock_file(C_DATA_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
+$file_lingua = @file(C_DATA_PATH."/lingua.php");
 unset($linee);
 $num_lin = 0;
 $ini_lin = "\$lingua[$id_utente_canc]";
@@ -544,11 +544,11 @@ $linee[$num_lin] = $file_lingua[$num1];
 $num_lin++;
 } # fine if (substr($file_lingua[$num1],0,strlen($ini_lin)) != $ini_lin)
 } # fine for $num1
-scrivi_file ($linee,C_DATI_PATH."/lingua.php");
-distruggi_lock_file($filelock,C_DATI_PATH."/lingua.php");
-$filelock = crea_lock_file(C_DATI_PATH."/tema.php");
-include(C_DATI_PATH."/tema.php");
-$file_tema = @file(C_DATI_PATH."/tema.php");
+scrivi_file ($linee,C_DATA_PATH."/lingua.php");
+distruggi_lock_file($filelock,C_DATA_PATH."/lingua.php");
+$filelock = crea_lock_file(C_DATA_PATH."/tema.php");
+include(C_DATA_PATH."/tema.php");
+$file_tema = @file(C_DATA_PATH."/tema.php");
 unset($linee);
 $num_lin = 0;
 $ini_lin = "\$tema[$id_utente_canc]";
@@ -558,8 +558,8 @@ $linee[$num_lin] = $file_tema[$num1];
 $num_lin++;
 } # fine if (substr($file_tema[$num1],0,strlen($ini_lin)) != $ini_lin)
 } # fine for $num1
-scrivi_file($linee,C_DATI_PATH."/tema.php");
-distruggi_lock_file($filelock,C_DATI_PATH."/tema.php");
+scrivi_file($linee,C_DATA_PATH."/tema.php");
+distruggi_lock_file($filelock,C_DATA_PATH."/tema.php");
 } # fine else if ($continua != "SI")
 } # fine if ($continua != "NO")
 unlock_tabelle($tabelle_lock);
@@ -570,7 +570,7 @@ if ($importa_priv) {
 $id_utente_importa = aggslashdb($id_utente_importa);
 $id_utente_esporta = aggslashdb($id_utente_esporta);
 include("./includes/funzioni_menu.php");
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 $tabelle_lock = array($tablepersonalizza,$tableprivilegi);
 $altre_tab_lock = array($tableanni,$tableutenti,$tablerelgruppi);
 $tabelle_lock = lock_tabelle($tabelle_lock,$altre_tab_lock);
@@ -614,8 +614,8 @@ if ($e_anno != 1) {
 $tipo_periodi_cambia = esegui_query("select * from $tableanni where idanni = '$e_anno'");
 $tipo_periodi_cambia = risul_query($tipo_periodi_cambia,0,'tipo_periodi');
 $lingua_mex = $lingua[$id_utente_importa];
-crea_menu_date(C_DATI_PATH."/selectperiodi$e_anno.$id_utente_esporta.php",C_DATI_PATH."/selectperiodi$e_anno.$id_utente_importa.php",$tipo_periodi_cambia);
-crea_menu_date(C_DATI_PATH."/selperiodimenu$e_anno.$id_utente_esporta.php",C_DATI_PATH."/selperiodimenu$e_anno.$id_utente_importa.php",$tipo_periodi_cambia);
+crea_menu_date(C_DATA_PATH."/selectperiodi$e_anno.$id_utente_esporta.php",C_DATA_PATH."/selectperiodi$e_anno.$id_utente_importa.php",$tipo_periodi_cambia);
+crea_menu_date(C_DATA_PATH."/selperiodimenu$e_anno.$id_utente_esporta.php",C_DATA_PATH."/selperiodimenu$e_anno.$id_utente_importa.php",$tipo_periodi_cambia);
 $lingua_mex = $lingua[$id_utente];
 $giorno_vedi_ini_sett = esegui_query("select valpersonalizza_num from $tablepersonalizza where idpersonalizza = 'giorno_vedi_ini_sett$e_anno' and idutente = '$id_utente_esporta'");
 if (numlin_query($giorno_vedi_ini_sett) == 1) {

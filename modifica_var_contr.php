@@ -23,8 +23,8 @@
 $pag = "modifica_var_contr.php";
 $titolo = "HotelDruid: Modifica Variabili Documenti";
 
-include("./costanti.php");
-include(C_DATI_PATH."/dati_connessione.php");
+include("./constants.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 include("./includes/funzioni.php");
@@ -216,7 +216,7 @@ echo mex("Nuova variabile personalizzata inserita",$pag).".<br>";
 } # fine if ($continua == "SI")
 unlock_tabelle($tabelle_lock);
 } # fine if ($continua == "SI")
-if ($continua != "SI") echo mex("I dati inseriti sono <div style=\"display: inline; color: red;\">errati</div>",$pag).".<br>";
+if ($continua != "SI") echo mex("I data inseriti sono <div style=\"display: inline; color: red;\">errati</div>",$pag).".<br>";
 } # fine if ($aggiungi_var_pers)
 
 
@@ -273,7 +273,7 @@ echo mex("Variabile personalizzata eliminata",$pag).".<br>";
 } # fine else if (numlin_query($n_var_pers_el) != 1)
 unlock_tabelle($tabelle_lock);
 } # fine if ($continua == "SI")
-if ($continua != "SI") echo mex("I dati inseriti sono <div style=\"display: inline; color: red;\">errati</div>",$pag).".<br>";
+if ($continua != "SI") echo mex("I data inseriti sono <div style=\"display: inline; color: red;\">errati</div>",$pag).".<br>";
 } # fine if ($elimina_var_pers)
 
 
@@ -360,7 +360,7 @@ echo mex("Nuovo array personalizzato inserito",$pag).".<br>";
 } # fine if ($continua == "SI")
 unlock_tabelle($tabelle_lock);
 } # fine if ($continua == "SI")
-if ($continua != "SI") echo mex("I dati inseriti sono <div style=\"display: inline; color: red;\">errati</div>",$pag).".<br>";
+if ($continua != "SI") echo mex("I data inseriti sono <div style=\"display: inline; color: red;\">errati</div>",$pag).".<br>";
 } # fine if ($aggiungi_arr_pers)
 
 
@@ -370,7 +370,7 @@ $tabelle_lock = array($tablecontratti);
 $tabelle_lock = lock_tabelle($tabelle_lock);
 $continua = elimina_array_pers($arr_pers_elimina);
 unlock_tabelle($tabelle_lock);
-if ($continua != "SI") echo mex("I dati inseriti sono <div style=\"display: inline; color: red;\">errati</div>",$pag).".<br>";
+if ($continua != "SI") echo mex("I data inseriti sono <div style=\"display: inline; color: red;\">errati</div>",$pag).".<br>";
 } # fine if ($elimina_arr_pers)
 
 
@@ -580,7 +580,7 @@ else echo ucfirst(mex("condizione modificata",$pag)).".<br>";
 } # fine if ($continua == "SI")
 unlock_tabelle($tabelle_lock);
 } # fine if ($continua == "SI")
-if ($continua != "SI") echo mex("I dati inseriti sono <div style=\"display: inline; color: red;\">errati</div>",$pag).".<br>";
+if ($continua != "SI") echo mex("I data inseriti sono <div style=\"display: inline; color: red;\">errati</div>",$pag).".<br>";
 } # fine if ($aggiungi_cond)
 
 
@@ -595,7 +595,7 @@ esegui_query("delete from $tablecontratti where numero = '$num_cond' and tipo = 
 echo mex("Condizione eliminata",$pag).".<br>";
 unlock_tabelle($tabelle_lock);
 } # fine if ($continua == "SI")
-if ($continua != "SI") echo mex("I dati inseriti sono <div style=\"display: inline; color: red;\">errati</div>",$pag).".<br>";
+if ($continua != "SI") echo mex("I data inseriti sono <div style=\"display: inline; color: red;\">errati</div>",$pag).".<br>";
 } # fine if ($elimina_cond)
 
 

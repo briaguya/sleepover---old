@@ -28,10 +28,10 @@ $trad_var['special_characters'] = 'a,e,i,o,u';
 
 
 if (substr($messaggio,0,3) == '[1]') {
-@include(C_DATI_PATH."/unit_single.php");
+@include(C_DATA_PATH."/unit_single.php");
 $messaggio = substr($messaggio,3);
 } # fine if substr($messaggio,0,3) == '[1]')
-else @include(C_DATI_PATH."/unit.php");
+else @include(C_DATA_PATH."/unit.php");
 
 if ($unit['gender'] == "m") {
 if ($unit['special']) {
@@ -41,7 +41,7 @@ switch ($messaggio) {
 
 # Translations for rental units with MASCULINE name (or no gender) that begins with SPECIAL characters
 case "APPARTAMENTI":  					$messaggio = "[UNITS]"; break;
-case "Inserisci ora i dati sugli appartamenti":		$messaggio = "Inserisci ora i dati sugli [units]"; break;
+case "Inserisci ora i data sugli appartamenti":		$messaggio = "Inserisci ora i data sugli [units]"; break;
 case "almeno il numero, diverso per ogni appartamento":	$messaggio = "almeno il numero, diverso per ogni [unit]"; break;
 case "Numero (o nome) dell' appartamento":  		$messaggio = "Numero (o nome) dell'[unit]"; break;
 case "Priorità (più bassa è, prima viene assegnato)":	$messaggio = "Priorità (più bassa è, prima viene assegnato)"; break;
@@ -246,7 +246,7 @@ switch ($messaggio) {
 
 # Translations for rental units with MASCULINE name (or no gender) that begins with NORMAL characters
 case "APPARTAMENTI":  					$messaggio = "[UNITS]"; break;
-case "Inserisci ora i dati sugli appartamenti":		$messaggio = "Inserisci ora i dati sui [units]"; break;
+case "Inserisci ora i data sugli appartamenti":		$messaggio = "Inserisci ora i data sui [units]"; break;
 case "almeno il numero, diverso per ogni appartamento":	$messaggio = "almeno il numero, diverso per ogni [unit]"; break;
 case "Numero (o nome) dell' appartamento":  		$messaggio = "Numero (o nome) del [unit]"; break;
 case "Priorità (più bassa è, prima viene assegnato)":	$messaggio = "Priorità (più bassa è, prima viene assegnato)"; break;
@@ -453,7 +453,7 @@ switch ($messaggio) {
 
 # Translations for rental units with FEMENINE name that begins with SPECIAL characters
 case "APPARTAMENTI":  					$messaggio = "[UNITS]"; break;
-case "Inserisci ora i dati sugli appartamenti":		$messaggio = "Inserisci ora i dati sulle [units]"; break;
+case "Inserisci ora i data sugli appartamenti":		$messaggio = "Inserisci ora i data sulle [units]"; break;
 case "almeno il numero, diverso per ogni appartamento":	$messaggio = "almeno il numero, diverso per ogni [unit]"; break;
 case "Numero (o nome) dell' appartamento":  		$messaggio = "Numero (o nome) dell'[unit]"; break;
 case "Priorità (più bassa è, prima viene assegnato)":	$messaggio = "Priorità (più bassa è, prima viene assegnata)"; break;
@@ -658,7 +658,7 @@ switch ($messaggio) {
 
 # Translations for rental units with FEMENINE name that begins with NORMAL characters
 case "APPARTAMENTI":  					$messaggio = "[UNITS]"; break;
-case "Inserisci ora i dati sugli appartamenti":		$messaggio = "Inserisci ora i dati sulle [units]"; break;
+case "Inserisci ora i data sugli appartamenti":		$messaggio = "Inserisci ora i data sulle [units]"; break;
 case "almeno il numero, diverso per ogni appartamento":	$messaggio = "almeno il numero, diverso per ogni [unit]"; break;
 case "Numero (o nome) dell' appartamento":  		$messaggio = "Numero (o nome) della [unit]"; break;
 case "Priorità (più bassa è, prima viene assegnato)":	$messaggio = "Priorità (più bassa è, prima viene assegnata)"; break;

@@ -23,8 +23,8 @@
 $pag = "privilegi_utenti.php";
 $titolo = "HotelDruid: Privilegi Utenti";
 
-include("./costanti.php");
-include(C_DATI_PATH."/dati_connessione.php");
+include("./constants.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 include("./includes/funzioni.php");
@@ -928,10 +928,10 @@ $privilegi_anno[$attiva_anno] = esegui_query("select * from $tableprivilegi wher
 include("./includes/funzioni_menu.php");
 $tipo_periodi_cambia = esegui_query("select * from $tableanni where idanni = '$attiva_anno'");
 $tipo_periodi_cambia = risul_query($tipo_periodi_cambia,0,'tipo_periodi');
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 $lingua_mex = $lingua[$id_utente_privilegi];
-crea_menu_date(C_DATI_PATH."/selectperiodi$attiva_anno.1.php",C_DATI_PATH."/selectperiodi$attiva_anno.$id_utente_privilegi.php",$tipo_periodi_cambia);
-crea_menu_date(C_DATI_PATH."/selperiodimenu$attiva_anno.1.php",C_DATI_PATH."/selperiodimenu$attiva_anno.$id_utente_privilegi.php",$tipo_periodi_cambia);
+crea_menu_date(C_DATA_PATH."/selectperiodi$attiva_anno.1.php",C_DATA_PATH."/selectperiodi$attiva_anno.$id_utente_privilegi.php",$tipo_periodi_cambia);
+crea_menu_date(C_DATA_PATH."/selperiodimenu$attiva_anno.1.php",C_DATA_PATH."/selperiodimenu$attiva_anno.$id_utente_privilegi.php",$tipo_periodi_cambia);
 $lingua_mex = $lingua[$id_utente];
 $giorno_vedi_ini_sett = esegui_query("select valpersonalizza_num from $tablepersonalizza where idpersonalizza = 'giorno_vedi_ini_sett$attiva_anno' and idutente = '1'");
 if (numlin_query($giorno_vedi_ini_sett) == 1) {
@@ -946,8 +946,8 @@ if ($disattiva_anno) {
 if (controlla_anno($disattiva_anno) == "SI" and $anno_esistente[$disattiva_anno] == "SI" and numlin_query($privilegi_anno[$disattiva_anno]) != 0) {
 esegui_query("delete from $tableprivilegi where idutente = '$id_utente_privilegi' and anno = '$disattiva_anno'");
 $privilegi_anno[$disattiva_anno] = esegui_query("select * from $tableprivilegi where idutente = '$id_utente_privilegi' and anno = '$disattiva_anno'");
-if (@is_file(C_DATI_PATH."/selectperiodi$disattiva_anno.$id_utente_privilegi.php")) unlink(C_DATI_PATH."/selectperiodi$disattiva_anno.$id_utente_privilegi.php");
-if (@is_file(C_DATI_PATH."/selperiodimenu$disattiva_anno.$id_utente_privilegi.php")) unlink(C_DATI_PATH."/selperiodimenu$disattiva_anno.$id_utente_privilegi.php");
+if (@is_file(C_DATA_PATH."/selectperiodi$disattiva_anno.$id_utente_privilegi.php")) unlink(C_DATA_PATH."/selectperiodi$disattiva_anno.$id_utente_privilegi.php");
+if (@is_file(C_DATA_PATH."/selperiodimenu$disattiva_anno.$id_utente_privilegi.php")) unlink(C_DATA_PATH."/selperiodimenu$disattiva_anno.$id_utente_privilegi.php");
 esegui_query("delete from $tablepersonalizza where idpersonalizza = 'giorno_vedi_ini_sett$disattiva_anno' and idutente = '$id_utente_privilegi'");
 } # fine if (controlla_anno($disattiva_anno) == "SI" and ...
 } # fine if ($disattiva_anno)

@@ -60,7 +60,7 @@ case "Anno ":  					$messaggio = "Año "; break;
 case " creato":  				$messaggio = " creado"; break;
 case "Non ci sono periodi che riguardano il ":  $messaggio = "No hay períodos que se refieren al "; break;
 case " nel ":  					$messaggio = " en el "; break;
-case ", o il giorno di inizio/fine locazione era differente, sono stati importati solo i dati riguardanti costi aggiuntivi, caparra, nome delle tariffe, privilegi degli utenti e regole di assegnazione 2 e 3":  	$messaggio = ", o el día de principio/final alquiler era diferente, han sido importados solo los datos que se refieren a costes añadidos, fianza, nombres de las tarifas, privilegios de los usuarios y a las reglas de asignación 2 y 3"; break;
+case ", o il giorno di inizio/fine locazione era differente, sono stati importati solo i data riguardanti costi aggiuntivi, caparra, nome delle tariffe, privilegi degli utenti e regole di assegnazione 2 e 3":  	$messaggio = ", o el día de principio/final alquiler era diferente, han sido importados solo los datos que se refieren a costes añadidos, fianza, nombres de las tarifas, privilegios de los usuarios y a las reglas de asignación 2 y 3"; break;
 case "Attenzione</b>: i periodi del ":  	$messaggio = "Atencíon</b>: los períodos del "; break;
 case " finivano dopo quelli del ":  		$messaggio = " acababan después de los del "; break;
 case " e vi erano":  				$messaggio = " y habían"; break;
@@ -109,7 +109,7 @@ case "per creare il nuovo anno, nel frattempo si possono aggiungere periodi oltr
 case "dalla":  					$messaggio = "desde la"; break;
 case "tabella con i periodi e le tariffe":  	$messaggio = "tabla con los períodos y las tarifas"; break;
 case "anche senza creare un nuovo anno":  	$messaggio = "también sin crear un nuevo año"; break;
-case "Non ho i permessi di scrittura sulla cartella dati":	$messaggio = "No tengo los permisos de escritura sobre el directorio dati"; break;
+case "Non ho i permessi di scrittura sulla cartella data":	$messaggio = "No tengo los permisos de escritura sobre el directorio data"; break;
 case "le statistiche":  			$messaggio = "las estadísticas"; break;
 case "inventario e magazzini":  		$messaggio = "inventario y almacenes"; break;
 case "obsoleti":  				$messaggio = "obsoletos"; break;

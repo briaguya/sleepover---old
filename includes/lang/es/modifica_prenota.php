@@ -11,7 +11,7 @@ case "CAP":  					$messaggio = "código postal"; break;
 case "Telefono":  				$messaggio = "Teléfono"; break;
 case "2º telefono":  				$messaggio = "2° teléfono"; break;
 case "3º telefono":  				$messaggio = "3er teléfono"; break;
-case "Modifica i dati del cliente":  		$messaggio = "Modificar los datos del cliente"; break;
+case "Modifica i data del cliente":  		$messaggio = "Modificar los datos del cliente"; break;
 case "La prenotazione è dell'anno precedente, si potrà modificare solo la data finale":	$messaggio = "La reserva es del año anterior, se podrá modificar solo la fecha final"; break;
 case "settimane":  				$messaggio = "semanas"; break;
 case "giorni":  				$messaggio = "días"; break;
@@ -114,7 +114,7 @@ case "<b>non</b> verranno cambiati":  		$messaggio = "<b>no</b> serán cambiados
 case "su":  					$messaggio = "sobre"; break;
 case "Il prezzo del costo aggiuntivo":  	$messaggio = "El precio del coste añadido"; break;
 case "verrà tolto":  				$messaggio = "será quitado"; break;
-case "I dati del costo aggiuntivo <b>straordinario</b> sono <div style=\"display: inline; color: red;\">errati o mancanti</div>":	$messaggio = "Los datos del coste añadido <b>extraordinario</b> están <div style=\"display: inline; color: red;\">equivocados o faltan</div>"; break;
+case "I data del costo aggiuntivo <b>straordinario</b> sono <div style=\"display: inline; color: red;\">errati o mancanti</div>":	$messaggio = "Los datos del coste añadido <b>extraordinario</b> están <div style=\"display: inline; color: red;\">equivocados o faltan</div>"; break;
 case "verrà aggiunto":  			$messaggio = "será añadido"; break;
 case "come letto aggiuntivo":  			$messaggio = "como cama extra"; break;
 case "Le settimane del nuovo costo aggiuntivo":	$messaggio = "Las semanas del nuevo coste añadido"; break;

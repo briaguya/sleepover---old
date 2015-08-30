@@ -60,7 +60,7 @@ if ($PHPR_LOAD_EXT == "SI") {
 dl("sqlite.so");
 $ext_sqlite_caricata = "SI";
 } # fine if ($PHPR_LOAD_EXT == "SI")
-$numconnessione = new SQLite3(C_DATI_PATH."/db_".$PHPR_DB_NAME);
+$numconnessione = new SQLite3(C_DATA_PATH."/db_".$PHPR_DB_NAME);
 } # fine if ($PHPR_DB_TYPE == "sqlite")
 
 return $numconnessione;
@@ -137,10 +137,10 @@ fwrite($file,"</righetabella>
 function dump_testo ($file_dump,&$file) {
 
 fwrite($file,"<file>
-<nomefile>./dati$file_dump</nomefile>
+<nomefile>./data$file_dump</nomefile>
 <contenuto>
 ");
-$linee_file = file(C_DATI_PATH.$file_dump);
+$linee_file = file(C_DATA_PATH.$file_dump);
 $num_linee_file = count($linee_file);
 for ($num1 = 0 ; $num1 < $num_linee_file ; $num1++) {
 fwrite($file,$linee_file[$num1]);
@@ -501,10 +501,10 @@ if ($leggendo_prima_linea == "SI") {
 $prima_linea = $linea;
 $leggendo_prima_linea = "NO";
 } # fine if ($leggendo_prima_linea == "SI")
-if ($nome_file == "./dati/versione.php") {
-if ($linea != "" and $linea != "<?php" and $linea != "define(C_VERSIONE_ATTUALE,".C_PHPR_VERSIONE_NUM.");" and preg_replace("/define\(C_DIFF_ORE,-?[0-9]{1,2}\);/","",$linea) != "" and $linea != "?>") { $file_coerente = "NO"; $num_err .= "#34"; }
-} # fine if ($nome_file == "./dati/versione.php")
-if ($nome_file == "./dati/selectappartamenti.php") {
+if ($nome_file == "./data/versione.php") {
+if ($linea != "" and $linea != "<?php" and $linea != "define(C_VERSIONE_ATTUALE,".C_PHP_VERSION_NUM.");" and preg_replace("/define\(C_DIFF_ORE,-?[0-9]{1,2}\);/","",$linea) != "" and $linea != "?>") { $file_coerente = "NO"; $num_err .= "#34"; }
+} # fine if ($nome_file == "./data/versione.php")
+if ($nome_file == "./data/selectappartamenti.php") {
 if ($linea == "\";") $leggendo_cont_file_sel = "NO";
 if ($leggendo_cont_file_sel != "SI" and $linea != "" and $linea != "<?php" and $linea != "?>" and $linea != "\";" and $linea != "echo \"") { $file_coerente = "NO"; $num_err .= "#35"; }
 if ($leggendo_cont_file_sel == "SI") {
@@ -513,9 +513,9 @@ $linea = str_replace("\\\"","",$linea);
 if (str_replace("\"","",$linea) != $linea) { $file_coerente = "NO"; $num_err .= "#37"; }
 } # fine if ($leggendo_cont_file_sel == "SI")
 if ($linea == "echo \"") $leggendo_cont_file_sel = "SI";
-} # fine if ($nome_file == "./dati/selectappartamenti.php")
+} # fine if ($nome_file == "./data/selectappartamenti.php")
 
-if (substr($nome_file,0,20) == "./dati/selectperiodi" or substr($nome_file,0,21) == "./dati/selperiodimenu") {
+if (substr($nome_file,0,20) == "./data/selectperiodi" or substr($nome_file,0,21) == "./data/selperiodimenu") {
 if ($linea == "\";") $leggendo_cont_file_sel = "NO";
 if ($leggendo_cont_file_sel != "SI") {
 $linea_trovata = "NO";
@@ -540,11 +540,11 @@ $linea = str_replace("\\\"","",$linea);
 if (str_replace("\"","",$linea) != $linea) { $file_coerente = "NO"; $num_err .= "#40"; }
 } # fine if ($leggendo_cont_file_sel == "SI")
 if ($linea == "\$dates_options_list = \"") $leggendo_cont_file_sel = "SI";
-} # fine if (substr($nome_file,0,20) == "./dati/selectperiodi" or...
+} # fine if (substr($nome_file,0,20) == "./data/selectperiodi" or...
 
-if ($nome_file == "./dati/abilita_login" and $linea != "") { $file_coerente = "NO"; $num_err .= "#41"; }
-if ($nome_file == "./dati/lingua.php" and $linea != "" and $linea != "<?php" and $linea != "?>" and preg_replace("/\\\$lingua\\[[0-9]{1,8}\\] = \"[a-z]{1,3}\";/","",$linea) != "") { $file_coerente = "NO"; $num_err .= "#42"; }
-if ($nome_file == "./dati/unit.php" or $nome_file == "./dati/unit_single.php") {
+if ($nome_file == "./data/abilita_login" and $linea != "") { $file_coerente = "NO"; $num_err .= "#41"; }
+if ($nome_file == "./data/lingua.php" and $linea != "" and $linea != "<?php" and $linea != "?>" and preg_replace("/\\\$lingua\\[[0-9]{1,8}\\] = \"[a-z]{1,3}\";/","",$linea) != "") { $file_coerente = "NO"; $num_err .= "#42"; }
+if ($nome_file == "./data/unit.php" or $nome_file == "./data/unit_single.php") {
 $linea_trovata = "NO";
 if ($linea == "") $linea_trovata = "SI";
 if ($linea == "<?php") $linea_trovata = "SI";
@@ -558,10 +558,10 @@ if ($linea == "\$unit['special'] = 0;") $linea_trovata = "SI";
 if ($linea == "\$car_spec = explode(\",\",\$trad_var['special_characters']);") $linea_trovata = "SI";
 if ($linea == "for (\$num1 = 0 ; \$num1 < count(\$car_spec) ; \$num1++) if (substr(\$unit['p_n'],0,strlen(\$car_spec[\$num1])) == \$car_spec[\$num1]) \$unit['special'] = 1;") $linea_trovata = "SI";
 if ($linea_trovata != "SI") { $file_coerente = "NO"; $num_err .= "#42.1"; }
-} # fine if ($nome_file == "./dati/unit.php" or $nome_file == "./dati/unit_single.php")
-if ($nome_file == "./dati/tema.php" and $linea != "" and $linea != "<?php" and $linea != "?>" and preg_replace("/\\\$tema\\[[0-9]{1,8}\\] = \"[a-z]{1,4}\";/","",$linea) != "" and preg_replace("/\\\$parole_sost = [01];/","",$linea) != "") { $file_coerente = "NO"; $num_err .= "#43"; }
-if ($nome_file == "./dati/parole_sost.php" and $linea != "" and $linea != "<?php" and $linea != "?>" and preg_replace("/\\\$messaggio = str_replace\\(\"[^\"]*\",\"[^\"]*\",\\\$messaggio\\);/","",$linea) != "") { $file_coerente = "NO"; $num_err .= "#44"; }
-if ($nome_file == "./dati/dati_interconnessioni.php") {
+} # fine if ($nome_file == "./data/unit.php" or $nome_file == "./data/unit_single.php")
+if ($nome_file == "./data/tema.php" and $linea != "" and $linea != "<?php" and $linea != "?>" and preg_replace("/\\\$tema\\[[0-9]{1,8}\\] = \"[a-z]{1,4}\";/","",$linea) != "" and preg_replace("/\\\$parole_sost = [01];/","",$linea) != "") { $file_coerente = "NO"; $num_err .= "#43"; }
+if ($nome_file == "./data/parole_sost.php" and $linea != "" and $linea != "<?php" and $linea != "?>" and preg_replace("/\\\$messaggio = str_replace\\(\"[^\"]*\",\"[^\"]*\",\\\$messaggio\\);/","",$linea) != "") { $file_coerente = "NO"; $num_err .= "#44"; }
+if ($nome_file == "./data/dati_interconnessioni.php") {
 $linea_trovata = "NO";
 if ($linea == "") $linea_trovata = "SI";
 if ($linea == "<?php") $linea_trovata = "SI";
@@ -571,8 +571,8 @@ if (preg_replace("/^unset\\(\\\$ic_[a-z_]+[0-9a-z_]*\\);/","",$linea) == "") $li
 if (preg_replace("/\\\$ic_[a-z_]+[0-9a-z_]*\\[?\"?[0-9a-zA-Z_]*\"?\\]?\\[?\"?[0-9a-zA-Z_]*\"?\\]?\\[?\"?[0-9a-zA-Z_]*\"?\\]? = \"[^\"]*\";/","",$linea) == "") $linea_trovata = "SI";
 if (preg_replace("/\\\$ic_org[a-z_]+[0-9a-z_]*_ic = C_[A-Z][A-Z_]*[A-Z]_IC;/","",$linea) == "") $linea_trovata = "SI";
 if ($linea_trovata != "SI") { $file_coerente = "NO"; $num_err .= "#45"; }
-} # fine if ($nome_file == "./dati/dati_interconnessioni.php")
-if ($nome_file == "./dati/log_utenti.php" and ($prima_linea != "<?php exit(); ?>" or ($linea != "<?php exit(); ?>" and preg_replace("/^[0-9]+>[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2} [0-9]{2,2}:[0-9]{2,2}:[0-9]{2,2}>[a-zA-Z]?.*/","",$linea) != ""))) { $file_coerente = "NO"; $num_err .= "#46"; }
+} # fine if ($nome_file == "./data/dati_interconnessioni.php")
+if ($nome_file == "./data/log_utenti.php" and ($prima_linea != "<?php exit(); ?>" or ($linea != "<?php exit(); ?>" and preg_replace("/^[0-9]+>[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2} [0-9]{2,2}:[0-9]{2,2}:[0-9]{2,2}>[a-zA-Z]?.*/","",$linea) != ""))) { $file_coerente = "NO"; $num_err .= "#46"; }
 if ($leggendo_contenuto == "NO") $nome_file = "";
 } # fine if ($leggendo_contenuto == "SI")
 if ($linea == "<contenuto>") {
@@ -584,22 +584,22 @@ if (substr($linea,0,10) == "<nomefile>") {
 $nome_file = substr($linea,10);
 $nome_file = substr($nome_file,0,-11);
 if (C_CREA_SUBORDINAZIONI == "NO" and str_replace("dati_subordinazione","",$nome_file) != $nome_file) { $file_coerente = "NO"; $num_err .= "#47"; }
-if (substr($nome_file,0,7) != "./dati/") { $file_coerente = "NO"; $num_err .= "#48"; }
+if (substr($nome_file,0,7) != "./data/") { $file_coerente = "NO"; $num_err .= "#48"; }
 $nome_file_vett = explode("/",$nome_file);
 if (count($nome_file_vett) > 3) { $file_coerente = "NO"; $num_err .= "#49"; }
 $nome_file_trovato = "NO";
-if ($nome_file == "./dati/selectappartamenti.php") $nome_file_trovato = "SI";
-if ($nome_file == "./dati/abilita_login") $nome_file_trovato = "SI";
-if ($nome_file == "./dati/lingua.php") $nome_file_trovato = "SI";
-if ($nome_file == "./dati/unit.php") $nome_file_trovato = "SI";
-if ($nome_file == "./dati/unit_single.php") $nome_file_trovato = "SI";
-if ($nome_file == "./dati/tema.php") $nome_file_trovato = "SI";
-if ($nome_file == "./dati/parole_sost.php") $nome_file_trovato = "SI";
-if ($nome_file == "./dati/dati_interconnessioni.php") $nome_file_trovato = "SI";
-if ($nome_file == "./dati/log_utenti.php") $nome_file_trovato = "SI";
-if ($nome_file == "./dati/versione.php") $nome_file_trovato = "SI";
-if (substr($nome_file,0,20) == "./dati/selectperiodi") $nome_file_trovato = "SI";
-if (substr($nome_file,0,21) == "./dati/selperiodimenu") $nome_file_trovato = "SI";
+if ($nome_file == "./data/selectappartamenti.php") $nome_file_trovato = "SI";
+if ($nome_file == "./data/abilita_login") $nome_file_trovato = "SI";
+if ($nome_file == "./data/lingua.php") $nome_file_trovato = "SI";
+if ($nome_file == "./data/unit.php") $nome_file_trovato = "SI";
+if ($nome_file == "./data/unit_single.php") $nome_file_trovato = "SI";
+if ($nome_file == "./data/tema.php") $nome_file_trovato = "SI";
+if ($nome_file == "./data/parole_sost.php") $nome_file_trovato = "SI";
+if ($nome_file == "./data/dati_interconnessioni.php") $nome_file_trovato = "SI";
+if ($nome_file == "./data/log_utenti.php") $nome_file_trovato = "SI";
+if ($nome_file == "./data/versione.php") $nome_file_trovato = "SI";
+if (substr($nome_file,0,20) == "./data/selectperiodi") $nome_file_trovato = "SI";
+if (substr($nome_file,0,21) == "./data/selperiodimenu") $nome_file_trovato = "SI";
 if ($nome_file_trovato == "NO") { $file_coerente = "NO"; $num_err .= "#50"; }
 } # fine if (substr($linea,0,9) == "<nomefile>")
 } # fine if ($leggendo_file == "SI")
@@ -724,14 +724,14 @@ $tabelle_lock = lock_tabelle($tabelle_lock,$altre_tab_lock);
 $anni_vecchi = esegui_query("select * from $tableanni order by idanni");
 $num_anni_vecchi = numlin_query($anni_vecchi);
 $utenti_vecchi = esegui_query("select * from $tableutenti order by idutenti");
-unlink(C_DATI_PATH."/dati_connessione.php");
-unlink(C_DATI_PATH."/selectappartamenti.php");
-unlink(C_DATI_PATH."/versione.php");
-unlink(C_DATI_PATH."/tema.php");
-if (@is_file(C_DATI_PATH."/parole_sost.php")) unlink(C_DATI_PATH."/parole_sost.php");
-if (@is_file(C_DATI_PATH."/dati_interconnessioni.php")) unlink(C_DATI_PATH."/dati_interconnessioni.php");
-if (@is_file(C_DATI_PATH."/abilita_login")) unlink(C_DATI_PATH."/abilita_login");
-if (@is_file(C_DATI_PATH."/log_utenti.php")) unlink(C_DATI_PATH."/log_utenti.php");
+unlink(C_DATA_PATH."/dati_connessione.php");
+unlink(C_DATA_PATH."/selectappartamenti.php");
+unlink(C_DATA_PATH."/versione.php");
+unlink(C_DATA_PATH."/tema.php");
+if (@is_file(C_DATA_PATH."/parole_sost.php")) unlink(C_DATA_PATH."/parole_sost.php");
+if (@is_file(C_DATA_PATH."/dati_interconnessioni.php")) unlink(C_DATA_PATH."/dati_interconnessioni.php");
+if (@is_file(C_DATA_PATH."/abilita_login")) unlink(C_DATA_PATH."/abilita_login");
+if (@is_file(C_DATA_PATH."/log_utenti.php")) unlink(C_DATA_PATH."/log_utenti.php");
 #if (@is_file(C_DATI_PATH."/ultimo_accesso")) unlink(C_DATI_PATH."/ultimo_accesso");
 esegui_query("drop table ".$PHPR_TAB_PRE."anni");
 esegui_query("drop table ".$PHPR_TAB_PRE."utenti");
@@ -749,8 +749,8 @@ esegui_query("drop table ".$PHPR_TAB_PRE."soldi$anno_cancella");
 esegui_query("drop table ".$PHPR_TAB_PRE."costi$anno_cancella");
 for ($num2 = 0 ; $num2 < numlin_query($utenti_vecchi) ; $num2++) {
 $idutente_canc = risul_query($utenti_vecchi,$num2,'idutenti');
-if (@is_file(C_DATI_PATH."/selectperiodi$anno_cancella.$idutente_canc.php")) unlink(C_DATI_PATH."/selectperiodi$anno_cancella.$idutente_canc.php");
-if (@is_file(C_DATI_PATH."/selperiodimenu$anno_cancella.$idutente_canc.php")) unlink(C_DATI_PATH."/selperiodimenu$anno_cancella.$idutente_canc.php");
+if (@is_file(C_DATA_PATH."/selectperiodi$anno_cancella.$idutente_canc.php")) unlink(C_DATA_PATH."/selectperiodi$anno_cancella.$idutente_canc.php");
+if (@is_file(C_DATA_PATH."/selperiodimenu$anno_cancella.$idutente_canc.php")) unlink(C_DATA_PATH."/selperiodimenu$anno_cancella.$idutente_canc.php");
 } # fine for $num2
 } # fine if (!$mantieni_anni or $campo_anno_esistente[$anno_cancella])
 elseif ($mantieni_anni) $anno_mantieni[$anno_cancella] = 1;
@@ -829,7 +829,7 @@ if ($N_PHPR_LOAD_EXT == "SI" and $ext_sqlite_caricata != "SI") {
 dl("sqlite.so");
 $ext_sqlite_caricata = "SI";
 } # fine if ($PHPR_LOAD_EXT == "SI" and $ext_mysql_caricata != "SI")
-$numconnessione = new SQLite3(C_DATI_PATH."/db_".$N_PHPR_DB_NAME);
+$numconnessione = new SQLite3(C_DATA_PATH."/db_".$N_PHPR_DB_NAME);
 $query = $numconnessione;
 $database_esistente = "SI";
 } # fine if ($N_PHPR_DB_TYPE == "sqlite")
@@ -842,9 +842,9 @@ if ($N_PHPR_DB_TYPE == "sqlite") $numconnessione->close();
 else $query = 1;
 } # fine if ($nuovo_db == "SI")
 else $query = 1;
-unlink(C_DATI_PATH."/lingua.php");
-unlink(C_DATI_PATH."/unit.php");
-unlink(C_DATI_PATH."/unit_single.php");
+unlink(C_DATA_PATH."/lingua.php");
+unlink(C_DATA_PATH."/unit.php");
+unlink(C_DATA_PATH."/unit_single.php");
 
 if ($query) {
 $character_set_db = "";
@@ -914,12 +914,12 @@ if ($N_PHPR_LOAD_EXT == "SI" and $ext_sqlite_caricata != "SI") {
 dl("sqlite.so");
 $ext_sqlite_caricata = "SI";
 } # fine if ($N_PHPR_LOAD_EXT == "SI" and $ext_sqlite_caricata != "SI")
-$numconnessione = new SQLite3(C_DATI_PATH."/db_".$N_PHPR_DB_NAME);
+$numconnessione = new SQLite3(C_DATA_PATH."/db_".$N_PHPR_DB_NAME);
 } # fine if ($N_PHPR_DB_TYPE == "sqlite")
 
 if ($numconnessione) {
 
-$fileaperto = fopen(C_DATI_PATH."/dati_connessione.php","w+");
+$fileaperto = fopen(C_DATA_PATH."/dati_connessione.php","w+");
 if (defined('C_EXT_DB_DATA_PATH') and C_EXT_DB_DATA_PATH) {
 if ($HOTELD_DB_TYPE) $N_PHPR_DB_TYPE = "";
 if ($HOTELD_DB_NAME) $N_PHPR_DB_NAME = "";
@@ -963,7 +963,7 @@ if (\$HOTELD_TAB_PRE) \$PHPR_TAB_PRE = \$HOTELD_TAB_PRE;
 ");
 fwrite($fileaperto,"?>");
 fclose($fileaperto);
-@chmod(C_DATI_PATH."/dati_connessione.php", 0640);
+@chmod(C_DATA_PATH."/dati_connessione.php", 0640);
 
 $leggendo_backup = "NO";
 $leggendo_database = "NO";
@@ -1160,7 +1160,7 @@ if ($linea == "<contenuto>") $leggendo_contenuto = "SI";
 if (substr($linea,0,10) == "<nomefile>") {
 $nome_file = substr($linea,10);
 $nome_file = substr($nome_file,0,-11);
-if (substr($nome_file,0,7) == "./dati/") $nome_file = C_DATI_PATH.substr($nome_file,6);
+if (substr($nome_file,0,7) == "./data/") $nome_file = C_DATA_PATH.substr($nome_file,6);
 if ($nome_file) $fileaperto = fopen("$nome_file","w+");
 } # fine if (substr($linea,0,10) == "<nomefile>")
 
@@ -1241,7 +1241,7 @@ echo "<br>";
 
 
 
-# Se si sono mantenuti gli anni non presenti nel backup, aggiorno i loro dati ed importo eventuali clienti mancanti
+# Se si sono mantenuti gli anni non presenti nel backup, aggiorno i loro data ed importo eventuali clienti mancanti
 if ($mantieni_anni and @is_array($anno_mantieni)) {
 
 for ($num1 = 0 ; $num1 < $num_anni_vecchi ; $num1++) {
@@ -1271,8 +1271,8 @@ esegui_query("update ".$PHPR_TAB_PRE."costi$anno_vecchio set utente_inserimento 
 esegui_query("update ".$PHPR_TAB_PRE."costiprenota$anno_vecchio set utente_inserimento = '1' where utente_inserimento = '$idutente_vecchio' ");
 esegui_query("update ".$PHPR_TAB_PRE."rclientiprenota$anno_vecchio set utente_inserimento = '1' where utente_inserimento = '$idutente_vecchio' ");
 esegui_query("update ".$PHPR_TAB_PRE."soldi$anno_vecchio set utente_inserimento = '1' where utente_inserimento = '$idutente_vecchio' ");
-if (@is_file(C_DATI_PATH."/selectperiodi$anno_vecchio.$idutente_vecchio.php")) unlink(C_DATI_PATH."/selectperiodi$anno_vecchio.$idutente_vecchio.php");
-if (@is_file(C_DATI_PATH."/selperiodimenu$anno_vecchio.$idutente_vecchio.php")) unlink(C_DATI_PATH."/selperiodimenu$anno_vecchio.$idutente_vecchio.php");
+if (@is_file(C_DATA_PATH."/selectperiodi$anno_vecchio.$idutente_vecchio.php")) unlink(C_DATA_PATH."/selectperiodi$anno_vecchio.$idutente_vecchio.php");
+if (@is_file(C_DATA_PATH."/selperiodimenu$anno_vecchio.$idutente_vecchio.php")) unlink(C_DATA_PATH."/selperiodimenu$anno_vecchio.$idutente_vecchio.php");
 } # fine while (list($anno_vecchio,$val) = each($anno_mantieni))
 $id_utenti_vecchi[$idutente_vecchio] = 1;
 } # fine if (!numlin_query($utente_esistente))
@@ -1443,7 +1443,7 @@ $lingua_mex_orig = $lingua_mex;
 if ($silenzio != "SI") $silenzio_mod = "SI";
 else $silenzio_mod = "totale";
 global $anno_modello_presente,$num_periodi_date,$modello_esistente,$cambia_frasi,$lingua_modello,$percorso_cartella_modello,$nome_file;
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 $lingua_mex = $lingua[1];
 $pag_orig = $pag;
 $pag = "crea_modelli.php";
@@ -1488,7 +1488,7 @@ crea_modello_disponibilita($percorso_cartella_modello,$anno_modello,$PHPR_TAB_PR
 } # fine if ($contenuto_mod[$percorso_cartella_modello]["mdl_disponibilita.php"])
 } # fine for $num_cart
 $lang_dir = opendir("./includes/lang/");
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 while ($ini_lingua = readdir($lang_dir)) {
 if ($ini_lingua != "." && $ini_lingua != "..") {
 $nome_file = mex2("mdl_disponibilita",$pag,$ini_lingua).".php";
@@ -1583,9 +1583,9 @@ $lingua_mex = $lingua_mex_orig;
 
 
 } # fine if ($numconnessione)
-else if ($silenzio != "SI") echo mex("Non è stato possibile connettersi al nuovo database, controllare i dati per la connessione, i privilegi dell' utente o il nome del database",$pag).".<br>";
+else if ($silenzio != "SI") echo mex("Non è stato possibile connettersi al nuovo database, controllare i data per la connessione, i privilegi dell' utente o il nome del database",$pag).".<br>";
 } # fine if ($query)
-else if ($silenzio != "SI") echo mex("Non è stato possibile creare il nuovo database, controllare i dati per la connessione, i privilegi dell' utente, il nome del database o se esiste già un database chiamato",$pag)." $N_PHPR_DB_NAME.<br>";
+else if ($silenzio != "SI") echo mex("Non è stato possibile creare il nuovo database, controllare i data per la connessione, i privilegi dell' utente, il nome del database o se esiste già un database chiamato",$pag)." $N_PHPR_DB_NAME.<br>";
 
 
 } # fine else if ($file_coerente == "NO")
@@ -1782,7 +1782,7 @@ if (defined("C_CARTELLA_CREA_MODELLI") and C_CARTELLA_CREA_MODELLI != "") {
 if (C_CARTELLA_DOC != "" and @is_dir(C_CARTELLA_CREA_MODELLI."/".C_CARTELLA_DOC)) $dir_salva_home = C_CARTELLA_CREA_MODELLI."/".C_CARTELLA_DOC;
 else $dir_salva_home = C_CARTELLA_CREA_MODELLI;
 } # fine if (defined("C_CARTELLA_CREA_MODELLI") and C_CARTELLA_CREA_MODELLI != "")
-else $dir_salva_home = C_DATI_PATH;
+else $dir_salva_home = C_DATA_PATH;
 
 for ($num1 = 0 ; $num1 < $num_linee_backup ; $num1++) {
 $linea = togli_acapo($linee_backup[$num1]);

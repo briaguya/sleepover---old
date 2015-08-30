@@ -349,7 +349,7 @@ if ($continua == "NO") {
 if ($silenzio == "NO") echo mex("Le date sono sbagliate",$pag).". <br>";
 } # fine if ($continua == "NO")
 else {
-$file_intero = file(C_DATI_PATH."/selectperiodi$anno_modello.1.php");
+$file_intero = file(C_DATA_PATH."/selectperiodi$anno_modello.1.php");
 $num_linee_file_intero = count($file_intero);
 $pag_gm = "giorni_mesi.php";
 $m_tipo_periodi = esegui_query("select tipo_periodi from $tableanni where idanni = '$anno_modello'");
@@ -551,12 +551,12 @@ for ($num_fr = 0 ; $num_fr < $num_frasi ; $num_fr++) ${$fr_frase[$num_fr]} = mex
 
 $cost_percorso_a_dati = "";
 if (function_exists("realpath")) {
-if (realpath(C_DATI_PATH."/")) $cost_percorso_a_dati = realpath(C_DATI_PATH."/")."/";
+if (realpath(C_DATA_PATH."/")) $cost_percorso_a_dati = realpath(C_DATA_PATH."/")."/";
 } # fine if (function_exists("realpath"))
 if ((string) $cost_percorso_a_dati == "") {
-if (substr(C_DATI_PATH,0,1) == "/") $cost_percorso_a_dati = C_DATI_PATH;
+if (substr(C_DATA_PATH,0,1) == "/") $cost_percorso_a_dati = C_DATA_PATH;
 else {
-$dati_path = C_DATI_PATH;
+$dati_path = C_DATA_PATH;
 if (substr($dati_path,0,2) == "./") $dati_path = substr($dati_path,1);
 else $dati_path = "/".$dati_path;
 if ($_SERVER["SCRIPT_FILENAME"]) $cost_percorso_a_dati = dirname($_SERVER["SCRIPT_FILENAME"]).$dati_path;
@@ -747,7 +747,7 @@ fwrite($file,"
 \$numconnessione = connetti_db(\$PHPR_DB_NAME,\$PHPR_DB_HOST,\$PHPR_DB_PORT,\$PHPR_DB_USER,\$PHPR_DB_PASS,\$PHPR_LOAD_EXT);
 ");
 includi_file("./includes/funzioni.php",$file);
-includi_file(C_DATI_PATH."/versione.php",$file);
+includi_file(C_DATA_PATH."/versione.php",$file);
 includi_file("./includes/funzioni_testo.php",$file);
 includi_file("./includes/funzioni_tariffe.php",$file);
 includi_file("./includes/funzioni_costi_agg.php",$file);

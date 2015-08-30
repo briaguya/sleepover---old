@@ -23,8 +23,8 @@
 $pag = "messaggi.php";
 $titolo = "HotelDruid: Messaggi";
 
-include("./costanti.php");
-include(C_DATI_PATH."/dati_connessione.php");
+include("./constants.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 include("./includes/funzioni.php");
@@ -105,7 +105,7 @@ $priv_mod_prenota_ore = "000";
 if ($anno_utente_attivato == "SI" and $priv_vedi_messaggi == "s") {
 
 
-if (@is_file(C_DATI_PATH."/dati_subordinazione.php")) {
+if (@is_file(C_DATA_PATH."/dati_subordinazione.php")) {
 $installazione_subordinata = "SI";
 $inserimento_nuovi_clienti = "NO";
 $priv_ins_messaggi = "n";
@@ -422,7 +422,7 @@ $testo = aggslashdb($testo);
 $dati_richiedente = "$nome_cognome_richiedente<d><d>$mittente<d><d><d><d><d><d><d><d><d><d><d><d><d><d>";
 esegui_query("insert into $tablemessaggi (idmessaggi,tipo_messaggio,idutenti,idutenti_visto,datavisione,mittente,testo,dati_messaggio1,dati_messaggio3,dati_messaggio8,dati_messaggio15,dati_messaggio20,datainserimento) values ('$max_mess','rprenota','$lista_utenti','$lista_utenti','$datavisione','$mittente','".aggslashdb($testo)."','da_inserire','1','1','".aggslashdb($dati_richiedente)."','email','$datainserimento')");
 
-# Estrazione dati da testo email
+# Estrazione data da testo email
 $testo = preg_replace("/  +/"," ",str_replace("\n"," - ",$testo));
 $arrivo_trovato = 0;
 $arrivo_cercato = array();
@@ -539,7 +539,7 @@ else echo mex("Nessun nuovo messaggio",$pag).".<br>";
 imap_close($email_conn);
 } # fine if ($email_conn)
 
-else echo mex("Connessione al server",$pag)." ".$server[0]." ".mex("non riuscita!",$pag)." ".mex("Controllare i dati immessi in \"configura e personalizza\"",$pag).".<br>";
+else echo mex("Connessione al server",$pag)." ".$server[0]." ".mex("non riuscita!",$pag)." ".mex("Controllare i data immessi in \"configura e personalizza\"",$pag).".<br>";
 } # fine if (numlin_query($server_email_tab_messaggi))
 unlock_tabelle($tabelle_lock);
 } # fine if ($scarica_mess and function_exists('imap_open'))
@@ -1049,12 +1049,12 @@ echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"$pag#mess$idmessag
 ".ucfirst(mex("arrivo",$pag)).": ";
 if ($inizioperiodo[1]) echo formatta_data($inizioperiodo[1],$stile_data);
 echo " (";
-mostra_menu_date(C_DATI_PATH."/selperiodimenu$anno.$id_utente.php","n_data_arrivo","",1," selected",$id_utente,$tema,"",$inizioperiodo[1]);
+mostra_menu_date(C_DATA_PATH."/selperiodimenu$anno.$id_utente.php","n_data_arrivo","",1," selected",$id_utente,$tema,"",$inizioperiodo[1]);
 echo ")<br>
 ".ucfirst(mex("partenza",$pag)).": ";
 if ($fineperiodo[1]) echo formatta_data($fineperiodo[1],$stile_data);
 echo " (";
-mostra_menu_date(C_DATI_PATH."/selperiodimenu$anno.$id_utente.php","n_data_partenza","",1," selected",$id_utente,$tema,"",$fineperiodo[1]);
+mostra_menu_date(C_DATA_PATH."/selperiodimenu$anno.$id_utente.php","n_data_partenza","",1," selected",$id_utente,$tema,"",$fineperiodo[1]);
 echo ")<br>
 ".ucfirst(mex("persone",$pag)).": ".$numpersone[1]." (<input name=\"n_num_persone\" size=\"3\" type=\"text\">)<br>
 <input class=\"sbutton\" type=\"submit\" value=\"".mex("Modifica",$pag)."\"><br>

@@ -33,7 +33,7 @@ case "Considerare il costo aggiuntivo come letto(i) aggiuntivo(i)?":	$messaggio 
 case "Modifica il costo":  			$messaggio = "Modifica el coste"; break;
 case "Il costo è stato cancellato":  		$messaggio = "El coste ha sido borrado"; break;
 case "Non si può proseguire perchè il costo aggiuntivo è già stato modificato nel frattempo":	$messaggio = "No se puede continuar porqué el coste añadido ha sido ya modificado mientras tanto"; break;
-case "Non sono stati inseriti tutti i dati necessari":	$messaggio = "No han sido insertados todos los datos necesarios"; break;
+case "Non sono stati inseriti tutti i data necessari":	$messaggio = "No han sido insertados todos los datos necesarios"; break;
 case "I soldi o la percentuale del costo sono sbagliati":	$messaggio = "El precio o la percentual astán equivocados"; break;
 case "Un costo aggiuntivo dello stesso tipo e con lo stesso nome esiste già":	$messaggio = "Un coste añadido del mismo tipo y con el mismo nombre existe ya"; break;
 case "Per chiedere il numero di settimane o il numero da moltiplicare, il costo aggiuntivo non deve essere applicato automaticamente a nessuna tariffa":	$messaggio = "Para preguntar el número de semanas o por cuanto tiene que estar multiplicado el coste añadido no tiene que estar aplicado automaticamente a ninguna tarifa"; break;

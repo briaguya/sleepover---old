@@ -36,7 +36,7 @@ function connetti_db ($database,$host,$port,$user,$password,$estensione) {
 
 if ($estensione == "SI") dl("sqlite3.so");
 if (defined("C_PERCORSO_A_DATI")) $numconnessione = new SQLite3(C_PERCORSO_A_DATI."db_".$database);
-else $numconnessione = new SQLite3(C_DATI_PATH."/db_".$database);
+else $numconnessione = new SQLite3(C_DATA_PATH."/db_".$database);
 return $numconnessione;
 
 } # fine function connetti_db

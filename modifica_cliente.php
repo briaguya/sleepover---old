@@ -23,12 +23,12 @@
 $pag = "modifica_cliente.php";
 $titolo = "HotelDruid: Modifica Cliente";
 
-include("./costanti.php");
-include(C_DATI_PATH."/dati_connessione.php");
+include("./constants.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 include("./includes/funzioni.php");
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 include("./includes/funzioni_costi_agg.php");
 include("./includes/funzioni_clienti.php");
 $tablenometariffe = $PHPR_TAB_PRE."ntariffe".$anno;
@@ -434,7 +434,7 @@ if ($n_nazione) echo mex("La nazione di residenza verrà cambiata da",$pag)." <b
 if ($n_regione) echo mex("La regione di residenza verrà cambiata da",$pag)." <b>$d_regione</b> ".mex("a",$pag)." <b>$n_regione</b>.<br>";
 if ($n_citta) echo mex("La città di residenza verrà cambiata da",$pag)." <b>$d_citta</b> ".mex("a",$pag)." <b>$n_citta</b>.<br>";
 if ($n_nomevia) {
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 if ($lingua_mex != "ita") include("./includes/lang/$lingua_mex/ordine_frasi.php");
 if ($ordine_strada == 2) $n_nvia = $n_nomevia . " " . $n_via;
 else $n_nvia = $n_via . " " . $n_nomevia;
@@ -805,7 +805,7 @@ $tabelle_lock = lock_tabelle($tabelle_lock);
 
 if ($cancella_cc) {
 esegui_query("delete from $tablerelclienti where idclienti = '$idclienti' and tipo = 'cc' ");
-echo ucfirst(mex("i dati della carta di credito sono stati cancellati",$pag));
+echo ucfirst(mex("i data della carta di credito sono stati cancellati",$pag));
 } # fine if ($cancella_cc)
 else {
 
@@ -848,7 +848,7 @@ openssl_public_encrypt($n_cvc_cc,$val_crypt,$pub_key);
 $val_crypt = base64_encode($val_crypt);
 esegui_query("update $tablerelclienti set testo5 = '".aggslashdb($val_crypt)."' where idclienti = '$idclienti' and tipo = 'cc' ");
 } # fine if ($n_cvc_cc)
-echo ucfirst(mex("i dati della carta di credito sono stati inseriti",$pag));
+echo ucfirst(mex("i data della carta di credito sono stati inseriti",$pag));
 } # fine if ($errore != "SI")
 
 } # fine esle if ($cancella_cc)
@@ -969,7 +969,7 @@ echo "<tr style=\"background-color: ".rowbgcolor().";\"><td>".mex("CVC",$pag).":
 
 echo "</table>
 <div style=\"text-align: center;\">
-<input class=\"sbutton\" type=\"submit\" value=\"".ucfirst(mex("modifica i dati della carta di credito",$pag))."\">
+<input class=\"sbutton\" type=\"submit\" value=\"".ucfirst(mex("modifica i data della carta di credito",$pag))."\">
 </div></div></form>";
 if (numlin_query($dati_carta)) {
 echo "<br><br>
@@ -1002,7 +1002,7 @@ echo "<br><br><div style=\"text-align: center;\">
 </div></div></form>";
 } # fine if (numlin_query($cert_cc))
 } # fine if ($_SERVER["HTTPS"] == "on" or $_SERVER["SERVER_PORT"] == "443" or...
-else echo "<span class=\"colred\">".mex("I dati della carta di credito possono essere visti solo su una connessione sicura",$pag)."</span>.<br><br>";
+else echo "<span class=\"colred\">".mex("I data della carta di credito possono essere visti solo su una connessione sicura",$pag)."</span>.<br><br>";
 } # fine if (function_exists('openssl_pkey_new'))
 } # fine if ($vedi_cc)
 
@@ -1013,7 +1013,7 @@ else echo "<span class=\"colred\">".mex("I dati della carta di credito possono e
 if ($mostra_form_modifica_cliente != "NO") {
 
 # Form per modificare il cliente.
-echo "<h3>".mex("Modifica i dati del cliente",$pag)." $idclienti</h3><br>
+echo "<h3>".mex("Modifica i data del cliente",$pag)." $idclienti</h3><br>
 <hr style=\"width: 95%;\">";
 
 $cliente = esegui_query("select * from $tableclienti where idclienti = '$idclienti'");
@@ -1256,7 +1256,7 @@ $d_nome_lingua = ucfirst(togli_acapo($d_nome_lingua[0]));
 } # fine if ($d_lingua_cli)
 $opt_lingue = "<option value=\"ita\">Italiano</option>";
 $lang_dir = opendir("./includes/lang/");
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 while ($ini_lingua = readdir($lang_dir)) {
 if ($ini_lingua != "." and $ini_lingua != ".." and $ini_lingua != $d_lingua_cli) {
 $nome_lingua = file("./includes/lang/$ini_lingua/l_n");
@@ -1448,7 +1448,7 @@ echo "<input type=\"hidden\" name=\"d_campo_pers$num1\" value=\"".$d_campi_pers[
 } # fine for $num1
 
 
-echo "<input class=\"sbutton\" id=\"modi\" type=\"submit\" name=\"modifica_cliente\" value=\"".mex("Modifica i dati del cliente",$pag)."\">
+echo "<input class=\"sbutton\" id=\"modi\" type=\"submit\" name=\"modifica_cliente\" value=\"".mex("Modifica i data del cliente",$pag)."\">
 </div></div></form>";
 
 if ($origine_vecchia) $origine = $origine_vecchia;

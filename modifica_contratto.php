@@ -23,8 +23,8 @@
 $pag = "modifica_contratto.php";
 $titolo = "HotelDruid: Modifica Documento";
 
-include("./costanti.php");
-include(C_DATI_PATH."/dati_connessione.php");
+include("./constants.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 include("./includes/funzioni.php");
@@ -81,7 +81,7 @@ if (defined("C_CARTELLA_CREA_MODELLI") and C_CARTELLA_CREA_MODELLI != "") {
 if (C_CARTELLA_DOC != "" and @is_dir(C_CARTELLA_CREA_MODELLI."/".C_CARTELLA_DOC)) $dir_salva_home = C_CARTELLA_DOC;
 else $dir_salva_home = "";
 } # fine if (defined("C_CARTELLA_CREA_MODELLI") and C_CARTELLA_CREA_MODELLI != "")
-else $dir_salva_home = C_DATI_PATH;
+else $dir_salva_home = C_DATA_PATH;
 
 
 if (controlla_num_pos($num_contratto) == "NO") $num_contratto = "1";
@@ -403,7 +403,7 @@ unlock_tabelle($tabelle_lock);
 
 if ($upload_allegato) {
 $errore = "NO";
-$file_tmp = C_DATI_PATH."/allegato_contr$num_contratto.tmp";
+$file_tmp = C_DATA_PATH."/allegato_contr$num_contratto.tmp";
 if (!$file_allegato_upload) {
 if ($HTTP_POST_FILES['file_allegato_upload']['tmp_name']) {
 $file_allegato_upload = $HTTP_POST_FILES['file_allegato_upload']['tmp_name'];

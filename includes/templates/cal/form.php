@@ -31,7 +31,7 @@ esegui_query("delete from $tablepersonalizza where idpersonalizza = 'ultime_sel_
 esegui_query("insert into $tablepersonalizza (idpersonalizza,valpersonalizza,idutente) values ('ultime_sel_crea_modelli','".aggslashdb($anno_modello).";;".aggslashdb($lingua_modello).";;".aggslashdb($perc_cart_mod_sel)."','$id_utente') ");
 
 
-# Prendo i dati dal file se già esistente
+# Prendo i data dal file se già esistente
 if ($template_file_name[$lingua_modello]) $nome_file = $template_file_name[$lingua_modello];
 else {
 $nome_file = mext_cal($template_file_name["ita"],$pag,$lingua_modello);
@@ -73,9 +73,9 @@ $numero_date_menu = $n_dates_menu;
 $numero_data = 0;
 for ($num1 = 0 ; $num1 < $num_periodi_date ; $num1++) {
 echo mex("dal",$pag)." ";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno_modello.1.php","inizioperiodo$num1",${"inizioperiodo".$num1},"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno_modello.1.php","inizioperiodo$num1",${"inizioperiodo".$num1},"","",$id_utente,$tema);
 echo " ".mex("al",$pag)." ";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno_modello.1.php","fineperiodo$num1",${"fineperiodo".$num1},"","",$id_utente,$tema);
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno_modello.1.php","fineperiodo$num1",${"fineperiodo".$num1},"","",$id_utente,$tema);
 /*
 if (!${"intervalloperiodo".$num1}) ${"intervalloperiodo".$num1} = 1;
 echo ",&nbsp;".str_replace(" ","&nbsp;",mex("$parola_settimane di intervallo",$pag)).":&nbsp;
@@ -104,7 +104,7 @@ echo "<td>
 <label><input type=\"radio\" name=\"data_presel\" value=\"attuale\"$check_data_att>".mext_cal("data attuale",$pag)."</label>
 </td></tr><tr><td></td><td>
 <label><input type=\"radio\" name=\"data_presel\" value=\"fissa\"$check_data_fiss>".mext_cal("data fissa",$pag)."</label>:";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno_modello.1.php","data_fissa_sel",$data_preselezionata,"","",$id_utente,$tema,"SI");
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno_modello.1.php","data_fissa_sel",$data_preselezionata,"","",$id_utente,$tema,"SI");
 echo "</td></tr></table>";
 if (!$numero_giorni) $numero_giorni = 31;
 echo "".mext_cal("Numero di $parola_settimane della tabella",$pag).":

@@ -23,12 +23,12 @@
 $pag = "clienti.php";
 $titolo = "HotelDruid: Clienti";
 
-include("./costanti.php");
-include(C_DATI_PATH."/dati_connessione.php");
+include("./constants.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 include("./includes/funzioni.php");
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 include("./includes/funzioni_clienti.php");
 $tablemessaggi = $PHPR_TAB_PRE."messaggi";
 $tablerelutenti = $PHPR_TAB_PRE."relutenti";
@@ -327,7 +327,7 @@ esegui_query("update $tableprenota set idprenota_compagna = '$idprenota_vicine' 
 
 if ($nuovaprenotazione != "Continua lo stesso") {
 
-$file_interconnessioni = C_DATI_PATH."/dati_interconnessioni.php";
+$file_interconnessioni = C_DATA_PATH."/dati_interconnessioni.php";
 if (@is_file($file_interconnessioni)) {
 include($file_interconnessioni);
 if (@is_array($ic_present)) {
@@ -505,7 +505,7 @@ if ($id_periodo_corrente >= $idinizioperiodo) $data_sbagliata = "SI";
 if ($data_in_anno_succ[$n_t] == "SI") $data_sbagliata = "SI";
 
 if ($modifica_pers == "NO") {
-@include(C_DATI_PATH."/selperiodimenu$anno.$id_utente.php");
+@include(C_DATA_PATH."/selperiodimenu$anno.$id_utente.php");
 if (!strpos($dates_options_list,$inizioperiodo)) $data_sbagliata = "SI";
 if (!strpos($dates_options_list,$fineperiodo)) $data_sbagliata = "SI";
 } # fine if ($modifica_pers == "NO")
@@ -691,7 +691,7 @@ echo ".<br>";
 } # fine if ($$numsettimane)
 if (($$numsettimane and controlla_num_pos($$numsettimane) == "NO") or ($$nummoltiplica_ca and controlla_num_pos($$nummoltiplica_ca) == "NO")) {
 $inserire = "NO";
-echo mex("I dati di un costo aggiuntivo sono errati",$pag);
+echo mex("I data di un costo aggiuntivo sono errati",$pag);
 if ($num_tipologie > 1) echo " (".mex("tipologia",$pag)." $n_t)";
 echo ".<br>";
 } # fine if (controlla_num_pos($$numsettimane) == "NO" or...
@@ -1693,7 +1693,7 @@ else {
 if ($inseriscicliente or $inserire) {
 
 $mostra_form_dati_cliente = "NO";
-$Modifica_i_dati_del_cliente = "Modifica i dati del cliente";
+$Modifica_i_dati_del_cliente = "Modifica i data del cliente";
 
 if ($nuovaprenotazione == "") {
 
@@ -1723,7 +1723,7 @@ $inserire = "SI";
 if ($nuovaprenotazione) {
 if ($inserimento_nuovi_clienti == "SI") {
 $mostra_form_dati_cliente = "SI";
-$datiprenota = mex("Inserisci i dati di un nuovo cliente",$pag);
+$datiprenota = mex("Inserisci i data di un nuovo cliente",$pag);
 $titolo_form_dati_cliente = $datiprenota;
 $inserire = "";
 } # fine if ($inserimento_nuovi_clienti == "SI")
@@ -1848,7 +1848,7 @@ echo "<input type=\"hidden\" name=\"numpersone$n_t\" value=\"".${"numpersone".$n
 <input type=\"hidden\" name=\"num_app_richiesti$n_t\" value=\"".${"num_app_richiesti".$n_t}."\">";
 } # fine for $n_t
 echo "<div style=\"text-align: center;\"><br>
-<input class=\"sbutton\" type=\"submit\" id=\"inse\" name=\"datiprenota\" value=\"".mex("Inserisci i dati di un nuovo cliente",$pag)."\">
+<input class=\"sbutton\" type=\"submit\" id=\"inse\" name=\"datiprenota\" value=\"".mex("Inserisci i data di un nuovo cliente",$pag)."\">
 </div></div></form><br>
 <hr style=\"width: 95%\">";
 } # fine if ($inserimento_nuovi_clienti == "SI")
@@ -1994,9 +1994,9 @@ echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"modifica_cliente.p
 <input type=\"hidden\" name=\"id_sessione\" value=\"$id_sessione\">
 <input type=\"hidden\" name=\"idclienti\" value=\"$idclienti\">
 <input type=\"hidden\" name=\"origine\" value=\"inizio.php\">";
-if ($cliente_modificato == "SI") echo mex("I dati del cliente",$pag)." $cognome ".mex("sono stati modificati",$pag).". ";
-else echo mex("I dati del cliente",$pag)." $cognome ".mex("sono stati inseriti",$pag).". ";
-echo "<input class=\"sbutton\" type=\"submit\" value=\"".mex("Modifica i dati del cliente",$pag)." $idclienti\">
+if ($cliente_modificato == "SI") echo mex("I data del cliente",$pag)." $cognome ".mex("sono stati modificati",$pag).". ";
+else echo mex("I data del cliente",$pag)." $cognome ".mex("sono stati inseriti",$pag).". ";
+echo "<input class=\"sbutton\" type=\"submit\" value=\"".mex("Modifica i data del cliente",$pag)." $idclienti\">
 </div></form>";
 } # fine if ($inserire != "NO")
 else echo mex("Non si è trovato nessun cliente chiamato",$pag)." $cognome.<br>";
@@ -2025,7 +2025,7 @@ unlock_tabelle($tabelle_lock);
 if ($mostra_form_dati_cliente != "NO") {
 
 
-if (!$titolo_form_dati_cliente) $titolo_form_dati_cliente = mex("Inserisci o modifica i dati di un cliente",$pag);
+if (!$titolo_form_dati_cliente) $titolo_form_dati_cliente = mex("Inserisci o modifica i data di un cliente",$pag);
 echo "<h4>$titolo_form_dati_cliente.</h4>";
 
 # Questa è la form di inserimento
@@ -2121,7 +2121,7 @@ if ($lingua_cli == "ita") $sel = " selected";
 else $sel = "";
 $opt_lingue = "<option value=\"ita\"$sel>Italiano</option>";
 $lang_dir = opendir("./includes/lang/");
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 while ($ini_lingua = readdir($lang_dir)) {
 if ($ini_lingua != "." && $ini_lingua != "..") {
 if (@is_file("./includes/lang/$ini_lingua/l_n")) {
@@ -2379,7 +2379,7 @@ echo "<hr style=\"width: 95%\">
 <div style=\"text-align: center;\">";
 
 if ($datiprenota) {
-echo "<input class=\"sbutton\" id=\"inse\" type=\"submit\" name=\"inserire\" value=\"".mex("Inserisci i dati",$pag)."\"><br><br>
+echo "<input class=\"sbutton\" id=\"inse\" type=\"submit\" name=\"inserire\" value=\"".mex("Inserisci i data",$pag)."\"><br><br>
 <input type=\"hidden\" name=\"inserire_dati_cliente\" value=\"SI\">";
 $manda_cognome = "NO";
 $manda_dati_assegnazione = "NO";
@@ -2389,7 +2389,7 @@ $manda_cognome = "";
 else {
 
 echo "
-<input class=\"sbutton\" id=\"inse\" type=\"submit\" name=\"inseriscicliente\" value=\"".mex("Inserisci i dati",$pag)."\">
+<input class=\"sbutton\" id=\"inse\" type=\"submit\" name=\"inseriscicliente\" value=\"".mex("Inserisci i data",$pag)."\">
 ";
 
 } # fine else if ($datiprenota)

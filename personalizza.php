@@ -24,8 +24,8 @@ $pag = "personalizza.php";
 $titolo = "HotelDruid: Personalizza";
 $base_js = 1;
 
-include("./costanti.php");
-include(C_DATI_PATH."/dati_connessione.php");
+include("./constants.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 include("./includes/funzioni.php");
@@ -97,7 +97,7 @@ for ($num1 = 1 ; $num1 < count($contratti_consentiti) ; $num1++) if ($contratti_
 else $attiva_contratti_consentiti = "n";
 if ($anno_utente_attivato == "SI") {
 
-if (@is_file(C_DATI_PATH."/dati_subordinazione.php")) {
+if (@is_file(C_DATA_PATH."/dati_subordinazione.php")) {
 $installazione_subordinata = "SI";
 $inserimento_nuovi_clienti = "NO";
 $modifica_clienti = "NO";
@@ -155,7 +155,7 @@ if (defined("C_MASSIMO_NUM_TARIFFE") and C_MASSIMO_NUM_TARIFFE != 0 and $nuovo_n
 if (controlla_num_pos($nuovo_numero_tariffe) == "NO" or $nuovo_numero_tariffe == 0 or $aggiorna_numero_tariffe == "NO") {
 $aggiorna = "NO";
 } # fine if (controlla_num_pos($nuovo_numero_tariffe) or ...
-$file_interconnessioni = C_DATI_PATH."/dati_interconnessioni.php";
+$file_interconnessioni = C_DATA_PATH."/dati_interconnessioni.php";
 if (@is_file($file_interconnessioni)) {
 $linee_file_ic = implode("",file($file_interconnessioni));
 for ($num1 = ($nuovo_numero_tariffe + 1) ; $num1 <= $numerotariffe ; $num1++) {
@@ -415,7 +415,7 @@ else $tar_pay .= ",".$tar_pay_vett[$num2];
 } # fine for $num2
 esegui_query("update $tabletransazioniweb set dati_transazione6 = '$tar_pay' where idtransazioni = '$idtrans' ");
 } # fine for $num1
-$file_interconnessioni = C_DATI_PATH."/dati_interconnessioni.php";
+$file_interconnessioni = C_DATA_PATH."/dati_interconnessioni.php";
 if (@is_file($file_interconnessioni)) {
 $filelock = crea_lock_file($file_interconnessioni);
 $cont_file = implode("",file($file_interconnessioni));
@@ -493,7 +493,7 @@ crea_modello_disponibilita($percorso_cartella_modello,$anno_modello,$PHPR_TAB_PR
 } # fine if (@is_file("$percorso_cartella_modello/mdl_disponibilita.php"))
 } # fine for $num_cart
 $lang_dir = opendir("./includes/lang/");
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 while ($ini_lingua = readdir($lang_dir)) {
 if ($ini_lingua != "." && $ini_lingua != "..") {
 $nome_file = mex2("mdl_disponibilita",$pag,$ini_lingua).".php";
@@ -608,7 +608,7 @@ echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"./$pag\"><div>
 <input type=\"hidden\" name=\"id_sessione\" value=\"$id_sessione\">
 <input type=\"hidden\" name=\"aggiorna_qualcosa\" value=\"SI\">
 <input type=\"hidden\" name=\"attiva_pass_cc\" value=\"SI\">
-<br>".mex("<b>Attenzione</b>: se si perde questa password non sarà più possibile leggere i dati delle carte di credito inserite",$pag).".<br><br>
+<br>".mex("<b>Attenzione</b>: se si perde questa password non sarà più possibile leggere i data delle carte di credito inserite",$pag).".<br><br>
 ".ucfirst(mex("nuova password",$pag)).": <input type=\"password\" name=\"n_pass_cc\" size=\"32\"><br>
 ".ucfirst(mex("ripetere password",$pag)).": <input type=\"password\" name=\"r_pass_cc\" size=\"32\"><br>
 <input class=\"sbutton\" type=\"submit\" value=\"".ucfirst(mex("attiva la password",$pag))."\">
@@ -638,7 +638,7 @@ if ($val_decrypt != 'prova') $errore = "SI";
 if ($errore != "SI") {
 esegui_query("insert into $tablepersonalizza (idpersonalizza,valpersonalizza,idutente) values ('cert_cc','".aggslashdb($val_cert)."','1')");
 esegui_query("insert into $tablepersonalizza (idpersonalizza,valpersonalizza,idutente) values ('priv_key_cc','".aggslashdb($val_priv_key)."','1')");
-echo ucfirst(mex("password per la visualizzazione dei dati delle carte di credito",$pag))." ".mex("attivata",$pag).".<br>";
+echo ucfirst(mex("password per la visualizzazione dei data delle carte di credito",$pag))." ".mex("attivata",$pag).".<br>";
 } # fine if ($errore != "SI")
 } # fine if ($sscert)
 else $errore = "SI";
@@ -668,7 +668,7 @@ echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"./$pag\"><div>
 <input type=\"hidden\" name=\"aggiorna_qualcosa\" value=\"SI\">
 <input type=\"hidden\" name=\"disattiva_pass_cc\" value=\"SI\">
 <input type=\"hidden\" name=\"continua\" value=\"SI\">
-<br>".mex("<b class=\"colred\">Attenzione</b>: tutti i dati delle carte di credito verranno cancellati",$pag).".<br><br>
+<br>".mex("<b class=\"colred\">Attenzione</b>: tutti i data delle carte di credito verranno cancellati",$pag).".<br><br>
 <input class=\"sbutton\" type=\"submit\" value=\"".ucfirst(mex("continua",$pag))."\">
 </div></form><br><br>";
 } # fine if (!$continua)
@@ -676,7 +676,7 @@ else {
 esegui_query("delete from $tablepersonalizza where idpersonalizza = 'cert_cc' and idutente = '1' ");
 esegui_query("delete from $tablepersonalizza where idpersonalizza = 'priv_key_cc' and idutente = '1' ");
 esegui_query("delete from $tablerelclienti where tipo = 'cc'");
-echo ucfirst(mex("password per la visualizzazione dei dati delle carte di credito",$pag))." ".mex("disattivata",$pag).".<br>";
+echo ucfirst(mex("password per la visualizzazione dei data delle carte di credito",$pag))." ".mex("disattivata",$pag).".<br>";
 } # fine else if (!$continua)
 } # fine if (numlin_query($cert_cc))
 unlock_tabelle($tabelle_lock);
@@ -696,7 +696,7 @@ echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"./$pag\"><div>
 <input type=\"hidden\" name=\"aggiorna_qualcosa\" value=\"SI\">
 <input type=\"hidden\" name=\"cambia_pass_cc\" value=\"SI\">
 ".ucfirst(mex("vecchia password",$pag)).": <input type=\"password\" name=\"pass_cc\" size=\"32\"><br><br>
-".mex("<b>Attenzione</b>: se si perde questa password non sarà più possibile leggere i dati delle carte di credito inserite",$pag).".<br><br>
+".mex("<b>Attenzione</b>: se si perde questa password non sarà più possibile leggere i data delle carte di credito inserite",$pag).".<br><br>
 ".ucfirst(mex("nuova password",$pag)).": <input type=\"password\" name=\"n_pass_cc\" size=\"32\"><br>
 ".ucfirst(mex("ripetere password",$pag)).": <input type=\"password\" name=\"r_pass_cc\" size=\"32\"><br>
 <input class=\"sbutton\" type=\"submit\" value=\"".ucfirst(mex("attiva la password",$pag))."\">
@@ -754,7 +754,7 @@ $val_crypt = base64_encode($val_crypt);
 esegui_query("update $tablerelclienti set testo5 = '".aggslashdb($val_crypt)."' where idclienti = '$idclienti_cc' and tipo = 'cc' and numero = '$numero_cc' ");
 } # fine if ($cvc_cc)
 } # fine for $num1
-echo ucfirst(mex("password per la visualizzazione dei dati delle carte di credito",$pag))." ".mex("cambiata",$pag).".<br>";
+echo ucfirst(mex("password per la visualizzazione dei data delle carte di credito",$pag))." ".mex("cambiata",$pag).".<br>";
 } # fine if ($errore != "SI")
 } # fine if ($sscert)
 else $errore = "SI";
@@ -790,7 +790,7 @@ echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"$pag\"><div>
 <table style=\"max-width: 680px;\"><tr><td>
 <b class=\"colred\">".mex("Esonero di responsabilità",$pag)."</b>:
  ".mex("la gestione dei codici CVC avverrà sotto la propria responsabilità, essendo a conoscenza che gli standard di sicurezza PCI ne vietano la registrazione",$pag).".
- ".mex("L'accettazione di questa clausola conferma che gli sviluppatori di questo software sono liberi da ogni responsibilità sulla sicurezza di questi dati",$pag).".</td></tr>
+ ".mex("L'accettazione di questa clausola conferma che gli sviluppatori di questo software sono liberi da ogni responsibilità sulla sicurezza di questi data",$pag).".</td></tr>
 <tr><td style=\"text-align: center;\"><label><input type=\"radio\" name=\"accetto_gest_cvc\" value=\"SI\">".mex("Accetto",$pag)."</label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input type=\"radio\" name=\"accetto_gest_cvc\" value=\"NO\" checked>".mex("Declino",$pag)."</label>
 </td></tr><tr><td style=\"text-align: center;\"><input class=\"sbutton\" type=\"submit\" value=\"".ucfirst(mex("continua",$pag))."\">
@@ -856,25 +856,25 @@ if (numlin_query($utente_esistente)) $phpr_log .= ",$id_utente_log";
 } # fine if ($id_utente_log)
 } # fine if ($attiva_phpr_log)
 else $phpr_log = "NO";
-$filelock = crea_lock_file(C_DATI_PATH."/dati_connessione.php");
-if ($file_dati_conn = @file(C_DATI_PATH."/dati_connessione.php")) {
+$filelock = crea_lock_file(C_DATA_PATH."/dati_connessione.php");
+if ($file_dati_conn = @file(C_DATA_PATH."/dati_connessione.php")) {
 for ($num1 = 0 ; $num1 < count($file_dati_conn) ; $num1++) {
 if (substr($file_dati_conn[$num1],0,9) == "\$PHPR_LOG") $file_dati_conn[$num1] = "\$PHPR_LOG = \"$phpr_log\";
 ";
 } # fine for $num1
-scrivi_file ($file_dati_conn,C_DATI_PATH."/dati_connessione.php");
+scrivi_file ($file_dati_conn,C_DATA_PATH."/dati_connessione.php");
 if ($attiva_phpr_log) echo mex("Log delle query di modifica degli utenti normali attivato",$pag).".<br>";
 if ($disattiva_phpr_log) {
-if (@is_file(C_DATI_PATH."/log_utenti.php")) unlink(C_DATI_PATH."/log_utenti.php");
+if (@is_file(C_DATA_PATH."/log_utenti.php")) unlink(C_DATA_PATH."/log_utenti.php");
 echo mex("Log delle query di modifica degli utenti normali disattivato",$pag).".<br>";
 } # fine ($disattiva_phpr_log)
 } # fine if ($file_dati_conn = @file(C_DATI_PATH."/dati_connessione.php"))
-distruggi_lock_file($filelock,C_DATI_PATH."/dati_connessione.php");
+distruggi_lock_file($filelock,C_DATA_PATH."/dati_connessione.php");
 } # fine if ($disattiva_phpr_log or $attiva_phpr_log)
 
 if ($vedi_log) {
 $nascondi_pers_utente_mod = 1;
-$file_log = C_DATI_PATH."/log_utenti.php";
+$file_log = C_DATA_PATH."/log_utenti.php";
 if ($cancella_log == "SI" and @is_file($file_log)) unlink($file_log);
 unset($nome_utente_id);
 $tutti_utenti = esegui_query("select * from $tableutenti order by idutenti");
@@ -947,7 +947,7 @@ if ($ore_diff_server != "" and controlla_num($ore_diff_server) == "SI" and $ore_
 scrivi_file("<?php
 define(C_VERSIONE_ATTUALE,".C_VERSIONE_ATTUALE.");
 define(C_DIFF_ORE,$ore_diff_server);
-?>",C_DATI_PATH."/versione.php");
+?>",C_DATA_PATH."/versione.php");
 echo mex("Le ore di differenza con l'orario del server sono state cambiate",$pag)." 
 (".mex("ora attuale",$pag)." ".formatta_data(date("Y-m-d H:i:s",(time() + ($ore_diff_server * 3600))),$stile_data).").<br>";
 } # fine if ($cambia_ore_diff_server != "" and...
@@ -1005,8 +1005,8 @@ echo mex("Il mascheramento della provenienza delle email è stato cambiato",$pag
 if ($cambia_nome_unita or $cambia_nome_unita_sing) {
 $nascondi_pers_utente_mod = 1;
 if (($cambia_nome_unita and ($nome_unita == "cam" or $nome_unita == "app" or $nome_unita == "pers")) or ($cambia_nome_unita_sing and ($nome_unita == "bed" or $nome_unita == "pers"))) {
-if ($cambia_nome_unita_sing) $file_unit = C_DATI_PATH."/unit_single.php";
-else $file_unit = C_DATI_PATH."/unit.php";
+if ($cambia_nome_unita_sing) $file_unit = C_DATA_PATH."/unit_single.php";
+else $file_unit = C_DATA_PATH."/unit.php";
 $filelock = crea_lock_file($file_unit);
 if ($nome_unita == "cam") {
 scrivi_file("<?php
@@ -1130,17 +1130,17 @@ echo mex("Il nome delle unità da affittare è stato cambiato",$pag).".<br>";
 if ($aggiungi_parola_da_sostituire) {
 $nascondi_pers_utente_mod = 1;
 if ($parole_sost == 0) {
-$filelock = crea_lock_file(C_DATI_PATH."/tema.php");
-$file_tema = implode("",@file(C_DATI_PATH."/tema.php"));
+$filelock = crea_lock_file(C_DATA_PATH."/tema.php");
+$file_tema = implode("",@file(C_DATA_PATH."/tema.php"));
 $file_tema = preg_replace("/\\\$parole_sost *= *0 *;/","\$parole_sost = 1;",$file_tema);
-scrivi_file($file_tema,C_DATI_PATH."/tema.php");
-distruggi_lock_file($filelock,C_DATI_PATH."/tema.php");
-$filelock = crea_lock_file(C_DATI_PATH."/parole_sost.php");
+scrivi_file($file_tema,C_DATA_PATH."/tema.php");
+distruggi_lock_file($filelock,C_DATA_PATH."/tema.php");
+$filelock = crea_lock_file(C_DATA_PATH."/parole_sost.php");
 scrivi_file("<?php
-?>",C_DATI_PATH."/parole_sost.php");
+?>",C_DATA_PATH."/parole_sost.php");
 } # fine if ($parole_sost == 0)
-else $filelock = crea_lock_file(C_DATI_PATH."/parole_sost.php");
-$file_sost = implode("",@file(C_DATI_PATH."/parole_sost.php"));
+else $filelock = crea_lock_file(C_DATA_PATH."/parole_sost.php");
+$file_sost = implode("",@file(C_DATA_PATH."/parole_sost.php"));
 togli_acapo($nuova_parola);
 togli_acapo($vecchia_parola);
 $nuova_parola = str_replace("\"","",$nuova_parola);
@@ -1150,15 +1150,15 @@ $vecchia_parola = str_replace("\"","",$vecchia_parola);
 $vecchia_parola = str_replace("\\","",$vecchia_parola);
 $file_sost = str_replace("?>","\$messaggio = str_replace(\"$vecchia_parola\",\"$nuova_parola\",\$messaggio);
 ?>",$file_sost);
-if ($nuova_parola and $vecchia_parola) scrivi_file($file_sost,C_DATI_PATH."/parole_sost.php");
-distruggi_lock_file($filelock,C_DATI_PATH."/parole_sost.php");
+if ($nuova_parola and $vecchia_parola) scrivi_file($file_sost,C_DATA_PATH."/parole_sost.php");
+distruggi_lock_file($filelock,C_DATA_PATH."/parole_sost.php");
 echo mex("La parola da sostituire è stata aggiunta",$pag).".<br>";
 } # fine if ($aggiungi_parola_da_sostituire)
 if ($elimina_parola_da_sostituire) {
 if (get_magic_quotes_gpc()) $parola_da_elininare = stripslashes($parola_da_elininare);
 $parola_da_elininare = explode("\\",$parola_da_elininare);
-$filelock = crea_lock_file(C_DATI_PATH."/parole_sost.php");
-$file_sost = @file(C_DATI_PATH."/parole_sost.php");
+$filelock = crea_lock_file(C_DATA_PATH."/parole_sost.php");
+$file_sost = @file(C_DATA_PATH."/parole_sost.php");
 $sost_presenti = "NO";
 if (C_RESTRIZIONI_DEMO_ADMIN == "SI") $parola_da_elininare[1] = htmlspecialchars($parola_da_elininare[1]);
 for ($num1 = 0 ; $num1 < count($file_sost) ; $num1++) {
@@ -1166,15 +1166,15 @@ if (str_replace("(\"".$parola_da_elininare[0]."\",\"".$parola_da_elininare[1]."\
 else if (substr($file_sost[$num1],0,26) == "\$messaggio = str_replace(\"") $sost_presenti = "SI";
 } # fine for $num1
 echo mex("La parola da sostituire è stata eliminata",$pag).".<br>";
-if ($sost_presenti == "SI") scrivi_file($file_sost,C_DATI_PATH."/parole_sost.php");
-else unlink(C_DATI_PATH."/parole_sost.php");
-distruggi_lock_file($filelock,C_DATI_PATH."/parole_sost.php");
+if ($sost_presenti == "SI") scrivi_file($file_sost,C_DATA_PATH."/parole_sost.php");
+else unlink(C_DATA_PATH."/parole_sost.php");
+distruggi_lock_file($filelock,C_DATA_PATH."/parole_sost.php");
 if ($sost_presenti != "SI") {
-$filelock = crea_lock_file(C_DATI_PATH."/tema.php");
-$file_tema = implode("",@file(C_DATI_PATH."/tema.php"));
+$filelock = crea_lock_file(C_DATA_PATH."/tema.php");
+$file_tema = implode("",@file(C_DATA_PATH."/tema.php"));
 $file_tema = preg_replace("/\\\$parole_sost *= *1 *;/","\$parole_sost = 0;",$file_tema);
-scrivi_file($file_tema,C_DATI_PATH."/tema.php");
-distruggi_lock_file($filelock,C_DATI_PATH."/tema.php");
+scrivi_file($file_tema,C_DATA_PATH."/tema.php");
+distruggi_lock_file($filelock,C_DATA_PATH."/tema.php");
 } # fine if ($sost_presenti != "SI")
 } # fine if ($elimina_parola_da_sostituire)
 
@@ -1430,7 +1430,7 @@ crea_modello_disponibilita($percorso_cartella_modello,$anno_modello,$PHPR_TAB_PR
 } # fine if (@is_file("$percorso_cartella_modello/mdl_disponibilita.php"))
 } # fine for $num_cart
 $lang_dir = opendir("./includes/lang/");
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 while ($ini_lingua = readdir($lang_dir)) {
 if ($ini_lingua != "." && $ini_lingua != "..") {
 $nome_file = mex2("mdl_disponibilita",$pag,$ini_lingua).".php";
@@ -1672,14 +1672,14 @@ else $attiva_contratti_consentiti = "n";
 
 if ($cambialingua) {
 unset($lingua);
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 $vecchia_lingua = $lingua[$id_utente_mod];
 $lingua = $n_lingua;
 if (($lingua != "ita" and !is_dir("./includes/lang/$lingua")) or strlen($lingua) > 3 or str_replace("/","",$lingua) != $lingua) $lingua = "en";
 if ($lingua != "ita" and !is_dir("./includes/lang/$lingua")) $lingua = "ita";
 $nuova_lingua = $lingua;
-$filelock = crea_lock_file(C_DATI_PATH."/lingua.php");
-$file_lingua = @file(C_DATI_PATH."/lingua.php");
+$filelock = crea_lock_file(C_DATA_PATH."/lingua.php");
+$file_lingua = @file(C_DATA_PATH."/lingua.php");
 $linee = "";
 $num_lin = 0;
 for ($num1 = 0 ; $num1 < count($file_lingua) ; $num1++) {
@@ -1690,8 +1690,8 @@ $linee[$num_lin] = "\$lingua[$id_utente_mod] = \"$lingua\";
 else $linee[$num_lin] = $file_lingua[$num1];
 $num_lin++;
 } # fine for $num1
-scrivi_file($linee,C_DATI_PATH."/lingua.php");
-distruggi_lock_file($filelock,C_DATI_PATH."/lingua.php");
+scrivi_file($linee,C_DATA_PATH."/lingua.php");
+distruggi_lock_file($filelock,C_DATA_PATH."/lingua.php");
 
 if (!function_exists("aggiorna_menu_date")) include("./includes/funzioni_menu.php");
 
@@ -1703,15 +1703,15 @@ $lingua_mex = $nuova_lingua;
 for ($num1 = 0 ; $num1 < $num_anni ; $num1++) {
 $anno_cambia = risul_query($anni,$num1,'idanni');
 $tipo_periodi_cambia = risul_query($anni,$num1,'tipo_periodi');
-if (@is_file(C_DATI_PATH."/selectperiodi$anno_cambia.$id_utente_mod.php")) aggiorna_menu_date(C_DATI_PATH."/selectperiodi$anno_cambia.$id_utente_mod.php",$tipo_periodi_cambia);
-if (@is_file(C_DATI_PATH."/selperiodimenu$anno_cambia.$id_utente_mod.php")) {
-aggiorna_menu_date(C_DATI_PATH."/selperiodimenu$anno_cambia.$id_utente_mod.php",$tipo_periodi_cambia);
+if (@is_file(C_DATA_PATH."/selectperiodi$anno_cambia.$id_utente_mod.php")) aggiorna_menu_date(C_DATA_PATH."/selectperiodi$anno_cambia.$id_utente_mod.php",$tipo_periodi_cambia);
+if (@is_file(C_DATA_PATH."/selperiodimenu$anno_cambia.$id_utente_mod.php")) {
+aggiorna_menu_date(C_DATA_PATH."/selperiodimenu$anno_cambia.$id_utente_mod.php",$tipo_periodi_cambia);
 $aggiorna_tariffe_interconn = "SI";
 } # fine if (@is_file(C_DATI_PATH."/selperiodimenu$anno_cambia.$id_utente_mod.php"))
 } # fine for $num1
 unset($lingua);
 # from php 5.6 the includes seem to be cached and this include doesn't work..
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 $lingua_mex = $lingua[$id_utente];
 echo mex("La lingua è stata cambiata",$pag).".<br><br>";
 unlock_tabelle($tabelle_lock);
@@ -1739,7 +1739,7 @@ crea_modello_disponibilita($percorso_cartella_modello,$anno_modello,$PHPR_TAB_PR
 } # fine if (@is_file("$percorso_cartella_modello/mdl_disponibilita.php"))
 } # fine for $num_cart
 $lang_dir = opendir("./includes/lang/");
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 while ($ini_lingua = readdir($lang_dir)) {
 if ($ini_lingua != "." && $ini_lingua != "..") {
 $nome_file = mex2("mdl_disponibilita",$pag,$ini_lingua).".php";
@@ -1814,8 +1814,8 @@ echo "<br>";
 
 if ($cambiatema) {
 if (!is_dir("./themes/$nuovo_tema"."/php") or strlen($nuovo_tema) > 3 or str_replace("/","",$nuovo_tema) != $nuovo_tema) $nuovo_tema = "base";
-$filelock = crea_lock_file(C_DATI_PATH."/tema.php");
-$file_tema = @file(C_DATI_PATH."/tema.php");
+$filelock = crea_lock_file(C_DATA_PATH."/tema.php");
+$file_tema = @file(C_DATA_PATH."/tema.php");
 $linee = "";
 $num_lin = 0;
 for ($num1 = 0 ; $num1 < count($file_tema) ; $num1++) {
@@ -1826,8 +1826,8 @@ $linee[$num_lin] = "\$tema[$id_utente_mod] = \"$nuovo_tema\";
 else $linee[$num_lin] = $file_tema[$num1];
 $num_lin++;
 } # fine for $num1
-scrivi_file($linee,C_DATI_PATH."/tema.php");
-distruggi_lock_file($filelock,C_DATI_PATH."/tema.php");
+scrivi_file($linee,C_DATA_PATH."/tema.php");
+distruggi_lock_file($filelock,C_DATA_PATH."/tema.php");
 echo mex("Il tema grafico è stato cambiato",$pag).".<br>";
 } # fine if ($cambiatema)
 
@@ -1886,7 +1886,7 @@ $n_logo = strtolower($n_logo_strutt);
 if (substr($n_logo,-4) != ".gif" and substr($n_logo,-4) != ".png" and substr($n_logo,-4) != ".jpg" and substr($n_logo,-5) != ".jpeg") $n_logo_strutt = "";
 $nuovi_dati_strut = $n_nome_strutt."#@&".$n_tipo_strutt."#@&".$n_email."#@&".$n_rag_sociale_strutt."#@&".$n_sito_web_strutt."#@&".$n_nome_contatto_strutt."#@&".$n_nazione_strutt."#@&".$n_comune_strutt."#@&".$n_indirizzo_strutt."#@&".$n_cap_strutt."#@&".$n_telefono_strutt."#@&".$n_fax_strutt."#@&".$n_cod_fiscale_strutt."#@&".$n_partita_iva_strutt."#@&".$n_num_stelle_strutt."#@&".$n_logo_strutt;
 esegui_query("update $tablepersonalizza set valpersonalizza = '$nuovi_dati_strut' where idpersonalizza = 'dati_struttura' and idutente = '$id_utente_mod'");
-echo mex("I dati della struttura sono stati cambiati",$pag).".<br>";
+echo mex("I data della struttura sono stati cambiati",$pag).".<br>";
 } # fine if (!strcmp($n_email,"") or preg_match('/^[_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,4}$/i',$nuova_email))
 } # fine if ($cambiadatistrut and C_RESTRIZIONI_DEMO_ADMIN != "SI")
 
@@ -2218,7 +2218,7 @@ aggiorna_pers_relutenti("citta","citta",$tablecitta,"Città cancellata","regione
 aggiorna_pers_relutenti("documentoid","documentiid",$tabledocumentiid,"Tipo di documento di identità eliminato");
 aggiorna_pers_relutenti("parentela","parentele",$tableparentele,"Parentela cancellata");
 
-if (@is_file(C_DATI_PATH."/selectperiodi$anno.$id_utente_mod.php")) {
+if (@is_file(C_DATA_PATH."/selectperiodi$anno.$id_utente_mod.php")) {
 if ($cambiainisett) {
 $anchor = "conf_anno";
 if ($giorno_vedi_ini_sett < 1 or $giorno_vedi_ini_sett > 6 or strlen($giorno_vedi_ini_sett) != 1) $giorno_vedi_ini_sett = 0;
@@ -2268,9 +2268,9 @@ if (!${"intervalloperiodo".$num1} or controlla_num_pos(${"intervalloperiodo".$nu
 } # fine for $num1
 if ($errore == "SI") echo mex("Le date sono sbagliate",$pag).". <br>";
 else {
-$file_intero = file(C_DATI_PATH."/selectperiodi$anno.$id_utente_mod.php");
+$file_intero = file(C_DATA_PATH."/selectperiodi$anno.$id_utente_mod.php");
 $num_linee_file_intero = count($file_intero);
-$filelock = crea_lock_file(C_DATI_PATH."/selperiodimenu$anno.$id_utente_mod.php");
+$filelock = crea_lock_file(C_DATA_PATH."/selperiodimenu$anno.$id_utente_mod.php");
 $linee = "";
 $linee[0] = "<?php
 
@@ -2323,7 +2323,7 @@ $linee[0] .= "\$y_ini_menu[$num1] = \"$a_ini_menu\";
 } # fine for $num1
 if ($date_parziali) $linee[0] .= "\$partial_dates = 1;
 ";
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 $lingua_mex = $lingua[$id_utente_mod];
 $linee[0] .= "\$d_names = \"\\\"".mex(" Do","inizio.php")."\\\",\\\"".mex(" Lu","inizio.php")."\\\",\\\"".mex(" Ma","inizio.php")."\\\",\\\"".mex(" Me","inizio.php")."\\\",\\\"".mex(" Gi","inizio.php")."\\\",\\\"".mex(" Ve","inizio.php")."\\\",\\\"".mex(" Sa","inizio.php")."\\\"\";
 \$m_names = \"\\\"".mex("Gen","inizio.php")."\\\",\\\"".mex("Feb","inizio.php")."\\\",\\\"".mex("Mar","inizio.php")."\\\",\\\"".mex("Apr","inizio.php")."\\\",\\\"".mex("Mag","inizio.php")."\\\",\\\"".mex("Giu","inizio.php")."\\\",\\\"".mex("Lug","inizio.php")."\\\",\\\"".mex("Ago","inizio.php")."\\\",\\\"".mex("Set","inizio.php")."\\\",\\\"".mex("Ott","inizio.php")."\\\",\\\"".mex("Nov","inizio.php")."\\\",\\\"".mex("Dic","inizio.php")."\\\"\";
@@ -2336,8 +2336,8 @@ $linee[$num_lin] = "
 \";
 
 ?>";
-scrivi_file ($linee,C_DATI_PATH."/selperiodimenu$anno.$id_utente_mod.php");
-distruggi_lock_file($filelock,C_DATI_PATH."/selperiodimenu$anno.$id_utente_mod.php");
+scrivi_file ($linee,C_DATA_PATH."/selperiodimenu$anno.$id_utente_mod.php");
+distruggi_lock_file($filelock,C_DATA_PATH."/selperiodimenu$anno.$id_utente_mod.php");
 $aggiorna_tariffe_interconn = "SI";
 echo mex("Le date dei menù a tendina sono state cambiate",$pag).".<br>";
 } # fine else if ($errore == "SI")
@@ -2671,7 +2671,7 @@ $aggiorna = "NO";
 $num_trova_email_tm = 1;
 } # fine if (!$num_trova_email_tm or controlla_num_pos($num_trova_email_tm) == "NO")
 for ($num1 = 0 ; $num1 < $num_trova_email_tm ; $num1++) if (${"therad_email_tm$num1"} != "tutti" and ${"therad_email_tm$num1"} != "ini") $aggiorna = "NO";
-if ($aggiorna == "NO") echo mex("I dati per lo scaricamento delle email sono sbagliati o incompleti",$pag).".<br>";
+if ($aggiorna == "NO") echo mex("I data per lo scaricamento delle email sono sbagliati o incompleti",$pag).".<br>";
 else {
 $n_server_email_tm = "$server_email_tm#@#$username_email_tm#@#$proto_email_tm#@#$porta_email_tm#@#$password_email_tm#@#$num_trova_email_tm";
 $therad_email_tm = "";
@@ -2837,7 +2837,7 @@ echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"$action\"><div>
 </div></form><br><br>";
 
 if ($aggiorna_tariffe_interconn == "SI") {
-$file_interconnessioni = C_DATI_PATH."/dati_interconnessioni.php";
+$file_interconnessioni = C_DATA_PATH."/dati_interconnessioni.php";
 if (@is_file($file_interconnessioni)) {
 include($file_interconnessioni);
 if (@is_array($ic_present)) {
@@ -2877,7 +2877,7 @@ else {
 if (C_NASCONDI_MARCA == "SI") echo "<h4>".mex("Configura e personalizza","inizio.php");
 else {
 echo "<h4>".mex("Configura e personalizza HotelDruid",$pag);
-if ($id_utente == 1) echo " ".C_PHPR_VERSIONE_TXT;
+if ($id_utente == 1) echo " ".C_PHP_VERSION_TXT;
 } # fine else if (C_NASCONDI_MARCA == "SI")
 echo "</h4><hr style=\"width: 65%\">";
 
@@ -2992,11 +2992,11 @@ echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"./personalizza.php
 <input type=\"hidden\" name=\"aggiorna_qualcosa\" value=\"SI\">";
 $cert_cc = esegui_query("select valpersonalizza from $tablepersonalizza where idpersonalizza = 'cert_cc' and idutente = '1'");
 if (!numlin_query($cert_cc)) {
-echo ucfirst(mex("password per la visualizzazione dei dati delle carte di credito",$pag))." ".mex("disattivata",$pag)."
+echo ucfirst(mex("password per la visualizzazione dei data delle carte di credito",$pag))." ".mex("disattivata",$pag)."
 <input class=\"sbutton\" type=\"submit\" name=\"attiva_pass_cc\" value=\"".mex("Attiva",$pag)."\">";
 } # fine if (!numlin_query($cert_cc))
 else {
-echo ucfirst(mex("password per la visualizzazione dei dati delle carte di credito",$pag))." ".mex("attivata",$pag)."
+echo ucfirst(mex("password per la visualizzazione dei data delle carte di credito",$pag))." ".mex("attivata",$pag)."
 <input class=\"sbutton\" type=\"submit\" name=\"disattiva_pass_cc\" value=\"".mex("Disattiva",$pag)."\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <input class=\"sbutton\" type=\"submit\" name=\"cambia_pass_cc\" value=\"".ucfirst(mex("cambia la password",$pag))."\">
 </div></form><div style=\"height: 5px;\"></div>";
@@ -3066,11 +3066,11 @@ echo "</div></form><hr style=\"width: 95%\">
 $auto_crea_anno = esegui_query("select valpersonalizza from $tablepersonalizza where idpersonalizza = 'auto_crea_anno' and idutente = '1'");
 $auto_crea_anno = risul_query($auto_crea_anno,0,'valpersonalizza');
 if ($auto_crea_anno != "SI") {
-echo mex("Creazione automatica del nuovo anno disattivata (importando i dati dall'anno precedente al primo login di un utente)",$pag)."
+echo mex("Creazione automatica del nuovo anno disattivata (importando i data dall'anno precedente al primo login di un utente)",$pag)."
 <input class=\"sbutton\" type=\"submit\" name=\"attiva_auto_crea_anno\" value=\"".mex("Attiva",$pag)."\">";
 } # fine if ($auto_crea_anno != "SI")
 else {
-echo mex("Creazione automatica del nuovo anno attivata (importando i dati dall'anno precedente al primo login di un utente)",$pag)."
+echo mex("Creazione automatica del nuovo anno attivata (importando i data dall'anno precedente al primo login di un utente)",$pag)."
 <input class=\"sbutton\" type=\"submit\" name=\"disattiva_auto_crea_anno\" value=\"".mex("Disattiva",$pag)."\">";
 } # fine else if ($auto_crea_anno != "SI")
 echo "</div></form><hr style=\"width: 95%\">";
@@ -3202,7 +3202,7 @@ echo "</td></tr></table>
 
 $trad_var['room'] = "#cam#";
 $trad_var['apartment'] = "#app#";
-include(C_DATI_PATH."/unit.php");
+include(C_DATA_PATH."/unit.php");
 if ($unit['s_n'] == "#cam#") $sel_cam = " selected";
 else $sel_cam = "";
 if ($unit['s_n'] == "#app#") $sel_app = " selected";
@@ -3236,7 +3236,7 @@ $trad_lingue = "Italiano:
 <option value=\"f\"$sel_f>".mex("f",$pag)."</option>
 </select>.<br>";
 $lang_dir = opendir("./includes/lang/");
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 while ($ini_lingua = readdir($lang_dir)) {
 if ($ini_lingua != "." and $ini_lingua != ".." and strlen($ini_lingua) < 4) {
 $nome_lingua = file("./includes/lang/$ini_lingua/l_n");
@@ -3264,7 +3264,7 @@ else echo "<input class=\"sbutton\" type=\"submit\" name=\"cambia_nome_unita\" v
 echo "</div></form></td></tr>";
 
 $trad_var['bed'] = "#bed#";
-include(C_DATI_PATH."/unit_single.php");
+include(C_DATA_PATH."/unit_single.php");
 if ($unit['s_n'] == "#bed#") $sel_bed = " selected";
 else $sel_bed = "";
 if ($unit['s_n'] != "#bed#") $sel_pers = " selected";
@@ -3295,7 +3295,7 @@ $trad_lingue = "Italiano:
 <option value=\"f\"$sel_f>".mex("f",$pag)."</option>
 </select>.<br>";
 $lang_dir = opendir("./includes/lang/");
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 while ($ini_lingua = readdir($lang_dir)) {
 if ($ini_lingua != "." and $ini_lingua != ".." and strlen($ini_lingua) < 4) {
 $nome_lingua = file("./includes/lang/$ini_lingua/l_n");
@@ -3330,7 +3330,7 @@ echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"./personalizza.php
 <input type=\"hidden\" name=\"aggiorna_qualcosa\" value=\"SI\">";
 echo mex("Parole da sostituire",$pag).": 
 <select name=\"parola_da_elininare\">";
-$file_sost = @file(C_DATI_PATH."/parole_sost.php");
+$file_sost = @file(C_DATA_PATH."/parole_sost.php");
 $num_file_sost = count($file_sost);
 for ($num1 = 0 ; $num1 < $num_file_sost ; $num1++) {
 if (substr($file_sost[$num1],0,26) == "\$messaggio = str_replace(\"") {
@@ -3416,7 +3416,7 @@ echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"./personalizza.php
  <select name=\"n_lingua\">
 <option value=\"ita\">italiano</option>";
 $lang_dir = opendir("./includes/lang/");
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 while ($ini_lingua = readdir($lang_dir)) {
 if ($ini_lingua != "." and $ini_lingua != ".." and strlen($ini_lingua) < 4) {
 $nome_lingua = file("./includes/lang/$ini_lingua/l_n");
@@ -3440,7 +3440,7 @@ echo "</select>
  <select name=\"nuovo_tema\">
 <option value=\"base\">".mex("base",$pag)."</option>";
 $temi_dir = opendir("./themes/");
-include(C_DATI_PATH."/tema.php");
+include(C_DATA_PATH."/tema.php");
 while ($ini_tema = readdir($temi_dir)) {
 if ($ini_tema != "." && $ini_tema != "..") {
 include("./themes/$ini_tema/php/name.php");
@@ -3865,10 +3865,10 @@ echo mex("Nome",$pag).":
 ".mex("URL del logo",$pag).":
  <input type=\"text\"$readonly name=\"nuovo_logo_strutt\" size=\"32\" value=\"".$dati_strut[15]."\">
 </td></tr></table>
-<input class=\"sbutton\" type=\"submit\" name=\"cambiadatistrut\" value=\"".mex("Modifica i dati della struttura",$pag)."\">
+<input class=\"sbutton\" type=\"submit\" name=\"cambiadatistrut\" value=\"".mex("Modifica i data della struttura",$pag)."\">
 </div></form><hr style=\"width: 95%\">";
 
-if (@is_file(C_DATI_PATH."/selectperiodi$anno.$id_utente_sel.php")) {
+if (@is_file(C_DATA_PATH."/selectperiodi$anno.$id_utente_sel.php")) {
 echo "<a name=\"conf_anno\"></a>
 <div style=\"text-align: center;\">".mex("Anno",$pag)." $anno</div><br>";
 if ($tipo_periodi == "g") {
@@ -3910,7 +3910,7 @@ echo "<form accept-charset=\"utf-8\" method=\"post\" action=\"./personalizza.php
 <table><tr><td valign=\"top\">
 ".mex("Scegli le date",$pag)."
 ".mex("nei menù a tendina",$pag).":</td><td>";
-if (@is_file(C_DATI_PATH."/selperiodimenu$anno.$id_utente_sel.php")) include(C_DATI_PATH."/selperiodimenu$anno.$id_utente_sel.php");
+if (@is_file(C_DATA_PATH."/selperiodimenu$anno.$id_utente_sel.php")) include(C_DATA_PATH."/selperiodimenu$anno.$id_utente_sel.php");
 $incrementi_date = $d_increment;
 if (!$num_periodi_date or controlla_num_pos($num_periodi_date) == "NO") $num_periodi_date = count($incrementi_date);
 $lista_date = explode("<option value=\"",$dates_options_list);
@@ -3922,12 +3922,12 @@ if (${"inizioperiodo".$num1}) $date_selected = ${"inizioperiodo".$num1};
 else $date_selected = substr($lista_date[$numero_data],0,10);
 echo "".mex("dal",$pag)."&nbsp;";
 if (!@is_dir("./themes/".$tema[$id_utente_sel]."/php")) $tema[$id_utente_sel] = "base";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.$id_utente_sel.php","inizioperiodo$num1",$date_selected,"","",$id_utente_sel,$tema);
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.$id_utente_sel.php","inizioperiodo$num1",$date_selected,"","",$id_utente_sel,$tema);
 $numero_data = $numero_data + $numero_date_menu[$num1] - 1;
 if (${"fineperiodo".$num1}) $date_selected = ${"fineperiodo".$num1};
 else $date_selected = substr($lista_date[$numero_data],0,10);
 echo "&nbsp;".mex("al",$pag)."&nbsp;";
-mostra_menu_date(C_DATI_PATH."/selectperiodi$anno.$id_utente_sel.php","fineperiodo$num1",$date_selected,"","",$id_utente_sel,$tema);
+mostra_menu_date(C_DATA_PATH."/selectperiodi$anno.$id_utente_sel.php","fineperiodo$num1",$date_selected,"","",$id_utente_sel,$tema);
 if ($tipo_periodi == "s") $val_intervalloperiodo = ($incrementi_date[$num1] / 7);
 else $val_intervalloperiodo = $incrementi_date[$num1];
 if (${"intervalloperiodo".$num1}) $val_intervalloperiodo = ${"intervalloperiodo".$num1};

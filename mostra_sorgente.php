@@ -23,7 +23,7 @@
 $pag = "mostra_sorgente.php";
 $titolo = "HotelDruid: Source Code";
 
-include("./costanti.php");
+include("./constants.php");
 include("./includes/funzioni.php");
 include("./includes/files_sorgente.php");
 
@@ -44,7 +44,7 @@ if ($file_trovato == "SI") {
 $mostra_lista = "NO";
 $file_sorgente_orig = $file_sorgente;
 if (defined("C_CARTELLA_FILES_REALI")) {
-if ($file_sorgente == "includes/costanti.php") $file_sorgente = "";
+if ($file_sorgente == "includes/constants.php") $file_sorgente = "";
 else $file_sorgente = C_CARTELLA_FILES_REALI.$file_sorgente;
 } # fine if (defined("C_CARTELLA_FILES_REALI"))
 if (@is_file($file_sorgente)) {
@@ -66,7 +66,7 @@ else echo nl2br(htmlspecialchars($file_sorgente));
 if ($mostra_lista != "NO") {
 
 if ($raw != "SI") echo "<div id=\"flogin\"><small>";
-else echo "v".C_PHPR_VERSIONE_NUM;
+else echo "v".C_PHP_VERSION_NUM;
 
 reset($files_sorgente);
 while (list($idf,$file_sorgente) = each($files_sorgente)) {

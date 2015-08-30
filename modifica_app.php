@@ -23,8 +23,8 @@
 $pag = "modifica_app.php";
 $titolo = "HotelDruid: Modifica Appartamenti";
 
-include("./costanti.php");
-include(C_DATI_PATH."/dati_connessione.php");
+include("./constants.php");
+include(C_DATA_PATH."/dati_connessione.php");
 include("./includes/funzioni_$PHPR_DB_TYPE.php");
 $numconnessione = connetti_db($PHPR_DB_NAME,$PHPR_DB_HOST,$PHPR_DB_PORT,$PHPR_DB_USER,$PHPR_DB_PASS,$PHPR_LOAD_EXT);
 include("./includes/funzioni.php");
@@ -176,7 +176,7 @@ esegui_query("delete from $tablerelinventario where idappartamento = '$idapparta
 esegui_query("delete from $tabledescrizioni where nome = '$idappartamenti' and (tipo = 'appdescr' or tipo = 'appfoto') ");
 $id_appartamenti = esegui_query("select idappartamenti from $tableappartamenti order by idappartamenti ");
 $num_appartamenti = numlin_query($id_appartamenti);
-$fileaperto = fopen(C_DATI_PATH."/selectappartamenti.php","w+");
+$fileaperto = fopen(C_DATA_PATH."/selectappartamenti.php","w+");
 flock($fileaperto,2);
 fwrite($fileaperto,"<?php \necho \"\n");
 for ( $num = 0; $num < $num_appartamenti; $num = $num + 1) {
@@ -217,7 +217,7 @@ echo mex("L'appartamento",'unit.php')." <b>$idappartamenti</b> ".mex("è stato c
 <input class=\"sbutton\" type=\"submit\" name=\"torna\" value=\"OK\">
 </div></form>";
 
-$file_interconnessioni = C_DATI_PATH."/dati_interconnessioni.php";
+$file_interconnessioni = C_DATA_PATH."/dati_interconnessioni.php";
 if (@is_file($file_interconnessioni)) {
 include($file_interconnessioni);
 if (@is_array($ic_present)) {
@@ -544,7 +544,7 @@ esegui_query("update $tabledescrizioni set nome = '$n_nome_app' where nome = '$i
 $idappartamenti = $n_nome_app;
 $id_appartamenti = esegui_query("select idappartamenti from $tableappartamenti order by idappartamenti ");
 $num_appartamenti = numlin_query($id_appartamenti);
-$fileaperto = fopen(C_DATI_PATH."/selectappartamenti.php","w+");
+$fileaperto = fopen(C_DATA_PATH."/selectappartamenti.php","w+");
 flock($fileaperto,2);
 fwrite($fileaperto,"<?php \necho \"\n");
 for ( $num = 0; $num < $num_appartamenti; $num = $num + 1) {
@@ -655,7 +655,7 @@ else esegui_query("insert into $tabledescrizioni (nome,tipo,lingua,numero,testo)
 } # fine if (strcmp($n_descrizione_ita,""))
 else esegui_query("delete from $tabledescrizioni where nome = '$idappartamenti' and tipo = 'appdescr' and lingua = 'ita' and numero = '1' ");
 $lang_dir = opendir("./includes/lang/");
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 while ($ini_lingua = readdir($lang_dir)) {
 if ($ini_lingua != "." && $ini_lingua != ".." and strlen($ini_lingua) <= 3 and preg_replace("/[a-z]/","",$ini_lingua) == "") {
 $n_descrizione = ${"n_descrizione_".$ini_lingua};
@@ -694,7 +694,7 @@ else esegui_query("insert into $tabledescrizioni (nome,tipo,lingua,numero,testo)
 } # fine if (strcmp($n_commento_ita,""))
 else esegui_query("delete from $tabledescrizioni where nome = '$idappartamenti' and tipo = 'appcommfoto' and lingua = 'ita' and numero = '$numfoto' ");
 $lang_dir = opendir("./includes/lang/");
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 while ($ini_lingua = readdir($lang_dir)) {
 if ($ini_lingua != "." && $ini_lingua != ".." and strlen($ini_lingua) <= 3 and preg_replace("/[a-z]/","",$ini_lingua) == "") {
 $n_commento = ${"n_commento_".$ini_lingua};
@@ -838,7 +838,7 @@ $col = 0;
 $max_col = 2;
 unset($lingue_vett);
 $lang_dir = opendir("./includes/lang/");
-include(C_DATI_PATH."/lingua.php");
+include(C_DATA_PATH."/lingua.php");
 while ($ini_lingua = readdir($lang_dir)) {
 if ($ini_lingua != "." && $ini_lingua != ".." and strlen($ini_lingua) <= 3 and preg_replace("/[a-z]/","",$ini_lingua) == "") {
 $nome_lingua = file("./includes/lang/$ini_lingua/l_n");

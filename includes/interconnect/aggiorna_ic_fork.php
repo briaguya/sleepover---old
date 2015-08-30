@@ -22,7 +22,7 @@
 
 
  
-$file_interconnessioni = C_DATI_PATH."/dati_interconnessioni.php";
+$file_interconnessioni = C_DATA_PATH."/dati_interconnessioni.php";
 if (@is_file($file_interconnessioni)) {
 unset($ic_present);
 include($file_interconnessioni);
