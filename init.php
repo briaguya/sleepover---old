@@ -35,7 +35,7 @@ else $readme = "<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\">AGPLv3</a>
 echo "<div style=\"text-align: center;\"><h3>".mex("sleepover setup",$pag)."</h3><br><br>
 sleepover version ".C_PHP_VERSION_TXT.", Copyright info available in the $readme.<br>
 </div><hr style=\"width: 95%\">
-<form accept-charset=\"utf-8\" method=\"post\" action=\"createDB.php\"><div>
+<form accept-charset=\"utf-8\" method=\"post\" action=\"createdb.php\"><div>
 <input class=\"sbutton\" type=\"submit\" name=\"crealo\" value=\"".mex("Let's go make a DB!",$pag)."\"><br>
 </div></form>";
 if ($tema[$id_utente] != "base") include("./themes/".$tema[$id_utente]."/php/foot.php");

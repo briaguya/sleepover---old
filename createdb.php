@@ -5,7 +5,7 @@
 include("./constants.php");
 include("./includes/funzioni.php");
 if (!defined("C_CREADB_TIPODB")) include("./includes/costanti.php");
-$pag = "createDB.php";
+$pag = "createdb.php";
 $titolo = "sleepover: create database";
 
 if (C_CREA_ULTIMO_ACCESSO != "SI" or !@is_file(C_DATA_PATH."/ultimo_accesso")) {
@@ -426,7 +426,7 @@ if (C_NASCONDI_MARCA == "SI" and @is_file(C_CARTELLA_CREA_MODELLI."/index.html")
 if (C_UTILIZZA_SEMPRE_DEFAULTS != "AUTO") {
 # seconda form di inserimento (appartamenti).
 echo "<br>".mex2("Inserisci ora i data sugli appartamenti",'unit.php',$lingua)." (<b>".mex2("almeno il numero, diverso per ogni appartamento",'unit.php',$lingua)."</b>).<br>
-<form accept-charset=\"utf-8\" method=\"post\" action=\"createDB.php\"><div>
+<form accept-charset=\"utf-8\" method=\"post\" action=\"createdb.php\"><div>
 <input type=\"hidden\" name=\"numappartamenti\" value=\"$numappartamenti\">
 <input type=\"hidden\" name=\"numletti\" value=\"$numletti\">
 <hr style=\"width: 95%\">";
@@ -737,7 +737,7 @@ if ($mostra_form_iniziale != "NO") {
 echo "<h4>".mex2("Inserimento dei data permanenti",$pag,$lingua)."</h4><br>
 ".mex2("Inserisci questi data per poi creare il database",$pag,$lingua).".<br>
 <br>
-<form accept-charset=\"utf-8\" method=\"post\" action=\"createDB.php\"><div>
+<form accept-charset=\"utf-8\" method=\"post\" action=\"createdb.php\"><div>
 ".mex2("Tipo di database",$pag,$lingua).": 
 <select name=\"tipo_db\">";
 if (C_CREADB_TIPODB == "postgresql") $selected = " selected";
