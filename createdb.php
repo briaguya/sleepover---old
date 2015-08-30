@@ -24,19 +24,6 @@ if ($tema[$id_utente] and $tema[$id_utente] != "base" and @is_dir("./themes/".$t
 else include("./includes/head.php");
 
 
-function mex2 ($messaggio,$pagina,$lingua) {
-
- $lingua = "ita";
-if ($lingua != "ita") {
-include("./includes/lang/$lingua/$pagina");
-} # fine if ($lingua != "ita")
-elseif ($pagina == "unit.php") include("./includes/unit.php");
-
-return $messaggio;
-
-} # fine function mex2
-
-
 if (C_UTILIZZA_SEMPRE_DEFAULTS == "AUTO") $creabase = 1;
 
 
