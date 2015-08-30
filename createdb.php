@@ -555,8 +555,7 @@ unlink(C_DATA_PATH."/prova.tmp");
 } # fine else if (!$fileaperto)
 } # fine if ($permessi_scrittura_controllati != "SI")
 if ($torna_indietro == "SI") {
-echo ".mex2("Torna indietro",$pag,$lingua)."\"><br>
-</div></form>";
+echo "Torna indietro><br></div></form>";
 } # fine if ($torna_indietro == "SI")
 } # fine if ($creabase and !@is_file(C_DATI_PATH."/dati_connessione.php"))
 
