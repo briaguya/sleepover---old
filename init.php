@@ -45,13 +45,10 @@ break;
 } # fine if (strlen($lang) == 2 and @is_dir("./includes/lang/$lang"))
 } # fine (list($ind,$lang) = each($lingua_browser))
 } # fine if (@isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
-if (@is_file("./COPYING")) $file_copying = "file <a href=\"COPYING\">COPYING</a>";
-else $file_copying = "<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\">AGPLv3</a> License";
-echo "<div style=\"text-align: center;\"><h3>".mex("Benvenuto a HOTELDRUID",$pag).".</h3><br><br>
-sleepover version ".C_PHP_VERSION_TXT.", Copyright (C) 2001-2015 Marco M. F. De Santis<br>
-HotelDruid comes with ABSOLUTELY NO WARRANTY; <br>for details see the $file_copying.<br>
-This is free software, and you are welcome to redistribute it<br>
- under certain conditions; see the $file_copying for details.<br>
+if (@is_file("./README")) $file_readme = "file <a href=\"README\">README</a>";
+else $file_readme = "<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\">AGPLv3</a> License";
+echo "<div style=\"text-align: center;\"><h3>".mex("sleepover Setup",$pag).".</h3><br><br>
+sleepover version ".C_PHP_VERSION_TXT.", Copyright info available in the $file_readme.<br>
 </div><hr style=\"width: 95%\">
 <form accept-charset=\"utf-8\" method=\"post\" action=\"creadb.php\"><div>
 <br><br>
