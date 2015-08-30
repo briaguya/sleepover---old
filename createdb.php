@@ -26,6 +26,7 @@ else include("./includes/head.php");
 
 function mex2 ($messaggio,$pagina,$lingua) {
 
+ $lingua = "ita";
 if ($lingua != "ita") {
 include("./includes/lang/$lingua/$pagina");
 } # fine if ($lingua != "ita")
@@ -364,7 +365,7 @@ if (\$HOTELD_TAB_PRE) \$PHPR_TAB_PRE = \$HOTELD_TAB_PRE;
 fwrite($fileaperto,"?>");
 fclose($fileaperto);
 @chmod(C_DATA_PATH."/dati_connessione.php", 0640);
-if ($lingua != "ita" and (!@is_dir("./includes/lang/".$lingua) or strlen($lingua) > 3)) $lingua = "en";
+$lingua = "en";
 $fileaperto = fopen(C_DATA_PATH."/lingua.php","w+");
 fwrite($fileaperto,"<?php
 \$lingua[1] = \"$lingua\";
